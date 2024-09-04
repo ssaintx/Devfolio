@@ -1,0 +1,26 @@
+{
+    "Header": {
+        "Bottombar": {
+            "Home": "Bosh sahifa",
+            "About": "O'zim haqida",
+            "Portfolio": "Portfolio",
+            "Contacts": "Bog'lanish"
+        }
+    },
+    "Functions": {
+        "Theme": {
+            "Label": "Mavzular",
+            "Light": "Yoriq",
+            "Dark": "Qorong'ir",
+            "System": "Sistemalik"
+        },
+        "Language": {
+            "Label": "Tillar"
+        },
+        "Settings": {
+            "Label": "Sozlamalar",
+            "ThemeSwitch": "Mavzu o'zgartirish",
+            "LanguageSwitch": "Til o'zgartirish"
+        }
+    }
+}

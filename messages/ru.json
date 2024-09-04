@@ -1,0 +1,26 @@
+{
+    "Header": {
+        "Bottombar": {
+            "Home": "Главная",
+            "About": "Про меня",
+            "Portfolio": "Портфолио",
+            "Contacts": "Контакты"
+        }
+    },
+    "Functions": {
+        "Theme": {
+            "Label": "Темы",
+            "Light": "Яркий",
+            "Dark": "Темный",
+            "System": "Системный"
+        },
+        "Language": {
+            "Label": "Языки"
+        },
+        "Settings": {
+            "Label": "Настройки",
+            "ThemeSwitch": "Поменять тему",
+            "LanguageSwitch": "Поменять язык"
+        }
+    }
+}

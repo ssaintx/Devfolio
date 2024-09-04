@@ -1,0 +1,26 @@
+{
+    "Header": {
+        "Bottombar": {
+            "Home": "Home",
+            "About": "About",
+            "Portfolio": "Portfolio",
+            "Contacts": "Contact"
+        }
+    },
+    "Functions": {
+        "Theme": {
+            "Label": "Themes",
+            "Light": "Light",
+            "Dark": "Dark",
+            "System": "System"
+        },
+        "Language": {
+            "Label": "Languages"
+        },
+        "Settings": {
+            "Label": "Settings",
+            "ThemeSwitch": "Change theme",
+            "LanguageSwitch": "Change language"
+        }
+    }
+}
