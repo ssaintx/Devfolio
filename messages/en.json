@@ -4,8 +4,14 @@
             "Home": "Home",
             "About": "About",
             "Portfolio": "Portfolio",
+            "Timeline": "Job timeline",
             "Contacts": "Contact"
         }
+    },
+    "Hero": {
+        "Badge": "Hire Me",
+        "Heading": "Frontend Developer",
+        "Subheading": "Located in Uzbekistan"
     },
     "Functions": {
         "Theme": {

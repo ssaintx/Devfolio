@@ -23,10 +23,10 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
 
     return (
         <Select defaultValue={defaultValue} onValueChange={onChange}>
-            <SelectTrigger className="dark-light-secondary bg-zinc-200 border-none h-8 w-auto">
+            <SelectTrigger className="border-none h-8 w-auto">
                 <SelectValue placeholder={t("Label")} />
             </SelectTrigger>
-            <SelectContent className="dark-light-secondary bg-zinc-200 border-none">
+            <SelectContent className="dark-light-secondary bg-zinc-200 border-none w-auto">
                 <SelectGroup>
                     {items.map((item) => (
                         <SelectItem key={item.value} value={item.value}>

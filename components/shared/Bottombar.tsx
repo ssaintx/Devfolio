@@ -12,6 +12,7 @@ import {
   PersonIcon,
   BackpackIcon,
   EnvelopeClosedIcon,
+  CounterClockwiseClockIcon,
 } from "@radix-ui/react-icons";
 
 import {
@@ -59,13 +60,19 @@ export const Bottombar = () => {
     },
     {
       id: 4,
+      icon: <CounterClockwiseClockIcon />,
+      label: headerTranslations("Timeline"),
+      link: "#timeline",
+    },
+    {
+      id: 5,
       icon: <EnvelopeClosedIcon />,
       label: headerTranslations("Contacts"),
       link: "#contacts",
     }];
 
   return (
-    <nav className="fixed bottom-0 w-full pb-6">
+    <nav className="bottombar">
       <TooltipProvider>
         <Dock direction="middle" className="border-none dark-light-secondary">
           {/* SECTIONS RENDERING */}
@@ -95,10 +102,13 @@ export const Bottombar = () => {
             <DropdownMenu>
 
               <DropdownMenuTrigger asChild>
-                <GearIcon />
+                <div className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "rounded-full",
+                )}><GearIcon /></div>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="w-60 rounded-lg border-none">
+              <DropdownMenuContent className="w-60 rounded-lg border-none dark-light-secondary bg-zinc-200">
                 <DropdownMenuLabel>{settingTranslations("Label")}</DropdownMenuLabel>
 
                 <Separator orientation="horizontal" className="my-2" />

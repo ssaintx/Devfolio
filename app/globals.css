@@ -85,7 +85,7 @@
   }
 
   body {
-    @apply bg-zinc-50 text-zinc-950 dark:bg-black dark:text-zinc-50;
+    @apply bg-zinc-50 dark:bg-black dark:text-[#eeeeee] text-zinc-950;
   }
 
   .dark-light {
@@ -93,10 +93,14 @@
   }
 
   .dark-light-secondary {
-    @apply bg-zinc-200 dark:bg-zinc-900
+    @apply bg-zinc-200 dark:bg-zinc-900;
   }
 
   .navbar {
-    @apply fixed flex flex-row justify-between items-center gap-2 top-0 z-30 w-full backdrop-blur-lg px-6 py-3;
+    @apply flex items-center justify-center px-4 py-2 bg-transparent border-b-[1px] border-zinc-200 dark:border-zinc-800 w-full;
+  }
+  
+  .bottombar {
+    @apply fixed bottom-0 w-full pb-6;
   }
 }

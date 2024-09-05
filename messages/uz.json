@@ -4,8 +4,14 @@
             "Home": "Bosh sahifa",
             "About": "O'zim haqida",
             "Portfolio": "Portfolio",
+            "Timeline": "Ish tarixi",
             "Contacts": "Bog'lanish"
         }
+    },
+    "Hero": {
+        "Badge": "Ishga olish",
+        "Heading": "Frontend dasturchi",
+        "Subheading": "O'zbekistonda joylashgan"
     },
     "Functions": {
         "Theme": {
