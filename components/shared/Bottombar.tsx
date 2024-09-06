@@ -72,9 +72,9 @@ export const Bottombar = () => {
     }];
 
   return (
-    <nav className="bottombar">
+    <nav className="bottombar z-0">
       <TooltipProvider>
-        <Dock direction="middle" className="border-none dark-light-secondary">
+        <Dock direction="middle" className="glassmorphism z-10">
           {/* SECTIONS RENDERING */}
           {links.map((link) => (
             <DockIcon key={link.id}>
@@ -108,7 +108,7 @@ export const Bottombar = () => {
                 )}><GearIcon /></div>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="w-60 rounded-lg border-none dark-light-secondary bg-zinc-200">
+              <DropdownMenuContent className="w-60 rounded-lg glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg">
                 <DropdownMenuLabel>{settingTranslations("Label")}</DropdownMenuLabel>
 
                 <Separator orientation="horizontal" className="my-2" />

@@ -81,7 +81,10 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 outline-none font-sans;
+    @apply scroll-smooth border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 outline-none font-sans;
+    ::-webkit-scrollbar {
+      background-color: transparent;
+    }
   }
 
   body {
@@ -96,11 +99,16 @@
     @apply bg-zinc-200 dark:bg-zinc-900;
   }
 
+  .glassmorphism {
+    @apply bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg dark:bg-black dark:backdrop-blur-[33px] dark:bg-opacity-50 dark:shadow-md;
+  }
+  
   .navbar {
-    @apply flex items-center justify-center px-4 py-2 bg-transparent border-b-[1px] border-zinc-200 dark:border-zinc-800 w-full;
+    @apply flex items-center justify-center px-4 py-2 glassmorphism border border-zinc-200 dark:border-zinc-800 w-full z-50;
   }
   
   .bottombar {
-    @apply fixed bottom-0 w-full pb-6;
+    @apply fixed bottom-0 w-full pb-6 px-3 bg-none;
   }
+
 }

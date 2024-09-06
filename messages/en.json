@@ -11,7 +11,8 @@
     "Hero": {
         "Badge": "Hire Me",
         "Heading": "Frontend Developer",
-        "Subheading": "Located in Uzbekistan"
+        "Subheading": "Located in Uzbekistan",
+        "Button": "Download CV"
     },
     "Functions": {
         "Theme": {

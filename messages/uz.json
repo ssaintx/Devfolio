@@ -11,7 +11,8 @@
     "Hero": {
         "Badge": "Ishga olish",
         "Heading": "Frontend dasturchi",
-        "Subheading": "O'zbekistonda joylashgan"
+        "Subheading": "O'zbekistonda joylashgan",
+        "Button": "Rezyume yuklab olish"
     },
     "Functions": {
         "Theme": {
