@@ -23,7 +23,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
 
     return (
         <Select defaultValue={defaultValue} onValueChange={onChange}>
-            <SelectTrigger className="border-none h-8 w-auto glassmorphism">
+            <SelectTrigger className="h-8 w-auto glassmorphism shadow-md">
                 <SelectValue placeholder={t("Label")} />
             </SelectTrigger>
             <SelectContent className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg w-auto">

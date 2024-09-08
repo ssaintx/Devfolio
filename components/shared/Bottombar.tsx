@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Tooltip,
   TooltipContent,
@@ -24,6 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { Separator } from "../ui/separator";
 import { useTranslations } from "next-intl";
 import { LanguagesIcon } from "lucide-react";
@@ -72,7 +75,23 @@ export const Bottombar = () => {
     }];
 
   return (
-    <nav className="bottombar z-0">
+    <motion.nav
+      initial={{
+        opacity: 1,
+        y: 100,
+      }}
+      transition={{
+        ease: 'easeInOut',
+        type: 'spring',
+        stiffness: 500,
+        damping: 200,
+        duration: 0.5,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className="bottombar">
       <TooltipProvider>
         <Dock direction="middle" className="glassmorphism z-10">
           {/* SECTIONS RENDERING */}
@@ -130,6 +149,6 @@ export const Bottombar = () => {
           </DockIcon>
         </Dock>
       </TooltipProvider>
-    </nav>
+    </motion.nav>
   );
 };

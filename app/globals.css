@@ -81,7 +81,7 @@
 
 @layer base {
   * {
-    @apply scroll-smooth border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 outline-none font-sans;
+    @apply antialiased scroll-smooth border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 outline-none font-sans;
     ::-webkit-scrollbar {
       background-color: transparent;
     }
@@ -100,15 +100,18 @@
   }
 
   .glassmorphism {
-    @apply bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg dark:bg-black dark:backdrop-blur-[33px] dark:bg-opacity-50 dark:shadow-md;
+    @apply bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg dark:bg-black dark:backdrop-blur-[33px] dark:bg-opacity-50 dark:shadow-md border border-border;
   }
   
   .navbar {
-    @apply flex items-center justify-center px-4 py-2 glassmorphism border border-zinc-200 dark:border-zinc-800 w-full z-50;
+    @apply absolute flex flex-row items-center justify-center px-4 py-2 w-full top-0 z-30 glassmorphism;
   }
   
   .bottombar {
-    @apply fixed bottom-0 w-full pb-6 px-3 bg-none;
+    @apply fixed bottom-0 w-full pb-5 bg-none;
   }
 
+  .button {
+    @apply flex flex-row items-center justify-center gap-2 mt-10 glassmorphism p-2 px-4 rounded-full hover:blur-[1px] dark:hover:blur-[1px] border border-zinc-200 dark:border-zinc-800 transition-all ease-linear
+  }
 }
