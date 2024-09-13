@@ -13,7 +13,22 @@
         "Heading": "Фронтенд разработчик",
         "Subheading": "Расположенный в Узбекистане",
         "Button": "Скачать резюме"
-        
+    },
+    "About": {
+        "Heading": "Про Меня",
+        "PersonalInformation": {
+            "Name": "Лазизбек",
+            "LastName": "Усманов",
+            "Occupation": "Фронтенд разработчик",
+            "Email": "saintx.git@gmail.com"
+        },
+        "Fields": {
+            "NameField": "Имя",
+            "LastNameField": "Фамилия",
+            "AgeField": "Возраст",
+            "OccupationField": "Занятие",
+            "EmailField": "Электронная почта"
+        }
     },
     "Functions": {
         "Theme": {

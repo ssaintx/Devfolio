@@ -42,6 +42,11 @@ export const Bottombar = () => {
   const headerTranslations = useTranslations("Header.Bottombar");
   const settingTranslations = useTranslations("Functions.Settings");
 
+  // CALCULATE WIDTH OF DEVICE TO REACH RESPOSIVENESS
+  const screenWidth = window.innerWidth;
+  const distance = screenWidth < 425 ? 0 : 140;
+  const magnification = screenWidth < 425 ? 0 : 60;
+
   const links = [
     {
       id: 1,
@@ -93,7 +98,7 @@ export const Bottombar = () => {
       }}
       className="bottombar">
       <TooltipProvider>
-        <Dock direction="middle" className="glassmorphism z-10">
+        <Dock distance={distance} magnification={magnification} direction="middle" className="glassmorphism z-10 blur-none">
           {/* SECTIONS RENDERING */}
           {links.map((link) => (
             <DockIcon key={link.id}>

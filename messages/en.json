@@ -14,6 +14,23 @@
         "Subheading": "Located in Uzbekistan",
         "Button": "Download CV"
     },
+    "About": {
+        "Heading": "About Me",
+        "PersonalInformation": {
+            "Name": "Lazizbek",
+            "LastName": "Usmanov",
+            "Occupation": "Frontend Developer",
+            "Email": "saintx.git@gmail.com"
+        },
+        "Fields": {
+            "NameField": "Name",
+            "LastNameField": "Last Name",
+            "AgeField": "Age",
+            "OccupationField": "Occupation",
+            "EmailField": "Email"
+        },
+        "Bio": "My name is Lazizbek."
+    },
     "Functions": {
         "Theme": {
             "Label": "Themes",

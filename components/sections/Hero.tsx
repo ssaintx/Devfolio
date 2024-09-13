@@ -14,7 +14,7 @@ export const Hero = () => {
     const t = useTranslations("Hero");
 
     return (
-        <section className="flex flex-col items-center justify-center pt-20" id="home">
+        <section className="flex flex-col items-center justify-center pt-20 h-screen" id="home">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -27,10 +27,11 @@ export const Hero = () => {
                 transition={{
                     duration: 1,
                 }}
-                className="mt-5 z-10">
+                className="mt-5"
+            >
                 <div
                     className={cn(
-                        "border-none h-8 rounded-full text-base transition-all ease-in hover:cursor-pointer dark-light-secondary hover:bg-zinc-200 dark:hover:bg-zinc-800",
+                        "border-none h-8 rounded-full text-base transition-all ease-in hover:cursor-pointer dark-light-secondary hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-lg",
                     )}
                 >
                     <AnimatedShinyText className="flex items-center justify-center px-4 py-1 transition ease-out hover:text-zinc-600 hover:duration-300 hover:dark:text-zinc-400">
@@ -53,7 +54,10 @@ export const Hero = () => {
                     transition={{
                         duration: 1,
                     }}
-                    className="mt-10 text-2xl md:text-4xl capitalize font-semibold text-center">{t("Heading")}</motion.h1>
+                    className="mt-10 text-2xl md:text-4xl capitalize font-semibold text-center"
+                >
+                    {t("Heading")}
+                </motion.h1>
                 <motion.p
                     initial={{
                         opacity: 0,
@@ -66,10 +70,25 @@ export const Hero = () => {
                     transition={{
                         duration: 2,
                     }}
-                    className="text-gray-500">{t("Subheading")}</motion.p>
+                    className="text-gray-500"
+                >
+                    {t("Subheading")}
+                </motion.p>
             </div>
 
-            <div>
+            <motion.div
+                initial={{
+                    opacity: 0,
+                    y: -20,
+                }}
+                animate={{
+                    opacity: 1,
+                    y: 0,
+                }}
+                transition={{
+                    duration: 1,
+                }}
+            >
                 <Link
                     href={`/assets/LazizbekCV.pdf`}
                     target="_blank"
@@ -79,19 +98,58 @@ export const Hero = () => {
                 >
                     <FileIcon className="size-5" /> {t("Button")}
                 </Link>
-            </div>
+            </motion.div>
 
-            <Separator orientation="horizontal" className="mt-10 bg-gray-500 w-[100px]" />
+            <motion.div
+                initial={{
+                    opacity: 0,
+                    x: -50,
+                }}
+                animate={{
+                    opacity: 1,
+                    x: 0,
+                }}
+                transition={{
+                    duration: 1,
+                }}
+            >
+                <Separator orientation="horizontal" className="mt-10 bg-gray-500 w-[120px]" />
+            </motion.div>
 
-            <div className="flex items-center justify-center mt-3 gap-3">
+            <motion.div
+                initial={{
+                    opacity: 0,
+                    x: 50,
+                }}
+                animate={{
+                    opacity: 1,
+                    x: 0,
+                }}
+                transition={{
+                    duration: 1,
+                }}
+                className="flex items-center justify-center mt-3 gap-3 glassmorphism py-2 px-4 rounded-full"
+            >
                 <GitHubLogoIcon className="size-7" />
-                <Separator orientation="vertical" className="bg-gray-500 h-[40px]" />
+                <Separator orientation="vertical" className="h-[28px] bg-gray-500" />
                 <LinkedInLogoIcon className="size-7" />
-            </div>
+            </motion.div>
 
-            <div className="mt-8 md:mt-18 xl:mt-20 animate-bounce">
+            <motion.div
+                initial={{
+                    opacity: 0,
+                    y: 20,
+                }}
+                animate={{
+                    opacity: 1,
+                    y: 0,
+                }}
+                transition={{
+                    duration: 1,
+                }}
+                className="mt-8 md:mt-18 xl:mt-20 animate-bounce glassmorphism p-1 rounded-full">
                 <Link href="#about"><ChevronDownIcon className="size-7 cursor-pointer" /></Link>
-            </div>
+            </motion.div>
 
             <GridPattern
                 width={60}
@@ -102,6 +160,7 @@ export const Hero = () => {
                     "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
                 )}
             />
+
         </section>
     );
 };

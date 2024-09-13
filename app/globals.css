@@ -81,10 +81,12 @@
 
 @layer base {
   * {
-    @apply antialiased scroll-smooth border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 outline-none font-sans;
+    @apply antialiased scroll-smooth border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 font-sans;
     ::-webkit-scrollbar {
       background-color: transparent;
-    }
+      width: 0;
+      height: 0;
+    };
   }
 
   body {
@@ -96,11 +98,11 @@
   }
 
   .dark-light-secondary {
-    @apply bg-zinc-200 dark:bg-zinc-900;
+    @apply bg-zinc-200 dark:bg-zinc-950;
   }
 
   .glassmorphism {
-    @apply bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg dark:bg-black dark:backdrop-blur-[33px] dark:bg-opacity-50 dark:shadow-md border border-border;
+    @apply bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg dark:bg-black dark:backdrop-blur-[33px] dark:bg-opacity-50 border border-border;
   }
   
   .navbar {
@@ -113,5 +115,9 @@
 
   .button {
     @apply flex flex-row items-center justify-center gap-2 mt-10 glassmorphism p-2 px-4 rounded-full hover:blur-[1px] dark:hover:blur-[1px] border border-zinc-200 dark:border-zinc-800 transition-all ease-linear
+  }
+
+  .heading {
+    @apply lg:text-5xl md:text-4xl text-2xl font-medium text-zinc-900 dark:text-zinc-100;
   }
 }
