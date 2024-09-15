@@ -28,7 +28,8 @@
             "AgeField": "Возраст",
             "OccupationField": "Занятие",
             "EmailField": "Электронная почта"
-        }
+        },
+        "Bio": "My name is Lazizbek. I am strong Junior Frontend Developer with 1 year of experience in web development. I am a student of Central Asian University located in Tashkent(Uzbekistan)..."
     },
     "Functions": {
         "Theme": {

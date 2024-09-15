@@ -31,6 +31,7 @@ import { Separator } from "../ui/separator";
 import { useTranslations } from "next-intl";
 import { LanguagesIcon } from "lucide-react";
 import { buttonVariants } from "../ui/button";
+import { footerVariants } from "@/utils/motion";
 import { Dock, DockIcon } from "../magicui/dock";
 
 import { ThemeSwitcher } from "../functions/ThemeSwitcher";
@@ -81,21 +82,9 @@ export const Bottombar = () => {
 
   return (
     <motion.nav
-      initial={{
-        opacity: 1,
-        y: 100,
-      }}
-      transition={{
-        ease: 'easeInOut',
-        type: 'spring',
-        stiffness: 500,
-        damping: 200,
-        duration: 0.5,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
+      variants={footerVariants}
+      initial="hidden"
+      whileInView="show"
       className="bottombar">
       <TooltipProvider>
         <Dock distance={distance} magnification={magnification} direction="middle" className="glassmorphism z-10 blur-none">
