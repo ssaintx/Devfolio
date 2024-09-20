@@ -28,7 +28,8 @@ export const Hero = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.25 }}
-            className="flex flex-col items-center justify-center pt-20 h-screen" id="home"
+            className="flex flex-col items-center justify-center pt-20 h-screen"
+            id="home"
         >
             {/* ANIMATED HIRE ME BADGE */}
             <motion.div
@@ -46,7 +47,7 @@ export const Hero = () => {
                     </AnimatedShinyText>
                 </div>
             </motion.div>
-            
+
             {/* HEADING AND SUBHEADING */}
             <div>
                 <TitleText title={t("Heading")} className="mt-10 text-2xl md:text-4xl capitalize font-semibold text-center" />
@@ -65,7 +66,7 @@ export const Hero = () => {
                     <FileIcon className="size-5" /> {t("Button")}
                 </Link>
             </motion.div>
-            
+
             {/* SEPARATOR */}
             <motion.div variants={fadeIn({ direction: 'right', type: 'tween', duration: 0.3, delay: 1 })}>
                 <Separator orientation="horizontal" className="mt-10 bg-gray-500 w-[120px]" />
@@ -73,14 +74,14 @@ export const Hero = () => {
 
             {/* SOCIAL LINKS */}
             <motion.div
-                variants={fadeIn({ direction: 'left', type: 'tween', duration: 0.7, delay: 1.2})}
+                variants={fadeIn({ direction: 'left', type: 'tween', duration: 0.7, delay: 1.2 })}
                 className="flex items-center justify-center mt-3 gap-3 glassmorphism py-2 px-4 rounded-full"
             >
                 <GitHubLogoIcon className="size-7" />
                 <Separator orientation="vertical" className="h-[28px] bg-gray-500" />
                 <LinkedInLogoIcon className="size-7" />
             </motion.div>
-            
+
             {/* DOWN ARROW BUTTON */}
             <motion.div
                 variants={fadeIn({ direction: 'down', type: 'tween', duration: 0.7, delay: 1.4 })}

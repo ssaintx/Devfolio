@@ -4,6 +4,7 @@ import { Bottombar } from "@/components/shared/Bottombar";
 /* SECTIONS */
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Portfolio } from "@/components/sections/Portfolio";
 
 const Page = () => {
   return (
@@ -11,6 +12,7 @@ const Page = () => {
       <Navbar />
       <Hero />
       <About />
+      <Portfolio />
       <Bottombar />
     </>
   );
