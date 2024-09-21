@@ -12,7 +12,8 @@ export const Navbar = () => {
       variants={navVariants}
       initial="hidden"
       whileInView="show"
-      className="navbar">
+      className="navbar"
+    >
       <Image src={logo} alt="Logo" width={32} height={32} className="invert dark:invert-0" />
       <h1>saintx.</h1>
     </motion.nav>

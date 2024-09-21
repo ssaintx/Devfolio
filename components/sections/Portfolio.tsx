@@ -3,16 +3,17 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-import { fadeIn, staggerContainer } from "@/utils/motion";
+import { popIn, staggerContainer } from "@/utils/motion";
 
 import { Card, CardContent } from "../ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 import Link from "next/link";
+import Image from "next/image";
+import { logo } from "@/public";
 
 export const Portfolio = () => {
     const t = useTranslations("Porfolio");
-    const variants = staggerContainer({ staggerChildren: 0.1, delayChildren: 0.3 });
 
     const projects = [
         {}, {}, {}, {}, {}
@@ -20,34 +21,30 @@ export const Portfolio = () => {
 
     return (
         <motion.section
-            variants={variants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.25 }}
+            variants={staggerContainer}
             className="flex flex-col px-8"
             id="portfolio"
         >
-            <h1 className="heading flex justify-center my-8 md:my-16">{t("Heading")}</h1>
+            <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")}</motion.h1>
 
-            <Carousel className="w-full">
-                <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                            <div className="p-1">
-                                <Card className="w-full h-full p-8 md:w-64 lg:w-80 xl:w-96 glassmorphism bg-zinc-200 rounded-3xl">
-                                    <CardContent className="flex aspect-square items-center justify-center p-6">
-                                        <span className="text-2xl font-semibold">{index + 1}</span>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-
-                    ))}
-                </CarouselContent>
-            </Carousel>
+            <motion.div className="grid grod-cols-2 md:grid-cols-12 grid-rows-12 gap-4 h-[200vh] px-2 sm:px-10 md:px-20" variants={popIn}>
+                <div className="col-span-6 row-span-6 bg-red-500">1</div>
+                <div className="col-span-3 row-span-3 col-start-7 bg-red-500">2</div>
+                <div className="col-span-3 row-span-3 col-start-10 bg-red-500">3</div>
+                <div className="col-span-3 row-span-3 col-start-7 row-start-4 bg-red-500">4</div>
+                <div className="col-span-3 row-span-3 col-start-10 row-start-4 bg-red-500">5</div>
+                <div className="col-span-3 row-span-3 row-start-7">6</div>
+                <div className="col-span-3 row-span-3 col-start-1 row-start-10">7</div>
+                <div className="col-span-6 row-span-6 col-start-4 row-start-7">8</div>
+                <div className="col-span-3 row-span-3 col-start-10 row-start-7">9</div>
+                <div className="col-span-3 row-span-3 col-start-10 row-start-10">10</div>
+            </motion.div>
 
             <motion.div
-                variants={fadeIn({ direction: 'down', type: 'tween', duration: 1.4, delay: 2 })}
+                variants={popIn}
                 className="flex justify-center items-end mt-8">
                 <Link href='/about' className="button">
                     {t("ReadMore")}

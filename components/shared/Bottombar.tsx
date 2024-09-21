@@ -85,7 +85,8 @@ export const Bottombar = () => {
       variants={footerVariants}
       initial="hidden"
       whileInView="show"
-      className="bottombar">
+      className="bottombar"
+    >
       <TooltipProvider>
         <Dock distance={distance} magnification={magnification} direction="middle" className="glassmorphism z-10 blur-none">
           {/* SECTIONS RENDERING */}

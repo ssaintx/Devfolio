@@ -6,34 +6,32 @@ import { useTranslations } from "next-intl";
 import { kali } from "@/public";
 import { Age } from "../functions/Age";
 import { Separator } from "../ui/separator";
-import { fadeIn, staggerContainer } from "@/utils/motion";
-import { TitleText, TypingText } from "../functions/CustomText";
+import { popIn, staggerContainer } from "@/utils/motion";
 
 import Link from "next/link";
 import Image from "next/image";
+import { ReaderIcon } from "@radix-ui/react-icons";
 
 export const About = () => {
   const t = useTranslations("About");
-  const variants = staggerContainer({ staggerChildren: 0.1, delayChildren: 0.3 });
 
   return (
     <motion.section
-      variants={variants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0.25 }}
-      className="flex flex-col dark-light-secondary overflow-hidden p-8"
+      variants={staggerContainer}
+      className="flex flex-col dark-light-secondary overflow-hidden p-8 w-screen"
       id="about"
     >
-      {/* TODO fix animation on mobile devices, make responsive. Fix mobile overflow, which breaks animation appearing from left and right. fadein. in ABOUT ME CONTAINER */}
       {/* HEADING */}
-      <TitleText title={t("Heading")} className="heading flex justify-center my-8 md:my-16" />
+      <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")} </motion.h1>
 
       {/* ABOUT ME CONTAINER */}
       <div className="flex flex-col sm:flex-row justify-center gap-10">
         {/* IMAGE CONTAINER */}
         <motion.div
-          variants={fadeIn({ direction: 'right', type: 'tween', duration: 0.5, delay: 0.7 })}
+          variants={popIn}
           className="flex justify-center sm:justify-start"
         >
           <div className="glassmorphism p-2 rounded-2xl">
@@ -42,7 +40,7 @@ export const About = () => {
         </motion.div>
         {/* PERSONAL INFORMATION CONTAINER */}
         <motion.div
-          variants={fadeIn({ direction: 'left', type: 'tween', duration: 1, delay: 1 })}
+          variants={popIn}
           className="flex justify-center items-center"
         >
           {/* LIST OF DATA */}
@@ -63,7 +61,7 @@ export const About = () => {
 
       {/* BIO */}
       <motion.div
-        variants={fadeIn({ direction: 'up', type: 'tween', duration: 1.2, delay: 1.5 })}
+        variants={popIn}
         className="flex items-center justify-center mt-8 w-full"
       >
         <div className="flex justify-center items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
@@ -73,10 +71,11 @@ export const About = () => {
 
       {/* BUTTON TO REDIRECT TO ABOUT PAGE */}
       <motion.div
-        variants={fadeIn({ direction: 'down', type: 'tween', duration: 1.4, delay: 2 })}
-        className="flex justify-center items-end mt-8">
-        <Link href='/about' className="button">
-          {t("ReadMore")}
+        variants={popIn}
+        className="flex justify-center mt-8"
+      >
+        <Link href='/about' className="button flex flex-row justify-center items-center gap-2">
+          <ReaderIcon /> {t("ReadMore")}
         </Link>
       </motion.div>
     </motion.section>
