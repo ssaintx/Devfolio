@@ -33,7 +33,8 @@
         "ReadMore": "Read more"
     },
     "Porfolio": {
-        "Heading": "Portfolio"
+        "Heading": "Portfolio",
+        "SeeMore": "See all projects"
     },
     "Functions": {
         "Theme": {
@@ -49,6 +50,16 @@
             "Label": "Settings",
             "ThemeSwitch": "Change theme",
             "LanguageSwitch": "Change language"
+        },
+        "AdminModal": {
+            "Content": {
+                "Label": "Admin access",
+                "Description": "To access the admin panel, please enter the passkey.",
+                "AccessButton": "Get access"
+            },
+            "ErrorMessages": {
+                "InvalidPasskey": "Invalid passkey. Please try again."
+            }
         }
     }
 }

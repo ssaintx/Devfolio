@@ -32,6 +32,10 @@
         "Bio": "Mening ismim Lazizbek. Men veb-ishlab chiqish bo'yicha 1 yillik tajribaga ega kuchli Junior Frontend Developerman. Men Toshkent (O'zbekiston) shahrida joylashgan Markaziy Osiyo universiteti talabasiman...",
         "ReadMore": "Batafsil ma'lumotni o'qish"
     },
+    "Porfolio": {
+        "Heading": "Portfolio",
+        "SeeMore": "Xamma loyiha ko'rish"
+    },
     "Functions": {
         "Theme": {
             "Label": "Mavzular",
@@ -46,6 +50,16 @@
             "Label": "Sozlamalar",
             "ThemeSwitch": "Mavzu o'zgartirish",
             "LanguageSwitch": "Til o'zgartirish"
+        },
+        "AdminModal": {
+            "Content": {
+                "Label": "Adminga ruxsat",
+                "Description": "Administrator paneliga kirish uchun parolni kiriting.",
+                "AccessButton": "Ruxsat olish"
+            },
+            "ErrorMessages": {
+                "InvalidPasskey": "Parol notog'ri kiritilgan. Iltimos, qayta urinib ko'ring."
+            }
         }
     }
 }

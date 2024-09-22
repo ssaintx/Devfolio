@@ -15,3 +15,9 @@ export interface CustomTextProps {
     title: string;
     className?: string;
 };
+
+export interface SearchParamProps {
+    searchParams: {
+        admin?: string;
+    };
+};
