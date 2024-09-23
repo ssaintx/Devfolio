@@ -61,5 +61,13 @@
                 "InvalidPasskey": "Parol notog'ri kiritilgan. Iltimos, qayta urinib ko'ring."
             }
         }
+    },
+    "Admin": {
+        "Links": {
+            "Home": "Bosh sahifa",
+            "Create": "Yaratish",
+            "Edit": "O'zgartirish",
+            "Statistics": "Statistica"
+        }
     }
 }
