@@ -90,7 +90,7 @@
   }
 
   body {
-    @apply bg-zinc-50 dark:bg-black dark:text-[#eeeeee] text-zinc-950;
+    @apply bg-zinc-50 text-zinc-950 dark:bg-black dark:text-[#eeeeee];
   }
 
   .dark-light {
@@ -121,27 +121,31 @@
     @apply lg:text-5xl md:text-4xl text-2xl font-medium text-zinc-900 dark:text-zinc-100;
   }
 
+  .container_admin {
+    @apply flex min-h-screen flex-1 flex-col items-center px-6 pb-10 pt-28 max-md:pb-32 sm:px-10 text-zinc-950 dark:text-[#eeeeee];
+  }
+
   .topbar_admin {
     @apply absolute flex flex-row items-center justify-center px-4 py-2 w-full top-0 z-30 glassmorphism;
   }
 
   .bottombar_admin {
-    @apply fixed bottom-0 z-10 w-full bg-glassmorphism p-4 backdrop-blur-lg xs:px-7 md:hidden;
+    @apply fixed bottom-0 z-10 w-full bg-glassmorphism p-4 glassmorphism xs:px-7 md:hidden;
   }
 
-  .bottombar_container {
+  .bottombar_container_admin {
     @apply flex items-center justify-between gap-3 xs:gap-5;
   }
 
-  .bottombar_link {
+  .bottombarlink_admin {
     @apply relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5;
   }
 
   .sidebar_admin {
-    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-dark-4 bg-dark-2 pb-5 pt-28 max-md:hidden;
+    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r glassmorphism pb-5 pt-28 max-md:hidden;
   }
 
   .sidebarlink_admin {
-    @apply relative flex justify-start gap-4 rounded-lg p-4;
+    @apply relative flex items-center justify-start gap-4 rounded-lg p-4;
   }
 }

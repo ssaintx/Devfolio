@@ -3,14 +3,45 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+
+import {
+    BarChartIcon,
+    CardStackPlusIcon,
+    HomeIcon,
+    Pencil2Icon
+} from "@radix-ui/react-icons";
 
 export const Sidebar = () => {
     const pathname = usePathname();
+    const t = useTranslations("Admin.Links");
+
+    const sidebarLinks = [
+        {
+            img: <HomeIcon />,
+            route: "/admin/",
+            label: t("Home"),
+        },
+        {
+            img: <CardStackPlusIcon />,
+            route: "/admin/create/",
+            label: t("Create"),
+        },
+        {
+            img: <Pencil2Icon />,
+            route: "/admin/edit/",
+            label: t("Edit"),
+        },
+        {
+            img: <BarChartIcon />,
+            route: "/admin/statistics/",
+            label: t("Statistics"),
+        },
+    ];
 
     return (
-        <aside>
+        <aside className="sidebar_admin">
             <div className='flex w-full flex-1 flex-col gap-6 px-6'>
                 {sidebarLinks.map((link) => {
                     const isActive =
@@ -21,16 +52,10 @@ export const Sidebar = () => {
                         <Link
                             href={link.route}
                             key={link.label}
-                            className={`leftsidebar_link ${isActive && "bg-primary-500 "}`}
+                            className={`sidebarlink_admin ${isActive && "bg-zinc-300 dark:bg-zinc-900"}`}
                         >
-                            <Image
-                                src={link.imgURL}
-                                alt={link.label}
-                                width={24}
-                                height={24}
-                            />
-
-                            <p className='text-light-1 max-lg:hidden'>{link.label}</p>
+                            {link.img}
+                            <p className='max-lg:hidden'>{link.label}</p>
                         </Link>
                     );
                 })}
