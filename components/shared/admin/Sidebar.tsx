@@ -20,22 +20,22 @@ export const Sidebar = () => {
     const sidebarLinks = [
         {
             img: <HomeIcon />,
-            route: "/admin/",
+            route: "/admin",
             label: t("Home"),
         },
         {
             img: <CardStackPlusIcon />,
-            route: "/admin/create/",
+            route: "/admin/create",
             label: t("Create"),
         },
         {
             img: <Pencil2Icon />,
-            route: "/admin/edit/",
+            route: "/admin/edit",
             label: t("Edit"),
         },
         {
             img: <BarChartIcon />,
-            route: "/admin/statistics/",
+            route: "/admin/statistics",
             label: t("Statistics"),
         },
     ];
@@ -48,15 +48,17 @@ export const Sidebar = () => {
                         <Link
                             href={link.route}
                             key={link.label}
-                            className={`sidebarlink_admin ${pathname == link.route ? "bg-zinc-300 dark:bg-zinc-900" : ""}`}
+                            className={`sidebarlink_admin ${pathname === link.route ? "bg-zinc-300 dark:bg-zinc-900" : ""}`}
                         >
-                            {link.img}
-                            <p className="max-lg:hidden">{link.label}</p>
+                            <div className="flex items-center gap-4">
+                                {link.img}
+                                <p className="max-lg:hidden">{link.label}</p>
+                            </div>
                         </Link>
                     );
                 })}
             </div>
-            <div className="flex items-center justify-start p-6 gap-1">
+            <div className="flex items-center justify-start p-10 gap-4">
                 <Settings />
                 <p className="max-lg:hidden">{t("Settings")}</p>
             </div>

@@ -23,10 +23,7 @@ export const Settings = () => {
         <div>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <div className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "rounded-full",
-                    )}><GearIcon /></div>
+                    <div className="rounded-full cursor-pointer"><GearIcon /></div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-60 rounded-lg glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg">
                     <DropdownMenuLabel>{t("Label")}</DropdownMenuLabel>

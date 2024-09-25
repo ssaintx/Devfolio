@@ -1,8 +1,11 @@
-import { Metadata } from "next";
 import { Providers } from "./providers";
 import { RootLayoutProps } from "@/lib/props";
+
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+
+import { Metadata } from "next";
+import { GeistSans } from 'geist/font/sans';
 
 import "./globals.css";
 
@@ -16,7 +19,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} className={GeistSans.className} suppressHydrationWarning>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Providers>

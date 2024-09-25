@@ -46,12 +46,10 @@ export const Bottombar = () => {
     ];
 
     return (
-        <section className='bottombar_admin'>
+        <nav className='bottombar_admin'>
             <div className='bottombar_container_admin'>
                 {sidebarLinks.map((link) => {
-                    const isActive =
-                        (pathname.includes(link.route) && link.route.length > 1) ||
-                        pathname === link.route;
+                    const isActive = pathname.replace(/^\/admin\//, '');
 
                     return (
                         <Link
@@ -67,6 +65,6 @@ export const Bottombar = () => {
                     );
                 })}
             </div>
-        </section>
+        </nav>
     );
 };

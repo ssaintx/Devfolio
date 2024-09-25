@@ -14,7 +14,7 @@ import {
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-export const Router = () => {
+export const BreadCrumb = () => {
     return (
         <Breadcrumb>
             <BreadcrumbList>
