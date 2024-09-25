@@ -61,5 +61,13 @@
                 "InvalidPasskey": "Invalid passkey. Please try again."
             }
         }
+    },
+    "Admin": {
+        "Links": {
+            "Home": "Home",
+            "Create": "Create",
+            "Edit": "Edit",
+            "Statistics": "Statistics"
+        }
     }
 }

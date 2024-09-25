@@ -10,7 +10,7 @@ import { popIn, staggerContainer } from "@/utils/motion";
 import {
     ChevronDownIcon,
     ChevronRightIcon,
-    FileIcon,
+    DownloadIcon,
     GitHubLogoIcon,
     LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
@@ -60,7 +60,7 @@ export const Hero = () => {
                     download="LazizbekCV.pdf"
                     className="button flex items-center justify-center gap-2 mt-10"
                 >
-                    <FileIcon className="size-5" /> {t("Button")}
+                    <DownloadIcon className="size-5" /> {t("Button")}
                 </Link>
             </motion.div>
 

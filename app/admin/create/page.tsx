@@ -1,9 +1,8 @@
 const Page = () => {
     return (
         <section>
-            Page
+            Create New Project
         </section>
-
     );
 };
 
