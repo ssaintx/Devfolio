@@ -9,39 +9,27 @@ import {
 
 import {
   HomeIcon,
-  GearIcon,
-  Half2Icon,
   PersonIcon,
   BackpackIcon,
   EnvelopeClosedIcon,
   CounterClockwiseClockIcon,
 } from "@radix-ui/react-icons";
 
-import {
-  DropdownMenu,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Separator } from "../ui/separator";
-import { useTranslations } from "next-intl";
-import { LanguagesIcon } from "lucide-react";
 import { buttonVariants } from "../ui/button";
 import { footerVariants } from "@/utils/motion";
 import { Dock, DockIcon } from "../magicui/dock";
 
-import { ThemeSwitcher } from "../functions/ThemeSwitcher";
-import { LanguageSwitcher } from "../functions/LanguageSwitcher";
+import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { Settings } from "../functions/Settings";
 
 import Link from "next/link";
 
 export const Bottombar = () => {
-  const headerTranslations = useTranslations("Header.Bottombar");
-  const settingTranslations = useTranslations("Functions.Settings");
+  const t = useTranslations("Header.Bottombar");
+
 
   // CALCULATE WIDTH OF DEVICE TO REACH RESPOSIVENESS
   const screenWidth = window.innerWidth;
@@ -52,31 +40,31 @@ export const Bottombar = () => {
     {
       id: 1,
       icon: <HomeIcon />,
-      label: headerTranslations("Home"),
+      label: t("Home"),
       link: "#home",
     },
     {
       id: 2,
       icon: <PersonIcon />,
-      label: headerTranslations("About"),
+      label: t("About"),
       link: "#about",
     },
     {
       id: 3,
       icon: <BackpackIcon />,
-      label: headerTranslations("Portfolio"),
+      label: t("Portfolio"),
       link: "#portfolio",
     },
     {
       id: 4,
       icon: <CounterClockwiseClockIcon />,
-      label: headerTranslations("Timeline"),
+      label: t("Timeline"),
       link: "#timeline",
     },
     {
       id: 5,
       icon: <EnvelopeClosedIcon />,
-      label: headerTranslations("Contacts"),
+      label: t("Contacts"),
       link: "#contacts",
     }];
 
@@ -111,36 +99,9 @@ export const Bottombar = () => {
           {/* SEPARATOR */}
           <Separator orientation="vertical" className="bg-gray-500 h-[90%]" />
 
-          {/* SETTINGS DROPDOWN MENU */}
+          {/* SETTINGS */}
           <DockIcon>
-            <DropdownMenu>
-
-              <DropdownMenuTrigger asChild>
-                <div className={cn(
-                  buttonVariants({ variant: "ghost", size: "icon" }),
-                  "rounded-full",
-                )}><GearIcon /></div>
-              </DropdownMenuTrigger>
-
-              <DropdownMenuContent className="w-60 rounded-lg glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg">
-                <DropdownMenuLabel>{settingTranslations("Label")}</DropdownMenuLabel>
-
-                <Separator orientation="horizontal" className="my-2" />
-
-                <DropdownMenuItem className="flex flex-row gap-2">
-                  <Half2Icon className="h-4 w-4" />
-                  {settingTranslations("ThemeSwitch")}:
-                  <ThemeSwitcher />
-                </DropdownMenuItem>
-
-                <DropdownMenuItem className="flex flex-row gap-2">
-                  <LanguagesIcon className="h-4 w-4" />
-                  {settingTranslations("LanguageSwitch")}:
-                  <LanguageSwitcher />
-                </DropdownMenuItem>
-
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Settings />
           </DockIcon>
         </Dock>
       </TooltipProvider>

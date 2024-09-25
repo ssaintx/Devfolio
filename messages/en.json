@@ -67,7 +67,8 @@
             "Home": "Home",
             "Create": "Create",
             "Edit": "Edit",
-            "Statistics": "Statistics"
+            "Statistics": "Statistics",
+            "Settings": "Settings"
         }
     }
 }

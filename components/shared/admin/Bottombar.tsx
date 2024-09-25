@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { Settings } from "@/components/functions/Settings";
 
 import {
     BarChartIcon,
     CardStackPlusIcon,
     HomeIcon,
-    Pencil2Icon
+    Pencil2Icon,
 } from "@radix-ui/react-icons";
 
 export const Bottombar = () => {
@@ -38,6 +38,11 @@ export const Bottombar = () => {
             route: "/admin/statistics/",
             label: t("Statistics"),
         },
+        {
+            img: <Settings />,
+            route: "",
+            label: t("Settings"),
+        }
     ];
 
     return (

@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link";
-import Image from "next/image";
 
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import { Settings } from "@/components/functions/Settings";
 
 import {
     BarChartIcon,
@@ -42,23 +42,23 @@ export const Sidebar = () => {
 
     return (
         <aside className="sidebar_admin">
-            <div className='flex w-full flex-1 flex-col gap-6 px-6'>
+            <div className="flex w-full flex-1 flex-col gap-6 px-6">
                 {sidebarLinks.map((link) => {
-                    const isActive =
-                        (pathname.includes(link.route) && link.route.length > 1) ||
-                        pathname === link.route;
-
                     return (
                         <Link
                             href={link.route}
                             key={link.label}
-                            className={`sidebarlink_admin ${isActive && "bg-zinc-300 dark:bg-zinc-900"}`}
+                            className={`sidebarlink_admin ${pathname == link.route ? "bg-zinc-300 dark:bg-zinc-900" : ""}`}
                         >
                             {link.img}
-                            <p className='max-lg:hidden'>{link.label}</p>
+                            <p className="max-lg:hidden">{link.label}</p>
                         </Link>
                     );
                 })}
+            </div>
+            <div className="flex items-center justify-start p-6 gap-1">
+                <Settings />
+                <p className="max-lg:hidden">{t("Settings")}</p>
             </div>
         </aside>
     );
