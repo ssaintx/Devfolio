@@ -17,6 +17,7 @@ import {
     InputOTPGroup,
     InputOTPSlot,
 } from "@/components/ui/input-otp";
+
 import { Cross1Icon } from "@radix-ui/react-icons";
 
 import { useTranslations } from "next-intl";
@@ -55,7 +56,7 @@ export const PasskeyModal = () => {
     ) => {
         e.preventDefault();
 
-        if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+        if (passkey === process.env.ADMIN_PASSKEY) {
             const encryptedKey = encryptKey(passkey);
 
             localStorage.setItem("accessKey", encryptedKey);
@@ -68,12 +69,12 @@ export const PasskeyModal = () => {
 
     return (
         <AlertDialog open={open} onOpenChange={setOpen}>
-            <AlertDialogContent className="dark-light-secondary glassmorphism p-4 rounded-lg">
+            <AlertDialogContent className="dark-light-secondary glassmorphism p-4 rounded-2xl">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-start justify-between">
                         <div className="bg-transparent select-none text-transparent">.</div>
                         <p>{t("Content.Label")}</p>
-                        <Cross1Icon onClick={closeModal} />
+                        <Cross1Icon onClick={closeModal} className="cursor-pointer size-4" />
                     </AlertDialogTitle>
                     <AlertDialogDescription>
                         {t("Content.Description")}
@@ -101,11 +102,8 @@ export const PasskeyModal = () => {
                         </p>
                     )}
                 </div>
-                <AlertDialogFooter className="flex items-center justify-center">
-                    <AlertDialogAction
-                        onClick={(e) => validatePasskey(e)}
-                        className="button"
-                    >
+                <AlertDialogFooter>
+                    <AlertDialogAction onClick={(e) => validatePasskey(e)} className="button">
                         {t("Content.AccessButton")}
                     </AlertDialogAction>
                 </AlertDialogFooter>
