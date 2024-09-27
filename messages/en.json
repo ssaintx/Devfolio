@@ -69,6 +69,18 @@
             "Edit": "Edit",
             "Statistics": "Statistics",
             "Settings": "Settings"
+        },
+        "Home": {
+            "Heading": "Home"
+        },
+        "Create": {
+            "Heading": "Create projects"
+        },
+        "Edit": {
+            "Heading": "Edit projects"
+        },
+        "Statistics": {
+            "Heading": "View statistics"
         }
     }
 }

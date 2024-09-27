@@ -1,7 +1,11 @@
+import { useTranslations } from "next-intl";
+
 const Page = () => {
+    const t = useTranslations("Admin.Edit");
+
     return (
         <section>
-            Edit New Project
+            <h1 className="heading_admin">{t("Heading")}</h1>
         </section>
     );
 };

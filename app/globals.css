@@ -82,11 +82,14 @@
 @layer base {
   * {
     @apply antialiased scroll-smooth border-border selection:bg-zinc-950 selection:text-zinc-50 dark:selection:bg-zinc-50 dark:selection:text-zinc-950 font-sans;
+
     ::-webkit-scrollbar {
       background-color: transparent;
       width: 0;
       height: 0;
-    };
+    }
+
+    ;
   }
 
   body {
@@ -104,11 +107,11 @@
   .glassmorphism {
     @apply bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg dark:bg-black dark:backdrop-blur-[33px] dark:bg-opacity-50 border border-border;
   }
-  
+
   .navbar {
     @apply absolute flex flex-row items-center justify-center px-4 py-2 w-full top-0 z-30 glassmorphism;
   }
-  
+
   .bottombar {
     @apply fixed bottom-0 w-full pb-5 bg-none;
   }
@@ -147,5 +150,9 @@
 
   .sidebarlink_admin {
     @apply relative flex items-center justify-start gap-4 rounded-lg p-4;
+  }
+
+  .heading_admin {
+    @apply lg:text-3xl md:text-2xl text-xl font-semibold text-zinc-900 dark:text-zinc-100;
   }
 }

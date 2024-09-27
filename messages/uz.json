@@ -69,6 +69,18 @@
             "Edit": "O'zgartirish",
             "Statistics": "Statistica",
             "Settings": "Sozlamalar"
+        },
+        "Home": {
+            "Heading": "Bosh sahifa"
+        },
+        "Create": {
+            "Heading": "Loyihalar yaratish"
+        },
+        "Edit": {
+            "Heading": "Loyihalar o'zgartirish"
+        },
+        "Statistics": {
+            "Heading": "Statistica ko'rish"
         }
     }
 }
