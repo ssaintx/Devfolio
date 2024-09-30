@@ -7,7 +7,7 @@ export interface Project {
     description: string;
     imageURL: string;
     date: Date;
-    count: number;
+    count?: number;
 };
 
 export const db = new Dexie('projects');

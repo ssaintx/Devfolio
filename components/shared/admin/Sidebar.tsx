@@ -24,14 +24,14 @@ export const Sidebar = () => {
             label: t("Home"),
         },
         {
-            img: <CardStackPlusIcon />,
-            route: "/admin/create",
-            label: t("Create"),
-        },
-        {
             img: <Pencil2Icon />,
             route: "/admin/edit",
             label: t("Edit"),
+        },
+        {
+            img: <CardStackPlusIcon />,
+            route: "/admin/create",
+            label: t("Create"),
         },
         {
             img: <BarChartIcon />,

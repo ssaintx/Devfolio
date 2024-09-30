@@ -1,63 +1,57 @@
 "use client";
 
-import { Project } from '@/db/db.model';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { createProject, updateProject, getAllProjects, deleteProject } from '@/db/db.actions';
+
+import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
+import { createProject } from '@/db/db.actions';
 import { Textarea } from '@/components/ui/textarea';
+import { FileUploader } from '@/components/functions/FileUploader';
 
-const Page = () => {
+const CreateProjectPage = () => {
     const t = useTranslations("Admin.Create");
+    const [newProject, setNewProject] = useState({
+        title: '',
+        subtitle: '',
+        description: '',
+        imageURL: '',
+        date: new Date(),
+    });
 
-    const [projects, setProjects] = useState<Project[]>([]);
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [imageFiles, setImageFiles] = useState<File[] | undefined>([]);
 
-    {/* 
-        TODO 
-        - Add form validation and make form as reusable component
-        - Add reusable hooks for handling and submitting and updating e.t.c
-        - Fix design and add more styles and animations
-    */}
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const allProjects = await getAllProjects();
-            setProjects(allProjects);
-        };
-        fetchData();
-    }, []);
-
+    // Handle form input changes
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
-        setSelectedProject((prev) => ({
-            ...prev!,
-            [name]: value,
-        }));
+        setNewProject(prev => ({ ...prev, [name]: value }));
     };
 
+    // Handle image file changes from FileUploader
+    const handleImageChange = (files: File[]) => {
+        setImageFiles(files);
+        const imageUrl = URL.createObjectURL(files[0]);
+        setNewProject(prev => ({ ...prev, imageURL: imageUrl }));
+    };
+
+    // Handle form submission for creating a project
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (selectedProject) {
-            if (selectedProject.id) {
-                await updateProject(selectedProject.id, selectedProject);
-            } else {
-                await createProject(selectedProject);
-            }
+        try {
+            await createProject({ ...newProject });
+            toast.success("Project was created!");
+            setNewProject({
+                title: '',
+                subtitle: '',
+                description: '',
+                imageURL: '',
+                date: new Date(),
+                
+            });
+            setImageFiles([]);
+        } catch (error) {
+            toast.error("Error creating project.");
         }
-        setSelectedProject(null);
-        const allProjects = await getAllProjects();
-        setProjects(allProjects);
-    };
-
-    const handleDelete = async (id: number) => {
-        await deleteProject(id);
-        const allProjects = await getAllProjects();
-        setProjects(allProjects);
-    };
-
-    const handleEdit = (project: Project) => {
-        setSelectedProject(project);
     };
 
     return (
@@ -69,7 +63,7 @@ const Page = () => {
                         type="text"
                         name="title"
                         placeholder="Title"
-                        value={selectedProject?.title || ''}
+                        value={newProject.title}
                         onChange={handleInputChange}
                         required
                         className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
@@ -78,7 +72,7 @@ const Page = () => {
                         type="text"
                         name="subtitle"
                         placeholder="Subtitle"
-                        value={selectedProject?.subtitle || ''}
+                        value={newProject.subtitle}
                         onChange={handleInputChange}
                         required
                         className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
@@ -87,45 +81,20 @@ const Page = () => {
                 <Textarea
                     name="description"
                     placeholder="Description"
-                    value={selectedProject?.description || ''}
+                    value={newProject.description}
                     onChange={handleInputChange}
                     required
                     className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
                 />
-                <Input
-                    type="text"
-                    name="imageURL"
-                    placeholder="Image URL"
-                    value={selectedProject?.imageURL || ''}
-                    onChange={handleInputChange}
-                    required
-                    className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
-                />
+                <FileUploader files={imageFiles} onChange={handleImageChange} />
                 <div className="flex items-center justify-center w-full">
-                    <button type="submit" className="button px-12">{selectedProject ? 'Update' : 'Create'}</button>
+                    <button type="submit" className="button px-12">
+                        {t("CreateButton")}
+                    </button>
                 </div>
             </form>
-
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Projects</h2>
-            <ul className="space-y-2">
-                {projects.map((project) => (
-                    <li key={project.id} className="flex justify-between items-center p-2 border-b border-gray-100">
-                        <div>
-                            <strong>{project.title}</strong> - {project.subtitle}
-                        </div>
-                        <div className="space-x-2">
-                            <button onClick={() => handleEdit(project)} className="text-blue-500 hover:underline">
-                                Edit
-                            </button>
-                            <button onClick={() => handleDelete(project.id!)} className="text-red-500 hover:underline">
-                                Delete
-                            </button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
         </section>
     );
 };
 
-export default Page;
+export default CreateProjectPage;

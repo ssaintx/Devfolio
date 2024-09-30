@@ -5,6 +5,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Providers } from "../providers";
 import { RootLayoutProps } from "@/lib/props";
 
+import { Toaster } from "@/components/ui/sonner";
 import { Topbar } from "@/components/shared/admin/Topbar";
 import { Sidebar } from "@/components/shared/admin/Sidebar";
 import { Bottombar } from "@/components/shared/admin/Bottombar";
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               </section>
             </main>
             <Bottombar />
+            <Toaster className="glassmophism p-2 rounded-3xl" />
           </body>
         </Providers>
       </NextIntlClientProvider>

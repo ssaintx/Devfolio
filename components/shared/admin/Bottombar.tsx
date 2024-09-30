@@ -20,22 +20,22 @@ export const Bottombar = () => {
     const sidebarLinks = [
         {
             img: <HomeIcon />,
-            route: "/admin/",
+            route: "/admin",
             label: t("Home"),
         },
         {
-            img: <CardStackPlusIcon />,
-            route: "/admin/create/",
-            label: t("Create"),
-        },
-        {
             img: <Pencil2Icon />,
-            route: "/admin/edit/",
+            route: "/admin/edit",
             label: t("Edit"),
         },
         {
+            img: <CardStackPlusIcon />,
+            route: "/admin/create",
+            label: t("Create"),
+        },
+        {
             img: <BarChartIcon />,
-            route: "/admin/statistics/",
+            route: "/admin/statistics",
             label: t("Statistics"),
         },
         {
@@ -49,13 +49,11 @@ export const Bottombar = () => {
         <nav className='bottombar_admin'>
             <div className='bottombar_container_admin'>
                 {sidebarLinks.map((link) => {
-                    const isActive = pathname.replace(/^\/admin\//, '');
-
                     return (
                         <Link
                             href={link.route}
                             key={link.label}
-                            className={`bottombarlink_admin ${isActive && "bg-zinc-300 dark:bg-zinc-900"}`}
+                            className={`bottombarlink_admin ${pathname === link.route ? "bg-zinc-300 dark:bg-zinc-900" : ""}`}
                         >
                             {link.img}
                             <p className='max-sm:hidden'>
