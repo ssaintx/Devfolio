@@ -74,7 +74,19 @@
             "Heading": "Home"
         },
         "Create": {
-            "Heading": "Create projects"
+            "Heading": "Create projects",
+            "Title": "Title",
+            "Subtitle": "Subtitle",
+            "Description": "Description",
+            "Image": {
+                "LabelColor": "Click to upload",
+                "Label": "or drag and drop" 
+            },
+            "CreateButton": "Create",
+            "Notifications": {
+                "Success": "Project created successfully!",
+                "Error": "An error occurred while creating the project."
+            }
         },
         "Edit": {
             "Heading": "Edit projects"

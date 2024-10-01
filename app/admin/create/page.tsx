@@ -19,76 +19,71 @@ const CreateProjectPage = () => {
         date: new Date(),
     });
 
-    const [imageFiles, setImageFiles] = useState<File[] | undefined>([]);
+    const [imageFiles, setImageFiles] = useState<string[] | undefined>([]);
 
-    // Handle form input changes
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setNewProject(prev => ({ ...prev, [name]: value }));
     };
 
-    // Handle image file changes from FileUploader
-    const handleImageChange = (files: File[]) => {
-        setImageFiles(files);
-        const imageUrl = URL.createObjectURL(files[0]);
-        setNewProject(prev => ({ ...prev, imageURL: imageUrl }));
+    const handleImageChange = (base64Images: string[]) => {
+        setImageFiles(base64Images);
+        setNewProject(prev => ({ ...prev, imageURL: base64Images[0] }));
     };
 
-    // Handle form submission for creating a project
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             await createProject({ ...newProject });
-            toast.success("Project was created!");
+            toast.success(t("Notifications.Success"));
             setNewProject({
                 title: '',
                 subtitle: '',
                 description: '',
                 imageURL: '',
                 date: new Date(),
-                
             });
             setImageFiles([]);
         } catch (error) {
-            toast.error("Error creating project.");
+            toast.error(t("Notifications.Error"));
         }
     };
 
     return (
         <section>
             <h1 className="heading_admin">{t("Heading")}</h1>
-            <form className="flex flex-col space-y-4 mt-8" onSubmit={handleSubmit}>
+            <form className="flex flex-col space-y-4 overflow-hidden mt-8 px-4" onSubmit={handleSubmit}>
                 <div className="flex flex-row gap-2">
                     <Input
                         type="text"
                         name="title"
-                        placeholder="Title"
+                        placeholder={t("Title")}
                         value={newProject.title}
                         onChange={handleInputChange}
                         required
-                        className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
+                        className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
                     />
                     <Input
                         type="text"
                         name="subtitle"
-                        placeholder="Subtitle"
+                        placeholder={t("Subtitle")}
                         value={newProject.subtitle}
                         onChange={handleInputChange}
                         required
-                        className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
+                        className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
                     />
                 </div>
                 <Textarea
                     name="description"
-                    placeholder="Description"
+                    placeholder={t("Description")}
                     value={newProject.description}
                     onChange={handleInputChange}
                     required
-                    className="glassmorphism p-2 w-full rounded-lg bg-zinc-100"
+                    className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
                 />
                 <FileUploader files={imageFiles} onChange={handleImageChange} />
-                <div className="flex items-center justify-center w-full">
-                    <button type="submit" className="button px-12">
+                <div className="flex items-center justify-center w-full pb-6">
+                    <button type="submit" className="button">
                         {t("CreateButton")}
                     </button>
                 </div>

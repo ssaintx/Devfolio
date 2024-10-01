@@ -74,7 +74,19 @@
             "Heading": "Bosh sahifa"
         },
         "Create": {
-            "Heading": "Loyihalar yaratish"
+            "Heading": "Loyihalar yaratish",
+            "Title": "Sarlavha",
+            "Subtitle": "Kichik sarlavha",
+            "Description": "Tavsif",
+            "Image": {
+                "LabelColor": "Yuklash uchun bosing",
+                "Label": "yoki sudrab olib tashlang" 
+            },
+            "CreateButton": "Yaratish",
+            "Notifications": {
+                "Success": "Loyiha muvaffaqiyatli yaratildi.",
+                "Error": "Loyihani yaratishda xatolik yuz berdi."
+            }
         },
         "Edit": {
             "Heading": "Loyihalar o'zgartirish"

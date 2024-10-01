@@ -34,7 +34,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               </section>
             </main>
             <Bottombar />
-            <Toaster className="glassmophism p-2 rounded-3xl" />
+            <Toaster className="glassmophism bg-zinc-200 dark:bg-black p-2 rounded-3xl" />
           </body>
         </Providers>
       </NextIntlClientProvider>
