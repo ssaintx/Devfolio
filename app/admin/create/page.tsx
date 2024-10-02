@@ -1,16 +1,16 @@
 "use client";
 
+import { toast } from 'sonner';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-
-import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
-import { createProject } from '@/db/db.actions';
 import { Textarea } from '@/components/ui/textarea';
+import { createProject } from '@/db/appwrite.actions';
 import { FileUploader } from '@/components/functions/FileUploader';
 
 const CreateProjectPage = () => {
     const t = useTranslations("Admin.Create");
+
     const [newProject, setNewProject] = useState({
         title: '',
         subtitle: '',
@@ -35,9 +35,14 @@ const CreateProjectPage = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
         try {
-            await createProject({ ...newProject });
+            await createProject({
+                ...newProject,
+            });
+
             toast.success(t("Notifications.Success"));
+
             setNewProject({
                 title: '',
                 subtitle: '',
@@ -48,8 +53,9 @@ const CreateProjectPage = () => {
                 date: new Date(),
             });
             setImageFiles([]);
-        } catch (error) {
+        } catch (error: any) {
             toast.error(t("Notifications.Error"));
+            console.error("Error creating project:", error);
         }
     };
 

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { deleteProject } from "@/db/db.actions";
+import { deleteProject } from "@/db/appwrite.actions";
 
 export const useDeleteProject = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const remove = async (id: number) => {
+    const remove = async (id: string) => {
         setLoading(true);
         try {
             await deleteProject(id);

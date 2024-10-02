@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Project } from "@/db/db.model";
-import { updateProject } from "@/db/db.actions";
+import { Project } from "@/db/appwrite.model";
+import { updateProject } from "@/db/appwrite.actions";
 
 export const useUpdateProject = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const update = async (id: number, updatedProject: Project) => {
+    const update = async (id: string, updatedProject: Project) => {
         setLoading(true);
         try {
             await updateProject(id, updatedProject);

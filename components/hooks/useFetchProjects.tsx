@@ -1,21 +1,30 @@
-import { Project } from "@/db/db.model";
-import { useEffect, useState } from "react";
-import { getAllProjects } from "@/db/db.actions";
+import { useEffect, useState } from 'react';
+import { getAllProjects } from '@/db/appwrite.actions';
+import { Project, ProjectSchema } from '@/db/appwrite.model';
 
 export const useFetchProjects = () => {
-    const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const allProjects = await getAllProjects();
-                setProjects(allProjects);
-            } catch (error: any) {
-                console.error("Error in fetching projects: ", error);
-            }
-        };
-        fetchProjects();
-    });
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const documents = await getAllProjects();
 
-    return projects;
+        const mappedProjects = documents.map(doc => {
+          const parsedProject = ProjectSchema.parse({
+            ...doc,
+            date: new Date(doc.date),
+          });
+          return parsedProject;
+        });
+
+        setProjects(mappedProjects);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  return projects;
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Project } from "@/db/db.model";
-import { createProject } from "@/db/db.actions";
+import { Project } from "@/db/appwrite.model";
+import { createProject } from "@/db/appwrite.actions";
 
 export const useCreateProject = () => {
     const [loading, setLoading] = useState(false);

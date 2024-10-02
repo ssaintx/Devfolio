@@ -32,7 +32,7 @@ export const Bottombar = () => {
 
 
   // CALCULATE WIDTH OF DEVICE TO REACH RESPOSIVENESS
-  const screenWidth = window.innerWidth;
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
   const distance = screenWidth < 425 ? 0 : 140;
   const magnification = screenWidth < 425 ? 0 : 60;
 

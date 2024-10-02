@@ -14,6 +14,8 @@ export function convertFileToBase64(file: File): Promise<string> {
   });
 };
 
+export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+
 export function encryptKey(passkey: string) {
   return btoa(passkey);
 };
