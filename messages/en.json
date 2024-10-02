@@ -71,13 +71,17 @@
             "Settings": "Settings"
         },
         "Home": {
-            "Heading": "Home"
+            "Heading": "Home",
+            "GithubButton": "Github",
+            "LiveButton": "Live"
         },
         "Create": {
             "Heading": "Create projects",
             "Title": "Title",
             "Subtitle": "Subtitle",
             "Description": "Description",
+            "Github": "Github link",
+            "Live": "Live",
             "Image": {
                 "LabelColor": "Click to upload",
                 "Label": "or drag and drop" 

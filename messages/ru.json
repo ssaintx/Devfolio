@@ -71,13 +71,17 @@
             "Settings": "Настройки"
         },
         "Home": {
-            "Heading": "Главная"
+            "Heading": "Главная",
+            "GithubButton": "Github",
+            "LiveButton": "Сайт"
         },
         "Create": {
             "Heading": "Создание Проектов",
             "Title": "Заголовок",
             "Subtitle": "Подзаголовок",
             "Description": "Описание",
+            "Github": "Ссылка на Github",
+            "Live": "Активный сайт",
             "Image": {
                 "LabelColor": "Нажмите чтобы опубликовать",
                 "Label": "или перетащите изображение" 

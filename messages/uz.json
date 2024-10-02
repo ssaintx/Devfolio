@@ -71,13 +71,17 @@
             "Settings": "Sozlamalar"
         },
         "Home": {
-            "Heading": "Bosh sahifa"
+            "Heading": "Bosh sahifa",
+            "GithubButton": "Github",
+            "LiveButton": "Sayt"
         },
         "Create": {
             "Heading": "Loyihalar yaratish",
             "Title": "Sarlavha",
             "Subtitle": "Kichik sarlavha",
             "Description": "Tavsif",
+            "Github": "Github havola",
+            "Live": "Jonli Sayt",
             "Image": {
                 "LabelColor": "Yuklash uchun bosing",
                 "Label": "yoki sudrab olib tashlang" 

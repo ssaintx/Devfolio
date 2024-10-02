@@ -16,6 +16,8 @@ const CreateProjectPage = () => {
         subtitle: '',
         description: '',
         imageURL: '',
+        githubURL: '',
+        liveURL: '',
         date: new Date(),
     });
 
@@ -41,6 +43,8 @@ const CreateProjectPage = () => {
                 subtitle: '',
                 description: '',
                 imageURL: '',
+                githubURL: '',
+                liveURL: '',
                 date: new Date(),
             });
             setImageFiles([]);
@@ -53,7 +57,7 @@ const CreateProjectPage = () => {
         <section>
             <h1 className="heading_admin">{t("Heading")}</h1>
             <form className="flex flex-col space-y-4 overflow-hidden mt-8 px-4" onSubmit={handleSubmit}>
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row">
                     <Input
                         type="text"
                         name="title"
@@ -73,14 +77,36 @@ const CreateProjectPage = () => {
                         className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
                     />
                 </div>
-                <Textarea
-                    name="description"
-                    placeholder={t("Description")}
-                    value={newProject.description}
-                    onChange={handleInputChange}
-                    required
-                    className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
-                />
+                <div className="flex flex-col gap-2 sm:flex-row">
+                    <div className="flex flex-col gap-2 w-full">
+                        <Input
+                            type="text"
+                            name="githubURL"
+                            placeholder={t("Github")}
+                            value={newProject.githubURL}
+                            onChange={handleInputChange}
+                            required
+                            className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                        />
+                        <Input
+                            type="text"
+                            name="liveURL"
+                            placeholder={t("Live")}
+                            value={newProject.liveURL}
+                            onChange={handleInputChange}
+                            required
+                            className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                        />
+                    </div>
+                    <Textarea
+                        name="description"
+                        placeholder={t("Description")}
+                        value={newProject.description}
+                        onChange={handleInputChange}
+                        required
+                        className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                    />
+                </div>
                 <FileUploader files={imageFiles} onChange={handleImageChange} />
                 <div className="flex items-center justify-center w-full pb-6">
                     <button type="submit" className="button">

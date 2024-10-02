@@ -6,6 +6,8 @@ export interface Project {
     subtitle: string;
     description: string;
     imageURL: string;
+    githubURL: string;
+    liveURL: string;
     date: Date;
     count?: number;
 };
