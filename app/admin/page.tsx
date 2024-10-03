@@ -1,17 +1,26 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
+
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 import { Project } from "@/db/appwrite.model";
 import { Separator } from "@/components/ui/separator";
+import { getAllProjects } from "@/db/appwrite.actions";
 import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
-import { useFetchProjects } from "@/components/hooks/useFetchProjects";
 
 const Page = () => {
   const t = useTranslations("Admin.Home");
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  const projects = useFetchProjects();
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const projectsData = await getAllProjects();
+      setProjects(projectsData);
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <section>
