@@ -21,14 +21,14 @@ const Page = () => {
       try {
         const response = await fetch("/admin/api/projects");
         if (!response.ok) {
-          setError("Failed to fetch projects.");
+          setError(t("Status.Error"));
           console.error(error);
         }
         const data = await response.json();
         setProjects(data);
         setIsLoading(false);
       } catch (error) {
-        setError("Failed to fetch projects.");
+        setError(t("Status.Error"));
         console.error(error);
       } finally {
         setIsLoading(false);
@@ -46,7 +46,7 @@ const Page = () => {
           {error}
         </p>
       </div>}
-      {isLoading && <p className="mt-4">Loading projects...</p>}
+      {isLoading && <p className="mt-4">{t("Status.Loading")}</p>}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
         {projects && projects.map((project: any) => (
           <div key={project.$id} className="glassmorphism p-4 rounded-3xl flex flex-col">

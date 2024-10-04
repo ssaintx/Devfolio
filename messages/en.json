@@ -73,7 +73,11 @@
         "Home": {
             "Heading": "Home",
             "GithubButton": "Github",
-            "LiveButton": "Live"
+            "LiveButton": "Live",
+            "Status": {
+                "Loading": "Loading projects...",
+                "Error": "Failed to load projects."
+            }
         },
         "Create": {
             "Heading": "Create projects",

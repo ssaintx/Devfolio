@@ -73,7 +73,11 @@
         "Home": {
             "Heading": "Bosh sahifa",
             "GithubButton": "Github",
-            "LiveButton": "Sayt"
+            "LiveButton": "Sayt",
+            "Status": {
+                "Loading": "Loyihalar yuklanmoqda...",
+                "Error": "Loyihalarni yuklab bolmadi."
+            }
         },
         "Create": {
             "Heading": "Loyihalar yaratish",
@@ -87,7 +91,7 @@
                 "Label": "yoki sudrab olib tashlang" 
             },
             "CreateButton": "Yaratish",
-            "Notifications": {
+            "Status": {
                 "Success": "Loyiha muvaffaqiyatli yaratildi.",
                 "Error": "Loyihani yaratishda xatolik yuz berdi."
             }

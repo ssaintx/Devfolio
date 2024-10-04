@@ -73,7 +73,11 @@
         "Home": {
             "Heading": "Главная",
             "GithubButton": "Github",
-            "LiveButton": "Сайт"
+            "LiveButton": "Сайт",
+            "Status": {
+                "Loading": "Загрузка проектов...",
+                "Error": "Не удалось загрузить проекты."
+            }
         },
         "Create": {
             "Heading": "Создание Проектов",
