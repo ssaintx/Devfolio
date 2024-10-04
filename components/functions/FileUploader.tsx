@@ -7,22 +7,17 @@ import { useTranslations } from "next-intl";
 import { useDropzone } from "react-dropzone";
 import { UploadIcon } from "@radix-ui/react-icons";
 
-import { convertFileToBase64 } from "@/lib/utils";
-
 type FileUploaderProps = {
-    files: string[] | undefined;
-    onChange: (base64Images: string[]) => void;
+    files: File[] | undefined;
+    onChange: (files: File[]) => void;
 };
 
 export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
     const t = useTranslations("Admin.Create.Image");
 
-    const onDrop = useCallback(async (acceptedFiles: File[]) => {
-        const base64Images = await Promise.all(
-            acceptedFiles.map((file) => convertFileToBase64(file))
-        );
-        onChange(base64Images);
-    }, [onChange]);
+    const onDrop = useCallback((acceptedFiles: File[]) => {
+        onChange(acceptedFiles);
+    }, []);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
@@ -31,7 +26,7 @@ export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
             <input {...getInputProps()} />
             {files && files.length > 0 ? (
                 <Image
-                    src={files[0]}
+                    src={URL.createObjectURL(files[0])}
                     width={1000}
                     height={1000}
                     alt="uploaded image"

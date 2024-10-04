@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { toast } from 'sonner';
 import { useState } from 'react';
@@ -6,6 +6,9 @@ import { useTranslations } from 'next-intl';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { FileUploader } from '@/components/functions/FileUploader';
+
+import { ID } from 'appwrite';
+import { BUCKET_ID, ENDPOINT, storage } from '@/db/appwrite.config';
 
 const Page = () => {
     const t = useTranslations("Admin.Create");
@@ -20,34 +23,51 @@ const Page = () => {
         date: new Date().toISOString(),
     });
 
-    const [imageFiles, setImageFiles] = useState<string[] | undefined>([]);
+    const [imageFiles, setImageFiles] = useState<File[]>([]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setProject(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleImageChange = (base64Images: string[]) => {
-        setImageFiles(base64Images);
-        setProject(prev => ({ ...prev, imageURL: base64Images[0] }));
+    const handleImageChange = (files: File[]) => {
+        setImageFiles(files);
+        if (files.length > 0) {
+            setProject(prev => ({ ...prev, imageURL: URL.createObjectURL(files[0]) }));
+        }
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        if (imageFiles.length === 0) {
+            toast.error(t("Status.Error", { message: "No image file provided." }));
+            return;
+        }
+
         try {
+            const file = imageFiles[0];
+            const fileId = ID.unique();
+            const fileResponse = await storage.createFile(
+                BUCKET_ID,
+                fileId,
+                file
+            );
+            const projectData = {
+                ...project,
+                imageURL: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=YOUR_PROJECT_ID`,
+            };
+
             const response = await fetch("/admin/api/projects", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(project),
+                body: JSON.stringify(projectData),
             });
 
             if (response.ok) {
                 toast.success(t("Status.Success"));
-
-                // Reset form after successful submission
                 setProject({
                     title: '',
                     subtitle: '',

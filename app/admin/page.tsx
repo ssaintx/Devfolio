@@ -46,9 +46,8 @@ const Page = () => {
           {error}
         </p>
       </div>}
-      {isLoading && <p className="mt-4">{t("Status.Loading")}</p>}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-        {(projects.length === 0) ? <p className="text-gray-500">{t("Status.Empty")}</p> : projects.map((project: any) => (
+        {isLoading ? <p>{t("Status.Loading")}</p> : (projects.length === 0) ? <p>{t("Status.Empty")}</p> : projects.map((project: any) => (
           <div key={project.$id} className="glassmorphism p-4 rounded-3xl flex flex-col">
             <Image
               src={project.imageURL}

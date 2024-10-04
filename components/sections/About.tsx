@@ -35,7 +35,7 @@ export const About = () => {
           className="flex justify-center sm:justify-start"
         >
           <div className="glassmorphism p-2 rounded-2xl">
-            <Image src={kali} alt="Logo" width={200} height={200} className="rounded-2xl" priority />
+            <Image src={kali} alt="Logo" width={200} height={200} className="rounded-2xl" priority unoptimized/>
           </div>
         </motion.div>
         {/* PERSONAL INFORMATION CONTAINER */}
