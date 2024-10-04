@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import Image from "next/image";
@@ -48,15 +48,15 @@ const Page = () => {
       </div>}
       {isLoading && <p className="mt-4">{t("Status.Loading")}</p>}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-        {projects && projects.map((project: any) => (
+        {(projects.length === 0) ? <p className="text-gray-500">{t("Status.Empty")}</p> : projects.map((project: any) => (
           <div key={project.$id} className="glassmorphism p-4 rounded-3xl flex flex-col">
-            {/* <Image
+            <Image
               src={project.imageURL}
               width={300}
               height={200}
               alt={project.title}
               className="rounded-2xl object-cover w-full"
-            /> */}
+            />
             <h1 className="text-center mt-2 text-md font-semibold sm:text-lg">{project.title}</h1>
             <p className="text-center text-zinc-400 dark:text-zinc-600 text-sm">{project.subtitle}</p>
             <Separator orientation="horizontal" className="my-2" />

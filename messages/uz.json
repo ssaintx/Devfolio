@@ -76,6 +76,7 @@
             "LiveButton": "Sayt",
             "Status": {
                 "Loading": "Loyihalar yuklanmoqda...",
+                "Empty": "Loyihalar yo'q.",
                 "Error": "Loyihalarni yuklab bolmadi."
             }
         },

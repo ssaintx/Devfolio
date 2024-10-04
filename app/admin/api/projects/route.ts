@@ -1,16 +1,9 @@
 import { ID, Query } from "appwrite";
 import { NextResponse } from "next/server";
+import { Project } from "@/types/appwrite.types";
 import { COLLECTION_ID, DATABASE_ID, database } from "@/db/appwrite.config";
 
-export const createProject = async (data: {
-    title: string,
-    subtitle: string,
-    description: string,
-    imageURL: string,
-    githubURL: string,
-    liveURL: string,
-    date: string,
-}) => {
+export const createProject = async (data: Project) => {
     try {
         const response = await database.createDocument(
             DATABASE_ID,
@@ -39,8 +32,8 @@ export const getProject = async () => {
 
 export const POST = async (req: Request) => {
     try {
-        const { title, subtitle, description, imageURL, githubURL, liveURL, date } = await req.json();
-        const data = { title, subtitle, description, imageURL, githubURL, liveURL, date };
+        const Project = await req.json();
+        const data = Project;
         const response = createProject(data);
         return NextResponse.json({ message: "Project created" });
     } catch (error) {

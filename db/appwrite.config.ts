@@ -1,12 +1,12 @@
-import { Client, Databases } from 'appwrite';
+import { Client, Databases, Storage } from 'appwrite';
 
 
-export const ENDPOINT = process.env.APPWRITE_ENDPOINT_KEY as string;
-export const PROJECT_ID = process.env.APPWRITE_PROJECT_KEY as string;
-export const API_KEY = process.env.APPWRITE_API_KEY as string;
-export const DATABASE_ID = process.env.APPWRITE_DB_KEY as string;
-export const COLLECTION_ID = process.env.APPWRITE_COLLECTION_KEY as string;
-export const BUCKET_ID = process.env.APPWRITE_BUCKET_KEY as string;
+export const ENDPOINT = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT_KEY as string;
+export const PROJECT_ID = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_KEY as string;
+export const API_KEY = process.env.NEXT_PUBLIC_APPWRITE_API_KEY as string;
+export const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DB_KEY as string;
+export const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_KEY as string;
+export const BUCKET_ID = process.env.NEXT_PUBLIC_APPWRITE_BUCKET_KEY as string;
 
 export const client = new Client();
 
@@ -15,3 +15,4 @@ client
     .setProject(PROJECT_ID);
 
 export const database = new Databases(client);
+export const storage = new Storage(client);
