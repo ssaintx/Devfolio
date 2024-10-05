@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 import { Project } from "@/types/appwrite.types";
 import { Separator } from "@/components/ui/separator";
 import { ExclamationTriangleIcon, ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -47,7 +47,7 @@ const Page = () => {
         </p>
       </div>}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-        {isLoading ? <p>{t("Status.Loading")}</p> : (projects.length === 0) ? <p>{t("Status.Empty")}</p> : projects.map((project: any) => (
+        {isLoading ? <p>{t("Status.Loading")}</p> : (projects.length === 0) ? <p>{t("Status.Empty")}</p> : projects.map((project: Project) => (
           <div key={project.$id} className="glassmorphism p-4 rounded-3xl flex flex-col">
             <Image
               src={project.imageURL}

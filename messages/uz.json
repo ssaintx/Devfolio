@@ -30,7 +30,37 @@
             "EmailField": "Elektron pochta"
         },
         "Bio": "Mening ismim Lazizbek. Men veb-ishlab chiqish bo'yicha 1 yillik tajribaga ega kuchli Junior Frontend Developerman. Men Toshkent (O'zbekiston) shahrida joylashgan Markaziy Osiyo universiteti talabasiman...",
-        "ReadMore": "Batafsil ma'lumotni o'qish"
+        "ReadMore": "Batafsil ma'lumotni o'qish",
+        "Bento": {
+            "First": {
+                "Heading": "Frontend Tajribasi",
+                "Subheading": "1 yillik amaliy tajribaga ega Frontend Dasturchi React.js, Next.js va TypeScript’da yuqori darajada ishlash."
+            },
+            "Second": {
+                "Heading": "Full-Stack Dasturlash",
+                "Subheading": "MERN stack va Next.js (SSR) bilan full-stack loyihalar tajribasi."
+            },
+            "Third": {
+                "Heading": "Mentorlik va Hamkorlik",
+                "Subheading": "Jamoaviy ish va bilim almashishni yoqtiraman."
+            },
+            "Fourth": {
+                "Heading": "Qo'shimcha...",
+                "Subheading": "Python, Java va C++ tillarida yetarli bilimga ega, ma'lumot tuzilmalari va algoritmlar bo'yicha mustahkam poydevor."
+            },
+            "Fifth": {
+                "Heading": "Ta'lim",
+                "Subheading": "Toshkentdagi Markaziy Osiyo Universiteti talabasi."
+            },
+            "Sixth": {
+                "Heading": "Karyera Maqsadlari",
+                "Subheading": "Veb-dasturlash sohasida innovatsion loyihalarga hissa qo'shish uchun imkoniyatlarni qidirish."
+            },
+            "Seventh": {
+                "Heading": "Shaxsiy Xususiyatlar",
+                "Subheading": "Yangi texnologiyalarni tez o'rganish va kreativ muammolarni hal qilish qobiliyati."
+            }
+        }
     },
     "Porfolio": {
         "Heading": "Portfolio",

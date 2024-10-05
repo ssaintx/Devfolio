@@ -30,7 +30,37 @@
             "EmailField": "Email"
         },
         "Bio": "My name is Lazizbek. I am strong Junior Frontend Developer with 1 year of experience in web development. I am a student of Central Asian University located in Tashkent(Uzbekistan)...",
-        "ReadMore": "Read more"
+        "ReadMore": "Read more",
+        "Bento": {
+            "First": {
+                "Heading": "Frontend Expertise",
+                "Subheading": "Frontend Developer with 1 year of hands-on experience Proficient in React.js, Next.js, and TypeScript."
+            },
+            "Second": {
+                "Heading": "Full-Stack Development",
+                "Subheading": "Experience with full-stack projects using the MERN stack and Next.js (SSR)."
+            },
+            "Third": {
+                "Heading": "Mentorship & Collaboration",
+                "Subheading": "Enjoys working in collaborative environments and sharing knowledge with peers."
+            },
+            "Fourth": {
+                "Heading": "Additional...",
+                "Subheading": "Knowledgeable in Python, Java, and C++ with a strong foundation in data structures and algorithms."
+            },
+            "Fifth": {
+                "Heading": "Educational Background",
+                "Subheading": "Student at Central Asian University, Tashkent, Uzbekistan."
+            },
+            "Sixth": {
+                "Heading": "Career Aspirations",
+                "Subheading": "Actively seeking opportunities in web development to contribute to innovative projects."
+            },
+            "Seventh": {
+                "Heading": "Personal Qualities",
+                "Subheading": "Ability to quickly learn new technologies and solve creative problems."
+            }
+        }
     },
     "Porfolio": {
         "Heading": "Portfolio",
