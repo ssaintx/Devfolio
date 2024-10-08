@@ -97,7 +97,7 @@
             "Home": "Bosh sahifa",
             "Create": "Yaratish",
             "Edit": "O'zgartirish",
-            "Statistics": "Statistica",
+            "Statistics": "Statistika",
             "Settings": "Sozlamalar"
         },
         "Home": {
@@ -131,7 +131,7 @@
             "Heading": "Loyihalar o'zgartirish"
         },
         "Statistics": {
-            "Heading": "Statistica ko'rish"
+            "Heading": "Statistika ko'rish"
         }
     }
 }

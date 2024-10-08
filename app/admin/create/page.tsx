@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { FileUploader } from '@/components/functions/FileUploader';
 
 import { ID } from 'appwrite';
-import { BUCKET_ID, ENDPOINT, storage } from '@/db/appwrite.config';
+import { BUCKET_ID, ENDPOINT, PROJECT_ID, storage } from '@/db/appwrite.config';
 
 const Page = () => {
     const t = useTranslations("Admin.Create");
@@ -55,7 +55,7 @@ const Page = () => {
             );
             const projectData = {
                 ...project,
-                imageURL: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=YOUR_PROJECT_ID`,
+                imageURL: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=${PROJECT_ID}`,
             };
 
             const response = await fetch("/admin/api/projects", {

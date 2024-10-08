@@ -1,5 +1,11 @@
-import { COLLECTION_ID, DATABASE_ID, database } from "@/db/appwrite.config";
+"use server"
+
 import { NextResponse } from "next/server";
+import {
+    COLLECTION_ID,
+    DATABASE_ID,
+    database
+} from "@/db/appwrite.config";
 
 export const getProject = async (id: string) => {
     try {

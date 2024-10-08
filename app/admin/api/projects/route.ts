@@ -1,7 +1,17 @@
+"use server"
+
 import { ID, Query } from "appwrite";
 import { NextResponse } from "next/server";
 import { Project } from "@/types/appwrite.types";
-import { COLLECTION_ID, DATABASE_ID, database } from "@/db/appwrite.config";
+import {
+    BUCKET_ID,
+    ENDPOINT,
+    PROJECT_ID,
+    COLLECTION_ID,
+    DATABASE_ID,
+    database,
+    storage
+} from "@/db/appwrite.config";
 
 export const createProject = async (data: Project) => {
     try {
@@ -11,9 +21,11 @@ export const createProject = async (data: Project) => {
             ID.unique(),
             data
         );
+        return response;
     } catch (error) {
         console.error(error);
-    };
+        throw error;
+    }
 };
 
 export const getProject = async () => {
@@ -32,13 +44,31 @@ export const getProject = async () => {
 
 export const POST = async (req: Request) => {
     try {
-        const Project = await req.json();
-        const data = Project;
-        const response = createProject(data);
+        let fileResponse;
+        
+        const STORAGE_ENDPOINT = "cloud.appwrite.io/v1";
+
+        const formData = await req.formData();
+        const file = formData.get('file') as File;
+        const fileName = formData.get('fileName') as string;
+        
+        fileResponse = await storage.createFile(BUCKET_ID, ID.unique(), file);
+
+        console.log(fileResponse.$id);
+        const projectData: Project = {
+            title: formData.get('title') as string,
+            subtitle: formData.get('subtitle') as string,
+            description: formData.get('description') as string,
+            imageURL: fileResponse?.$id ? `https://${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=${PROJECT_ID}&project=${PROJECT_ID}&mode=admin` : '',
+            githubURL: formData.get('githubURL') as string,
+            liveURL: formData.get('liveURL') as string,
+            date: formData.get('date') as string,
+        };
+        await createProject(projectData);
         return NextResponse.json({ message: "Project created" });
     } catch (error) {
         return NextResponse.json({ message: "Failed to create Project" }, { status: 500 });
-    };
+    }
 };
 
 export const GET = async () => {
