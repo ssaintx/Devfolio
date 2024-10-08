@@ -44,22 +44,22 @@ export const getProject = async () => {
 
 export const POST = async (req: Request) => {
     try {
-        let fileResponse;
-        
-        const STORAGE_ENDPOINT = "cloud.appwrite.io/v1";
-
         const formData = await req.formData();
         const file = formData.get('file') as File;
         const fileName = formData.get('fileName') as string;
         
-        fileResponse = await storage.createFile(BUCKET_ID, ID.unique(), file);
+        const fileResponse = await storage.createFile(BUCKET_ID, ID.unique(), file);
+        const fileURL = `https://${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=${PROJECT_ID}&project=${PROJECT_ID}&mode=admin`
+
+        console.log("Received file:", file);
+        console.log("Received fileName:", fileName);
 
         console.log(fileResponse.$id);
         const projectData: Project = {
             title: formData.get('title') as string,
             subtitle: formData.get('subtitle') as string,
             description: formData.get('description') as string,
-            imageURL: fileResponse?.$id ? `https://${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=${PROJECT_ID}&project=${PROJECT_ID}&mode=admin` : '',
+            imageURL: fileResponse?.$id ? fileURL : '',
             githubURL: formData.get('githubURL') as string,
             liveURL: formData.get('liveURL') as string,
             date: formData.get('date') as string,
@@ -67,6 +67,7 @@ export const POST = async (req: Request) => {
         await createProject(projectData);
         return NextResponse.json({ message: "Project created" });
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ message: "Failed to create Project" }, { status: 500 });
     }
 };
@@ -76,6 +77,7 @@ export const GET = async () => {
         const response = await getProject();
         return NextResponse.json(response);
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ message: "Failed to get Project" }, { status: 500 });
     };
 };

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { toast } from 'sonner';
 import { useState } from 'react';
@@ -8,7 +8,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { FileUploader } from '@/components/functions/FileUploader';
 
 import { ID } from 'appwrite';
-import { BUCKET_ID, ENDPOINT, PROJECT_ID, storage } from '@/db/appwrite.config';
 
 const Page = () => {
     const t = useTranslations("Admin.Create");
@@ -39,51 +38,52 @@ const Page = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
+    
         if (imageFiles.length === 0) {
             toast.error(t("Status.Error", { message: "No image file provided." }));
             return;
         }
-
+    
         try {
+            const formData = new FormData();
             const file = imageFiles[0];
             const fileId = ID.unique();
-            const fileResponse = await storage.createFile(
-                BUCKET_ID,
-                fileId,
-                file
-            );
-            const projectData = {
-                ...project,
-                imageURL: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=${PROJECT_ID}`,
-            };
-
+    
+            formData.append('file', file);
+            formData.append('fileName', file.name);
+            formData.append('title', project.title);
+            formData.append('subtitle', project.subtitle);
+            formData.append('description', project.description);
+            formData.append('githubURL', project.githubURL);
+            formData.append('liveURL', project.liveURL);
+            formData.append('date', project.date);
+    
             const response = await fetch("/admin/api/projects", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(projectData),
+                body: formData,
             });
-
-            if (response.ok) {
-                toast.success(t("Status.Success"));
-                setProject({
-                    title: '',
-                    subtitle: '',
-                    description: '',
-                    imageURL: '',
-                    githubURL: '',
-                    liveURL: '',
-                    date: new Date().toISOString(),
-                });
-                setImageFiles([]);
-            } else {
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Server error response:", errorData);
                 throw new Error("Failed to create project");
             }
-        } catch (error) {
-            toast.error(t("Status.Error"));
-            console.error("Error creating project:", error);
+    
+            toast.success(t("Status.Success"));
+            setProject({
+                title: '',
+                subtitle: '',
+                description: '',
+                imageURL: '',
+                githubURL: '',
+                liveURL: '',
+                date: new Date().toISOString(),
+            });
+            setImageFiles([]);
+    
+        } catch (error: any) {
+            console.error("Error creating project:", error.message || error);
+            toast.error(t("Status.Error", { message: error.message || "An unexpected error occurred." }));
         }
     };
 
