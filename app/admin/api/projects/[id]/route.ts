@@ -6,6 +6,7 @@ import {
     DATABASE_ID,
     database
 } from "@/db/appwrite.config";
+import { Project } from "@/types/appwrite.types";
 
 export const getProject = async (id: string) => {
     try {
@@ -35,15 +36,8 @@ export const deleteProject = async (id: string) => {
 
 export const updateProject = async (
     id: string,
-    data: {
-        title: string,
-        subtitle: string,
-        description: string,
-        imageURL: string,
-        githubURL: string,
-        liveURL: string,
-        date: string
-    }) => {
+    data: Project,
+) => {
     try {
         const response = await database.updateDocument(
             DATABASE_ID,

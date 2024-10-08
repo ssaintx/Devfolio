@@ -64,9 +64,9 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))'
         },
-        screens: {
-          xs: "425px",
-        },
+      },
+      screens: {
+        xs: "425px",
       },
       animation: {
         shimmer: "shimmer 8s infinite",

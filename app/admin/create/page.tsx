@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { toast } from 'sonner';
 import { useState } from 'react';
@@ -38,52 +38,51 @@ const Page = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-    
+
         if (imageFiles.length === 0) {
             toast.error(t("Status.Error", { message: "No image file provided." }));
             return;
         }
-    
+
         try {
             const formData = new FormData();
-            const file = imageFiles[0];
-            const fileId = ID.unique();
-    
-            formData.append('file', file);
-            formData.append('fileName', file.name);
+
             formData.append('title', project.title);
             formData.append('subtitle', project.subtitle);
             formData.append('description', project.description);
             formData.append('githubURL', project.githubURL);
             formData.append('liveURL', project.liveURL);
             formData.append('date', project.date);
-    
+
+            if (imageFiles && imageFiles.length > 0) {
+                const blobFile = new Blob([imageFiles[0]], { type: imageFiles[0].type });
+                formData.append('blobFile', blobFile);
+                formData.append('fileName', imageFiles[0].name);
+            }
+
             const response = await fetch("/admin/api/projects", {
                 method: "POST",
                 body: formData,
             });
-    
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error("Server error response:", errorData);
+
+            if (response.ok) {
+                toast.success(t("Status.Success"));
+                setProject({
+                    title: '',
+                    subtitle: '',
+                    description: '',
+                    imageURL: '',
+                    githubURL: '',
+                    liveURL: '',
+                    date: new Date().toISOString(),
+                });
+                setImageFiles([]);
+            } else {
                 throw new Error("Failed to create project");
             }
-    
-            toast.success(t("Status.Success"));
-            setProject({
-                title: '',
-                subtitle: '',
-                description: '',
-                imageURL: '',
-                githubURL: '',
-                liveURL: '',
-                date: new Date().toISOString(),
-            });
-            setImageFiles([]);
-    
-        } catch (error: any) {
-            console.error("Error creating project:", error.message || error);
-            toast.error(t("Status.Error", { message: error.message || "An unexpected error occurred." }));
+        } catch (error) {
+            toast.error(t("Status.Error"));
+            console.error(error);
         }
     };
 

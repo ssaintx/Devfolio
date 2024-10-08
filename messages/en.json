@@ -115,8 +115,8 @@
             "Title": "Title",
             "Subtitle": "Subtitle",
             "Description": "Description",
-            "Github": "Github link",
-            "Live": "Live",
+            "Github": "Github url",
+            "Live": "Live url",
             "Image": {
                 "LabelColor": "Click to upload",
                 "Label": "or drag and drop" 

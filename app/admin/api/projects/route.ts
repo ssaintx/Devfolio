@@ -13,8 +13,17 @@ import {
     storage
 } from "@/db/appwrite.config";
 
-export const createProject = async (data: Project) => {
+export const createProject = async ({ imageURL, ...data }: Project) => {
     try {
+        let file;
+        if (imageURL) {
+            const response = await fetch(imageURL);
+            const blob = await response.blob();
+            file = new File([blob], "image.png", { type: "image/png" });
+        
+            const fileResponse = await storage.createFile(BUCKET_ID, ID.unique(), file);
+        }
+
         const response = await database.createDocument(
             DATABASE_ID,
             COLLECTION_ID,
@@ -44,32 +53,13 @@ export const getProject = async () => {
 
 export const POST = async (req: Request) => {
     try {
-        const formData = await req.formData();
-        const file = formData.get('file') as File;
-        const fileName = formData.get('fileName') as string;
-        
-        const fileResponse = await storage.createFile(BUCKET_ID, ID.unique(), file);
-        const fileURL = `https://${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${fileResponse.$id}/view?project=${PROJECT_ID}&project=${PROJECT_ID}&mode=admin`
-
-        console.log("Received file:", file);
-        console.log("Received fileName:", fileName);
-
-        console.log(fileResponse.$id);
-        const projectData: Project = {
-            title: formData.get('title') as string,
-            subtitle: formData.get('subtitle') as string,
-            description: formData.get('description') as string,
-            imageURL: fileResponse?.$id ? fileURL : '',
-            githubURL: formData.get('githubURL') as string,
-            liveURL: formData.get('liveURL') as string,
-            date: formData.get('date') as string,
-        };
-        await createProject(projectData);
+        const Project = await req.json();
+        const data = Project;
+        const response = createProject(data);
         return NextResponse.json({ message: "Project created" });
     } catch (error) {
-        console.log(error);
         return NextResponse.json({ message: "Failed to create Project" }, { status: 500 });
-    }
+    };
 };
 
 export const GET = async () => {

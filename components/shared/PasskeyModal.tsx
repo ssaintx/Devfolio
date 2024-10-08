@@ -56,7 +56,7 @@ export const PasskeyModal = () => {
     ) => {
         e.preventDefault();
 
-        if (passkey === process.env.ADMIN_PASSKEY) {
+        if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
             const encryptedKey = encryptKey(passkey);
 
             localStorage.setItem("accessKey", encryptedKey);
@@ -76,8 +76,8 @@ export const PasskeyModal = () => {
                         <p>{t("Content.Label")}</p>
                         <Cross1Icon onClick={closeModal} className="cursor-pointer size-4" />
                     </AlertDialogTitle>
-                    <AlertDialogDescription>
-                        {t("Content.Description")}
+                    <AlertDialogDescription className="text-center">
+                        <p>{t("Content.Description")}</p>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div>
@@ -86,13 +86,13 @@ export const PasskeyModal = () => {
                         value={passkey}
                         onChange={(value) => setPasskey(value)}
                     >
-                        <InputOTPGroup className="w-full flex justify-between">
-                            <InputOTPSlot className="glassmorphism p-2 rounded-lg size-10 sm:size-16" index={0} />
-                            <InputOTPSlot className="glassmorphism p-2 rounded-lg size-10 sm:size-16" index={1} />
-                            <InputOTPSlot className="glassmorphism p-2 rounded-lg size-10 sm:size-16" index={2} />
-                            <InputOTPSlot className="glassmorphism p-2 rounded-lg size-10 sm:size-16" index={3} />
-                            <InputOTPSlot className="glassmorphism p-2 rounded-lg size-10 sm:size-16" index={4} />
-                            <InputOTPSlot className="glassmorphism p-2 rounded-lg size-10 sm:size-16" index={5} />
+                        <InputOTPGroup className="w-full flex justify-around gap-1">
+                            <InputOTPSlot className="glassmorphism p-2 rounded-lg xs:size-14 size-[44px] sm:size-16" index={0} />
+                            <InputOTPSlot className="glassmorphism p-2 rounded-lg xs:size-14 size-[44px] sm:size-16" index={1} />
+                            <InputOTPSlot className="glassmorphism p-2 rounded-lg xs:size-14 size-[44px] sm:size-16" index={2} />
+                            <InputOTPSlot className="glassmorphism p-2 rounded-lg xs:size-14 size-[44px] sm:size-16" index={3} />
+                            <InputOTPSlot className="glassmorphism p-2 rounded-lg xs:size-14 size-[44px] sm:size-16" index={4} />
+                            <InputOTPSlot className="glassmorphism p-2 rounded-lg xs:size-14 size-[44px] sm:size-16" index={5} />
                         </InputOTPGroup>
                     </InputOTP>
 
@@ -103,8 +103,10 @@ export const PasskeyModal = () => {
                     )}
                 </div>
                 <AlertDialogFooter>
-                    <AlertDialogAction onClick={(e) => validatePasskey(e)} className="button">
-                        {t("Content.AccessButton")}
+                    <AlertDialogAction onClick={(e) => validatePasskey(e)} className="w-full mt-2">
+                        <div className="flex items-center justify-center">
+                            <span className="button">{t("Content.AccessButton")}</span>
+                        </div>
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
