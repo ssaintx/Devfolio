@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { useDropzone } from "react-dropzone";
+import { convertFileToUrl } from "@/lib/utils";
 import { UploadIcon } from "@radix-ui/react-icons";
 
 type FileUploaderProps = {
@@ -26,7 +27,7 @@ export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
             <input {...getInputProps()} />
             {files && files.length > 0 ? (
                 <Image
-                    src={URL.createObjectURL(files[0])}
+                    src={convertFileToUrl(files[0])}
                     width={1000}
                     height={1000}
                     alt="uploaded image"

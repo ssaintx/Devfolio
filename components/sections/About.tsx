@@ -79,7 +79,7 @@ export const About = () => {
       id="about"
     >
       <motion.h1 variants={popIn} className="pb-4 heading">{t("Heading")}</motion.h1>
-      <BentoGrid className="max-w-4xl mx-auto mt-8">
+      <BentoGrid className="max-w-4xl mx-auto mt-8 px-4">
         {items.map((item, i) => (
           <BentoGridItem
             key={i}

@@ -71,9 +71,22 @@ export const Hero = () => {
 
             {/* SOCIAL LINKS */}
             <motion.div variants={popIn} className="flex items-center justify-center mt-3 gap-3 glassmorphism py-2 px-4 rounded-full">
-                <GitHubLogoIcon className="size-7" />
+                <Link
+                    href="https://github.com/ssaintx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <GitHubLogoIcon className="size-7" />
+                </Link>
                 <Separator orientation="vertical" className="h-[28px] bg-gray-500" />
-                <LinkedInLogoIcon className="size-7" />
+
+                <Link
+                    href="https://linkedin.com/in/ssaintx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <LinkedInLogoIcon className="size-7" />
+                </Link>
             </motion.div>
 
             {/* DOWN ARROW BUTTON */}

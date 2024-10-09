@@ -2,50 +2,62 @@
 
 import { ID, Query } from "appwrite";
 import { NextResponse } from "next/server";
-import { Project } from "@/types/appwrite.types";
+import { parseStringify } from "@/lib/utils";
+import { InputFile } from "node-appwrite/file";
+import { CreateProject } from "@/types/appwrite.types";
 import {
-    BUCKET_ID,
-    ENDPOINT,
-    PROJECT_ID,
-    COLLECTION_ID,
-    DATABASE_ID,
+    storage,
     database,
-    storage
+    ENDPOINT,
+    BUCKET_ID,
+    PROJECT_ID,
+    DATABASE_ID,
+    COLLECTION_ID,
 } from "@/db/appwrite.config";
 
-export const createProject = async ({ imageURL, ...data }: Project) => {
+export const createProject = async ({ imageURL, ...data }: CreateProject) => {
     try {
         let file;
         if (imageURL) {
-            const response = await fetch(imageURL);
-            const blob = await response.blob();
-            file = new File([blob], "image.png", { type: "image/png" });
-        
-            const fileResponse = await storage.createFile(BUCKET_ID, ID.unique(), file);
+            const inputFile = imageURL && InputFile.fromBuffer(
+                imageURL?.get("blobFile") as Blob,
+                imageURL?.get("fileName") as string
+            );
+
+            file = await storage.createFile(
+                BUCKET_ID!,
+                ID.unique(),
+                inputFile
+            );
         }
 
-        const response = await database.createDocument(
+        const project = await database.createDocument(
             DATABASE_ID,
             COLLECTION_ID,
             ID.unique(),
-            data
+            {
+                imageURLId: file?.$id ? file.$id : null,
+                imageURLUrl: file?.$id
+                    ? `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view??project=${PROJECT_ID}`
+                    : null,
+                ...data,
+            }
         );
-        return response;
+        return parseStringify(project);
     } catch (error) {
         console.error(error);
-        throw error;
     }
 };
 
 export const getProject = async () => {
     try {
-        const response = await database.listDocuments(
+        const project = await database.listDocuments(
             DATABASE_ID,
             COLLECTION_ID,
             [Query.orderDesc("$createdAt")]
         );
 
-        return response.documents;
+        return project.documents;
     } catch (error) {
         console.error(error);
     };
@@ -53,19 +65,19 @@ export const getProject = async () => {
 
 export const POST = async (req: Request) => {
     try {
-        const Project = await req.json();
-        const data = Project;
-        const response = createProject(data);
-        return NextResponse.json({ message: "Project created" });
+        const { imageURL, ...data } = await req.json();
+        const project = await createProject({ imageURL, ...data });
+        return NextResponse.json({ message: "Project created", project }, { status: 201 });
     } catch (error) {
+        console.error(error);
         return NextResponse.json({ message: "Failed to create Project" }, { status: 500 });
-    };
-};
+    }
+}
 
 export const GET = async () => {
     try {
-        const response = await getProject();
-        return NextResponse.json(response);
+        const project = await getProject();
+        return NextResponse.json(project);
     } catch (error) {
         console.log(error);
         return NextResponse.json({ message: "Failed to get Project" }, { status: 500 });

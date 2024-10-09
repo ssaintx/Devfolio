@@ -8,6 +8,7 @@ import { Project } from "@/types/appwrite.types";
 import { Separator } from "@/components/ui/separator";
 import { useFetch } from "@/components/hooks/useFetch";
 import {
+  SymbolIcon,
   GitHubLogoIcon,
   ExternalLinkIcon,
   ExclamationTriangleIcon,
@@ -27,7 +28,12 @@ const Page = () => {
         </p>
       </div>}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-        {fetchProjects.isLoading ? <p>{t("Status.Loading")}</p> : (fetchProjects.projects.length === 0) ? <p>{t("Status.Empty")}</p> : fetchProjects.projects.map((project: Project) => (
+        {fetchProjects.isLoading ? (
+          <div className="flex flex-row items-center gap-2">
+            <SymbolIcon className="animate-spin" />
+            <p>{t("Status.Loading")}</p>
+          </div>
+        ) : (fetchProjects.projects.length === 0) ? <p>{t("Status.Empty")}</p> : fetchProjects.projects.map((project: Project) => (
           <div key={project.$id} className="glassmorphism p-4 rounded-3xl flex flex-col">
             <Image
               src={project.imageURL}
@@ -59,6 +65,15 @@ const Page = () => {
               >
                 <ExternalLinkIcon /> {t("LiveButton")}
               </Link>
+            </div>
+            <div className="flex justify-end items-center mt-4">
+              <p className="text-xs text-gray-500">
+                {new Date(project.date).toLocaleDateString('en-GB', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+              </p>
             </div>
           </div>
         ))}

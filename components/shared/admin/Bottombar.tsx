@@ -56,7 +56,7 @@ export const Bottombar = () => {
                             className={`bottombarlink_admin ${pathname === link.route ? "bg-zinc-300 dark:bg-zinc-900" : ""}`}
                         >
                             {link.img}
-                            <p className='max-sm:hidden'>
+                            <p className='max-sm:hidden text-xs'>
                                 {link.label.split(/\s+/)[0]}
                             </p>
                         </Link>
