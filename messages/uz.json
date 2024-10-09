@@ -125,6 +125,13 @@
             "Status": {
                 "Success": "Loyiha muvaffaqiyatli yaratildi.",
                 "Error": "Loyihani yaratishda xatolik yuz berdi."
+            },
+            "Errors": {
+                "Title": "Sarlavha kamida 2 ta belgidan iborat boʻlishi kerak.",
+                "Subtitle": "Kichik sarlavha kamida 2 ta belgidan iborat boʻlishi kerak.",
+                "Description": "Tasvif kamida 2 ta belgidan iborat boʻlishi kerak.",
+                "Github": "Github havola kamida 2 ta belgidan iborat boʻlishi kerak.",
+                "Live": "Jonli sayt havola kamida 2 ta belgidan iborat boʻlishi kerak."
             }
         },
         "Edit": {

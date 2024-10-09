@@ -125,6 +125,13 @@
             "Status": {
                 "Success": "Project created successfully!",
                 "Error": "An error occurred while creating the project."
+            },
+            "Errors": {
+                "Title": "Title must be at least 2 characters.",
+                "Subtitle": "Subtitle must be at least 2 characters.",
+                "Description": "Description must be at least 2 characters.",
+                "Github": "Github link must be at least 2 characters.",
+                "Live": "Live link must be at least 2 characters."
             }
         },
         "Edit": {

@@ -4,6 +4,7 @@ import en from './icons/en.svg';
 
 import logo from './assets/logo.png';
 import kali from './assets/kalilinux.gif';
+import image from './assets/image.svg';
 
 export {
     uz,
@@ -11,4 +12,5 @@ export {
     en,
     logo,
     kali,
+    image,
 };
