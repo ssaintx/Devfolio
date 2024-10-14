@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { LoaderCircle } from "lucide-react";
-import { FileUploader } from "../functions/FileUploader";
 import {
     Form,
     FormControl,
@@ -18,13 +17,30 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { projectSchema } from "@/types/appwrite.types";
-import { createProject } from "@/app/admin/api/projects/route";
+import { testProject } from "@/app/admin/api/projects/route";
 
-export const CreateProject = () => {
-    const schema = projectSchema();
+export const EditProject = () => {
     const t = useTranslations("Admin.Create");
     const [isLoading, setIsLoading] = useState(false);
+
+    const schema = z.object({
+        title: z.string().min(2, {
+            message: t("Errors.Title"),
+        }),
+        subtitle: z.string().min(2, {
+            message: t("Errors.Subtitle"),
+        }),
+        description: z.string().min(2, {
+            message: t("Errors.Description"),
+        }),
+        githubURL: z.string().min(2, {
+            message: t("Errors.Github"),
+        }),
+        liveURL: z.string().min(2, {
+            message: t("Errors.Live"),
+        }),
+        date: z.string(),
+    })
 
     const form = useForm<z.infer<typeof schema>>({
         resolver: zodResolver(schema),
@@ -32,7 +48,6 @@ export const CreateProject = () => {
             title: "",
             subtitle: "",
             description: "",
-            image: [],
             githubURL: "",
             liveURL: "",
             date: new Date().toISOString(),
@@ -41,30 +56,23 @@ export const CreateProject = () => {
 
     const onSubmit = async (values: z.infer<typeof schema>) => {
         setIsLoading(true);
-
-        let formData;
-        if (values.image && values.image?.length > 0) {
-            const blobFile = new Blob([values.image[0]], {
-                type: values.image[0].type,
-            });
-
-            formData = new FormData();
-            formData.append("blobFile", blobFile);
-            formData.append("fileName", values.image[0].name);
-        }
-
         try {
             const project = {
                 title: values.title,
                 subtitle: values.subtitle,
                 description: values.description,
-                image: values.image ? formData : undefined,
                 githubURL: values.githubURL,
                 liveURL: values.liveURL,
                 date: values.date,
             };
 
-            const response = await createProject(project);
+            const response = await fetch("/api/projects/route", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(project),
+            })
 
             if (response) {
                 toast.success(t("Status.Success"));
@@ -146,18 +154,6 @@ export const CreateProject = () => {
                         )}
                     />
                 </div>
-                <FormField
-                    control={form.control}
-                    name="image"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <FileUploader files={field.value} onChange={field.onChange} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
                 <div className="flex items-center justify-center w-full pb-6">
                     <button type="submit" className="button">
                         {isLoading ? (

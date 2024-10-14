@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 import {
     COLLECTION_ID,
     DATABASE_ID,
-    database
+    databases
 } from "@/db/appwrite.config";
 import { Project } from "@/types/appwrite.types";
 
 export const getProject = async (id: string) => {
     try {
-        const project = await database.getDocument(
+        const project = await databases.getDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id
@@ -22,7 +22,7 @@ export const getProject = async (id: string) => {
 
 export const deleteProject = async (id: string) => {
     try {
-        const response = await database.deleteDocument(
+        const response = await databases.deleteDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id
@@ -39,7 +39,7 @@ export const updateProject = async (
     data: Project,
 ) => {
     try {
-        const response = await database.updateDocument(
+        const response = await databases.updateDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id,

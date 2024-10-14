@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { LoaderCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Project } from "@/types/appwrite.types";
 import { Separator } from "@/components/ui/separator";
 import { useFetch } from "@/components/hooks/useFetch";
 import {
-  SymbolIcon,
   GitHubLogoIcon,
   ExternalLinkIcon,
   ExclamationTriangleIcon,
@@ -30,17 +30,17 @@ const Page = () => {
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
         {fetchProjects.isLoading ? (
           <div className="flex flex-row items-center gap-2">
-            <SymbolIcon className="animate-spin" />
+            <LoaderCircle className="animate-spin size-4" />
             <p>{t("Status.Loading")}</p>
           </div>
         ) : (fetchProjects.projects.length === 0) ? <p>{t("Status.Empty")}</p> : fetchProjects.projects.map((project: Project) => (
           <div key={project.$id} className="glassmorphism p-4 rounded-3xl flex flex-col">
             <Image
-              src={project.imageURL}
+              src={project.imageUrl!}
               width={300}
               height={200}
               alt={project.title}
-              className="rounded-2xl object-cover w-full"
+              className="rounded-2xl object-cover w-full shadow-2xl"
             />
             <h1 className="text-center mt-2 text-md font-semibold sm:text-lg">{project.title}</h1>
             <p className="text-center text-zinc-400 dark:text-zinc-600 text-sm">{project.subtitle}</p>
@@ -48,6 +48,7 @@ const Page = () => {
             <div className="text-start">
               <p>{project.description}</p>
             </div>
+            <Separator orientation="horizontal" className="my-2" />
             <div className="flex items-center justify-center gap-2 mt-4">
               <Link
                 href={project.githubURL}
@@ -57,6 +58,7 @@ const Page = () => {
               >
                 <GitHubLogoIcon /> {t("GithubButton")}
               </Link>
+              <Separator orientation="vertical" className="my-2" />
               <Link
                 href={project.liveURL}
                 target="_blank"

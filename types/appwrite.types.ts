@@ -8,21 +8,13 @@ export interface Project {
     title: string;
     subtitle: string;
     description: string;
-    imageURL: string;
+    image: FormData | undefined;
+    imageUrl?: string;
+    imageId?: string;
     githubURL: string;
     liveURL: string;
     date: string;
 };
-
-export interface CreateProject {
-    title: string;
-    subtitle: string;
-    description: string;
-    imageURL: FormData | undefined;
-    githubURL: string;
-    liveURL: string;
-    date: string;
-}
 
 export const projectSchema = () => {
     const t = useTranslations("Admin.Create");
@@ -43,7 +35,7 @@ export const projectSchema = () => {
         liveURL: z.string().min(2, {
             message: t("Errors.Live"),
         }),
-        imageURL: z.custom<File[]>(),
+        image: z.custom<File[]>(),
         date: z.string(),
     })
 
