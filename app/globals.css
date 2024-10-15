@@ -135,7 +135,7 @@
   }
 
   .bottombar_container_admin {
-    @apply flex items-center justify-between gap-3 xs:gap-5;
+    @apply flex items-center justify-between gap-2 xs:gap-4;
   }
 
   .bottombarlink_admin {

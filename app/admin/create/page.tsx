@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useTranslations } from 'next-intl';
 import { CreateProject } from '@/components/forms/CreateProject';

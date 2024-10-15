@@ -1,37 +1,47 @@
-"use client"
-
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Project } from "@/types/appwrite.types";
 
-export const useFetch = () => {
-    const t = useTranslations("Admin.Home");
+export const useFetch = (id?: string) => {
+    const t = useTranslations("Hooks.Fetch");
 
+    const [project, setProject] = useState<Project>();
     const [projects, setProjects] = useState<Project[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [fetchError, setFetchError] = useState<string | null>(null);
+    const [isFetchLoading, setIsFetchLoading] = useState(true);
 
     useEffect(() => {
         const fetchProjects = async () => {
-            setIsLoading(true);
+            setIsFetchLoading(true);
             try {
-                const response = await fetch("/admin/api/projects");
-                if (!response.ok) {
-                    setError(t("Status.Error"));
-                    console.error(error);
+                if (id) {
+                    const response = await fetch(`/admin/api/projects/${id}`);
+                    if (!response.ok) {
+                        setFetchError(t("ProjectError"));
+                        console.error("Error fetching project:", response.statusText);
+                        return;
+                    }
+                    const data = await response.json();
+                    setProject(Object.values(data)[0] as Project);
+                } else {
+                    const response = await fetch("/admin/api/projects");
+                    if (!response.ok) {
+                        setFetchError(t("ProjectsError"));
+                        console.error(fetchError);
+                    }
+                    const data = await response.json();
+                    setProjects(data);
                 }
-                const data = await response.json();
-                setProjects(data);
-                setIsLoading(false);
+                setIsFetchLoading(false);
             } catch (error) {
-                setError(t("Status.Error"));
+                setFetchError(t("ProjectsError"));
                 console.error(error);
             } finally {
-                setIsLoading(false);
+                setIsFetchLoading(false);
             };
         };
         fetchProjects();
-    }, [])
+    }, [id])
 
-    return { projects, isLoading, error };
+    return { projects, project, isFetchLoading, fetchError };
 }

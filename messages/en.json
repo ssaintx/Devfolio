@@ -136,10 +136,44 @@
             }
         },
         "Edit": {
-            "Heading": "Edit projects"
+            "Heading": "Edit projects",
+            "Menu": {
+                "Edit": "Edit project",
+                "Delete": "Delete project"
+            },
+            "Status": {
+                "Loading": "Loading projects...",
+                "Empty": "No projects",
+                "Error": "Failed to load projects."
+            }
         },
         "Statistics": {
             "Heading": "View statistics"
+        },
+        "Project": {
+            "Heading": "Home",
+            "GithubButton": "Github",
+            "LiveButton": "Live",
+            "Status": {
+                "Loading": "Loading project...",
+                "Error": "Failed to load project.",
+                "NotFound": "Project not found."
+            }
+        }
+    },
+    "Hooks": {
+        "Fetch": {
+            "ProjectsError": "Failed to fetch projects.",
+            "ProjectError": "Failed to fetch project."
+        },
+        "Delete": {
+            "Error": "Failed to delete project."
+        },
+        "Edit": {
+            "Error": "Failed to edit project."
+        },
+        "Create": {
+            "Error": "Failed to create project."
         }
     }
 }

@@ -136,10 +136,44 @@
             }
         },
         "Edit": {
-            "Heading": "Loyihalar o'zgartirish"
+            "Heading": "Loyihalar o'zgartirish",
+            "Menu": {
+                "Edit": "Loyiha o'zgartirish",
+                "Delete": "Loyiha o'chirish"
+            },
+            "Status": {
+                "Loading": "Loyihalar yuklanmoqda...",
+                "Empty": "Loyihalar yo'q.",
+                "Error": "Loyihalarni yuklab bolmadi."
+            }
         },
         "Statistics": {
             "Heading": "Statistika ko'rish"
+        },
+        "Project": {
+            "Heading": "Bosh sahifa",
+            "GithubButton": "Github",
+            "LiveButton": "Sayt",
+            "Status": {
+                "Loading": "Loyiha yuklanmoqda...",
+                "Error": "Loyihalani yuklab bolmadi.",
+                "NotFound": "Loyihala topilmadi."
+            }
+        }
+    },
+    "Hooks": {
+        "Fetch": {
+            "ProjectsError": "Loyihalarni olib kelishda xato.",
+            "ProjectError": "Loyihani olib kelishda xato."
+        },
+        "Delete": {
+            "Error": "Loyihani o'chirishda xato."
+        },
+        "Edit": {
+            "Error": "Loyihani tahrir qilishda xato."
+        },
+        "Create": {
+            "Error": "Loyihani yaratishda xatolik yuz berdi."
         }
     }
 }

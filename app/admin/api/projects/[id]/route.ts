@@ -1,20 +1,29 @@
 "use server"
 
+import { ID } from "node-appwrite";
 import { NextResponse } from "next/server";
-import {
-    COLLECTION_ID,
-    DATABASE_ID,
-    databases
-} from "@/db/appwrite.config";
+import { parseStringify } from "@/lib/utils";
+import { InputFile } from "node-appwrite/file";
 import { Project } from "@/types/appwrite.types";
+import {
+    storage,
+    databases,
+    ENDPOINT,
+    BUCKET_ID,
+    PROJECT_ID,
+    DATABASE_ID,
+    COLLECTION_ID,
+} from "@/db/appwrite.config";
 
 export const getProject = async (id: string) => {
     try {
-        const project = await databases.getDocument(
+        const response = await databases.getDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id
         );
+
+        return parseStringify(response);
     } catch (error) {
         console.error(error);
     };
@@ -39,11 +48,34 @@ export const updateProject = async (
     data: Project,
 ) => {
     try {
+        let file;
+        if (data.image) {
+            const inputFile = data.image && InputFile.fromBuffer(
+                data.image?.get("blobFile") as Blob,
+                data.image?.get("fileName") as string
+            );
+
+            file = await storage.createFile(
+                BUCKET_ID,
+                ID.unique(),
+                inputFile
+            );
+        }
+
         const response = await databases.updateDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id,
-            data
+            {
+                title: data.title,
+                subtitle: data.subtitle,
+                description: data.description,
+                githubURL: data.githubURL,
+                liveURL: data.liveURL,
+                date: data.date,
+                imageId: file?.$id ? file.$id : null,
+                imageUrl: file?.$id ? `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view??project=${PROJECT_ID}` : null,
+            }
         );
 
         return response;

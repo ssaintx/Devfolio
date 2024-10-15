@@ -53,7 +53,7 @@ export const createProject = async (data: Project) => {
     }
 };
 
-export const getProject = async () => {
+export const getProjects = async () => {
     try {
         const response = await databases.listDocuments(
             DATABASE_ID,
@@ -80,7 +80,7 @@ export const POST = async (req: Request) => {
 
 export const GET = async () => {
     try {
-        const response = await getProject();
+        const response = await getProjects();
         return NextResponse.json(response);
     } catch (error) {
         console.log(error);

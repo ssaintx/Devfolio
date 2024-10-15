@@ -8,12 +8,10 @@ import {
 
 import { Separator } from "../ui/separator";
 import { LanguagesIcon } from "lucide-react";
-import { buttonVariants } from "../ui/button";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { GearIcon, Half2Icon } from "@radix-ui/react-icons";
 
-import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 export const Settings = () => {
