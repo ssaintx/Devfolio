@@ -124,7 +124,10 @@
             "Submit": "Create",
             "Status": {
                 "Success": "Project created successfully!",
-                "Error": "An error occurred while creating the project."
+                "Error": "An error occurred while creating the project.",
+                "Loading": "Loading project...",
+                "ErrorEdit": "Failed to load project.",
+                "NotFound": "Project not found."
             },
             "Errors": {
                 "Title": "Title must be at least 2 characters.",

@@ -83,7 +83,7 @@ const Page = () => {
                     <ExternalLinkIcon /> {t("LiveButton")}
                   </Link>
                 </div>
-                <div className="flex justify-end items-center mt-4">
+                <div className="flex justify-end items-end mt-4 h-full">
                   <p className="text-xs text-gray-500">
                     {new Date(project.date).toLocaleDateString('en-GB', {
                       month: 'long',

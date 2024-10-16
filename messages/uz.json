@@ -124,7 +124,10 @@
             "Submit": "Yaratish",
             "Status": {
                 "Success": "Loyiha muvaffaqiyatli yaratildi.",
-                "Error": "Loyihani yaratishda xatolik yuz berdi."
+                "Error": "Loyihani yaratishda xatolik yuz berdi.",
+                "Loading": "Loyihalar yuklanmoqda...",
+                "Empty": "Loyihalar yo'q.",
+                "ErrorEdit": "Loyihalarni yuklab bolmadi."
             },
             "Errors": {
                 "Title": "Sarlavha kamida 2 ta belgidan iborat boʻlishi kerak.",

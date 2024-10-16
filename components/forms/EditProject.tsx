@@ -6,6 +6,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { LoaderCircle } from "lucide-react";
 import { FileUploader } from "../functions/FileUploader";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import {
     Form,
     FormControl,
@@ -27,20 +28,44 @@ export const EditProject = ({ id }: { id: string }) => {
     const t = useTranslations("Admin.Create");
     const [isLoading, setIsLoading] = useState(false);
     
-    const projectValues = useFetch(id);
+    const { project, isFetchLoading, fetchError } = useFetch(id);
 
     const form = useForm<z.infer<typeof schema>>({
         resolver: zodResolver(schema),
         defaultValues: {
-            title: projectValues.project?.title,
-            subtitle: projectValues.project?.subtitle,
-            description: projectValues.project?.description,
-            image: projectValues.project?.image,
-            githubURL: projectValues.project?.githubURL,
-            liveURL: projectValues.project?.liveURL,
-            date: projectValues.project?.date,
+            title: project?.title ?? "",
+            subtitle: project?.subtitle ?? "",
+            description: project?.description ?? "",
+            image: [],
+            githubURL: project?.githubURL ?? "",
+            liveURL: project?.liveURL ?? "",
+            date: project?.date ?? "",
         },
     });
+
+    if (isFetchLoading) {
+        return (
+            <div className="flex flex-row items-center gap-2 mt-4">
+                <LoaderCircle className="animate-spin size-4" />
+                <p>{t("Status.Loading")}</p>
+            </div>
+        );
+    }
+
+    if (fetchError) {
+        return (
+            <div className="mt-4 flex items-center justify-center md:justify-start shadow-xl shadow-[bg-red-500]">
+                <p className="flex flex-row items-center justify-center gap-2 bg-red-400 rounded-lg shadow-xl text-white h-12 p-4 text-center text-sm">
+                    <ExclamationTriangleIcon />
+                    {t("Status.ErrorEdit")}
+                </p>
+            </div>
+        );
+    }
+
+    if (!project) {
+        return <div className="mt-4">{t("Status.NotFound")}</div>;
+    }
 
     const onSubmit = async (values: z.infer<typeof schema>) => {
         setIsLoading(true);
@@ -57,7 +82,7 @@ export const EditProject = ({ id }: { id: string }) => {
         }
 
         try {
-            const project = {
+            const data = {
                 title: values.title,
                 subtitle: values.subtitle,
                 description: values.description,
@@ -67,14 +92,14 @@ export const EditProject = ({ id }: { id: string }) => {
                 date: values.date,
             };
 
-            const response = await updateProject(id, project);
+            const response = await updateProject(id, data);
 
             if (response) {
                 toast.success(t("Status.Success"));
                 form.reset();
             };
         } catch (error: any) {
-            toast.error(t("Status.Error"), error.message);
+            toast.error(t("Status.ErrorEdit"), error.message);
         };
 
         setIsLoading(false);
