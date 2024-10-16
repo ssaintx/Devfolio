@@ -7,6 +7,7 @@ import { RootLayoutProps } from "@/lib/props";
 
 import { Toaster } from "@/components/ui/sonner";
 import { Topbar } from "@/components/shared/admin/Topbar";
+import { BreadCrumb } from "@/components/shared/BreadCrumb";
 import { Sidebar } from "@/components/shared/admin/Sidebar";
 import { Bottombar } from "@/components/shared/admin/Bottombar";
 
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: RootLayoutProps) {
   const locale = await getLocale();
   const messages = await getMessages();
-  
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <NextIntlClientProvider messages={messages}>
@@ -30,11 +31,16 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             <main className='flex flex-row'>
               <Sidebar />
               <section className='container_admin'>
-                <div className='w-full max-w-4xl'>{children}</div>
+                <div className='w-full max-w-4xl'>
+                  <div className="breadcrumb_admin">
+                    <BreadCrumb />
+                  </div>
+                  {children}
+                </div>
               </section>
             </main>
             <Bottombar />
-            <Toaster className="glassmophism bg-zinc-200 dark:bg-black p-2 rounded-3xl" />
+            <Toaster className="glassmorphism p-2 rounded-3xl" />
           </body>
         </Providers>
       </NextIntlClientProvider>

@@ -22,7 +22,6 @@ import { projectSchema } from "@/types/appwrite.types";
 import { createProject } from "@/app/admin/api/projects/route";
 
 export const CreateProject = () => {
-    let formData;
     const schema = projectSchema();
     const t = useTranslations("Admin.Create");
     const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +41,8 @@ export const CreateProject = () => {
 
     const onSubmit = async (values: z.infer<typeof schema>) => {
         setIsLoading(true);
+
+        let formData;
 
         if (values.image && values.image?.length > 0) {
             const blobFile = new Blob([values.image[0]], {

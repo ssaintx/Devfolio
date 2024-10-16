@@ -6,8 +6,8 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Portfolio } from "@/components/sections/Portfolio";
 /* ADMIN */
-import { PasskeyModal } from "@/components/shared/PasskeyModal";
 import { SearchParamProps } from "@/lib/props";
+import { PasskeyModal } from "@/components/shared/PasskeyModal";
 
 const Page = ({ searchParams }: SearchParamProps) => {
   const isAdmin = searchParams?.admin === "true";

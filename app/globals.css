@@ -85,9 +85,7 @@
       background-color: transparent;
       width: 0;
       height: 0;
-    }
-
-    ;
+    };
   }
 
   body {
@@ -120,6 +118,10 @@
 
   .heading {
     @apply lg:text-5xl md:text-4xl text-2xl font-medium text-zinc-900 dark:text-zinc-100;
+  }
+
+  .breadcrumb_admin {
+    @apply absolute flex flex-row items-center justify-start top-12 z-10 md:w-max md:items-start md:justify-start mt-4;
   }
 
   .container_admin {

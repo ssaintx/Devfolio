@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { ID } from "node-appwrite";
 import { NextResponse } from "next/server";
@@ -15,38 +15,33 @@ import {
     COLLECTION_ID,
 } from "@/db/appwrite.config";
 
-export const getProject = async (id: string) => {
+const getProject = async (id: string) => {
     try {
         const response = await databases.getDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id
         );
-
         return parseStringify(response);
     } catch (error) {
         console.error(error);
-    };
+    }
 };
 
-export const deleteProject = async (id: string) => {
+const deleteProject = async (id: string) => {
     try {
         const response = await databases.deleteDocument(
             DATABASE_ID,
             COLLECTION_ID,
             id
         );
-
         return response;
     } catch (error) {
         console.error(error);
-    };
+    }
 };
 
-export const updateProject = async (
-    id: string,
-    data: Project,
-) => {
+const updateProject = async (id: string, data: Project) => {
     try {
         let file;
         if (data.image) {
@@ -81,7 +76,7 @@ export const updateProject = async (
         return response;
     } catch (error) {
         console.error(error);
-    };
+    }
 };
 
 export const GET = async (
@@ -94,7 +89,7 @@ export const GET = async (
         return NextResponse.json({ project });
     } catch (error) {
         return NextResponse.json({ message: "Failed to get Project" }, { status: 500 });
-    };
+    }
 };
 
 export const DELETE = async (
@@ -107,7 +102,7 @@ export const DELETE = async (
         return NextResponse.json({ message: "Project deleted" });
     } catch (error) {
         return NextResponse.json({ message: "Failed to delete Project" }, { status: 500 });
-    };
+    }
 };
 
 export const PUT = async (
@@ -121,5 +116,5 @@ export const PUT = async (
         return NextResponse.json({ message: "Project updated" });
     } catch (error) {
         return NextResponse.json({ message: "Failed to update Project" }, { status: 500 });
-    };
+    }
 };

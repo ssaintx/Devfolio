@@ -62,9 +62,16 @@
             }
         }
     },
-    "Porfolio": {
+    "Portfolio": {
         "Heading": "Portfolio",
-        "SeeMore": "Xamma loyiha ko'rish"
+        "SeeMore": "Xamma loyiha ko'rish",
+        "GithubButton": "Github",
+        "LiveButton": "Sayt",
+        "Status": {
+            "Loading": "Loyihalar yuklanmoqda...",
+            "Empty": "Loyihalar yo'q.",
+            "Error": "Loyihalarni yuklab bolmadi."
+        }
     },
     "Functions": {
         "Theme": {

@@ -62,9 +62,16 @@
             }
         }
     },
-    "Porfolio": {
+    "Portfolio": {
         "Heading": "Portfolio",
-        "SeeMore": "See all projects"
+        "SeeMore": "See all projects",
+        "GithubButton": "Github",
+        "LiveButton": "Live",
+        "Status": {
+            "Loading": "Loading projects...",
+            "Empty": "No projects",
+            "Error": "Failed to load projects."
+        }
     },
     "Functions": {
         "Theme": {
