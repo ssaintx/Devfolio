@@ -34,31 +34,27 @@
         "Bento": {
             "First": {
                 "Heading": "Frontend Tajribasi",
-                "Subheading": "1 yillik amaliy tajribaga ega Frontend Dasturchi React.js, Next.js va TypeScript’da yuqori darajada ishlash."
+                "Subheading": "React.js, Next.js va TypeScript'da 1 yillik tajriba."
             },
             "Second": {
-                "Heading": "Full-Stack Dasturlash",
-                "Subheading": "MERN stack va Next.js (SSR) bilan full-stack loyihalar tajribasi."
+                "Heading": "Shaxsiy Ko'nikmalar",
+                "Subheading": "Soft va hard ko'nikmalar."
             },
             "Third": {
-                "Heading": "Mentorlik va Hamkorlik",
-                "Subheading": "Jamoaviy ish va bilim almashishni yoqtiraman."
+                "Heading": "Full-stack dasturchi",
+                "Subheading": "MERN va SSR."
             },
             "Fourth": {
                 "Heading": "Qo'shimcha...",
-                "Subheading": "Python, Java va C++ tillarida yetarli bilimga ega, ma'lumot tuzilmalari va algoritmlar bo'yicha mustahkam poydevor."
+                "Subheading": "Python, Java va DSA."
             },
             "Fifth": {
                 "Heading": "Ta'lim",
-                "Subheading": "Toshkentdagi Markaziy Osiyo Universiteti talabasi."
+                "Subheading": "Markaziy Osiyo Universitetida talaba."
             },
             "Sixth": {
                 "Heading": "Karyera Maqsadlari",
-                "Subheading": "Veb-dasturlash sohasida innovatsion loyihalarga hissa qo'shish uchun imkoniyatlarni qidirish."
-            },
-            "Seventh": {
-                "Heading": "Shaxsiy Xususiyatlar",
-                "Subheading": "Yangi texnologiyalarni tez o'rganish va kreativ muammolarni hal qilish qobiliyati."
+                "Subheading": "Ishga tayyor."
             }
         }
     },
@@ -126,7 +122,7 @@
             "Live": "Jonli Sayt",
             "Image": {
                 "LabelColor": "Yuklash uchun bosing",
-                "Label": "yoki sudrab olib tashlang" 
+                "Label": "yoki sudrab olib tashlang"
             },
             "Submit": "Yaratish",
             "Status": {
@@ -142,6 +138,7 @@
                 "Description": "Tasvif kamida 2 ta belgidan iborat boʻlishi kerak.",
                 "Github": "Github havola kamida 2 ta belgidan iborat boʻlishi kerak.",
                 "Live": "Jonli sayt havola kamida 2 ta belgidan iborat boʻlishi kerak.",
+                "ProjectType": "Loyiha turi tanlang.",
                 "Image": "Rasmni yuklang"
             }
         },

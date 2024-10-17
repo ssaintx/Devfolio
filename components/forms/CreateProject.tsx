@@ -6,6 +6,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { LoaderCircle } from "lucide-react";
 import { FileUploader } from "../functions/FileUploader";
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
 import {
     Form,
     FormControl,
@@ -35,6 +36,7 @@ export const CreateProject = () => {
             image: [],
             githubURL: "",
             liveURL: "",
+            projectType: undefined,
             date: new Date().toISOString(),
         },
     });
@@ -62,6 +64,7 @@ export const CreateProject = () => {
                 image: values.image ? formData : undefined,
                 githubURL: values.githubURL,
                 liveURL: values.liveURL,
+                projectType: values.projectType,
                 date: values.date,
             };
 
@@ -147,6 +150,32 @@ export const CreateProject = () => {
                         )}
                     />
                 </div>
+                <FormField
+                    control={form.control}
+                    name="projectType"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <ToggleGroup
+                                    type="single"
+                                    defaultValue={field.value}
+                                    onValueChange={field.onChange}
+                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                                >
+                                    <ToggleGroupItem className="glassmorphism" value="Frontend">Frontend</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="Backend">Backend</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="Mobile">Mobile</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="SaaS">SaaS</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="WebApplication">WebApplication</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="CRM">CRM</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="Landingpage">Landingpage</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="E-commerce">E-Commerce</ToggleGroupItem>
+                                </ToggleGroup>
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
                 <FormField
                     control={form.control}
                     name="image"

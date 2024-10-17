@@ -35,7 +35,7 @@ const Page = () => {
           className="flex justify-center sm:justify-start"
         >
           <div className="glassmorphism p-2 rounded-2xl">
-            <Image src={kali} alt="Logo" width={200} height={200} className="rounded-2xl" priority unoptimized/>
+            <Image src={kali} alt="Logo" width={200} height={200} className="rounded-2xl" priority unoptimized />
           </div>
         </motion.div>
         {/* PERSONAL INFORMATION CONTAINER */}
@@ -68,7 +68,19 @@ const Page = () => {
           <p className="first-letter:text-4xl">{t("Bio")}</p>
         </div>
       </motion.div>
+      <motion.div variants={popIn}>
+        <Link
+          href={`/assets/LazizbekCV.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          download="LazizbekCV.pdf"
+          className="button flex items-center justify-center gap-2 mt-10"
+        >
+          <DownloadIcon className="size-4" /> {t("Button")}
+        </Link>
+      </motion.div>
     </motion.section>
+
   );
 };
 

@@ -1,20 +1,15 @@
-"use client"
+import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { popIn } from "@/utils/motion";
 import { motion } from "framer-motion";
-import { popIn, staggerContainer } from "@/utils/motion";
+import { DownloadIcon } from "@radix-ui/react-icons";
 
-export const BentoGrid = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => {
+export const BentoGrid = ({ className, children }: { className?: string; children?: React.ReactNode; }) => {
   return (
     <div
       className={cn(
-        "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
+        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
         className
       )}
     >
@@ -25,33 +20,95 @@ export const BentoGrid = ({
 
 export const BentoGridItem = ({
   className,
+  id,
   title,
   description,
-  header,
-  icon,
+  img,
+  imgClassName,
+  titleClassName,
+  spareImg,
 }: {
   className?: string;
+  id: number;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
+  img?: string;
+  imgClassName?: string;
+  titleClassName?: string;
+  spareImg?: string;
 }) => {
+  const leftLists = ["ReactJS", "NextJS", "Typescript"];
+  const rightLists = ["NodeJS", "ExpressJS", "NestJs"];
+
   return (
     <motion.div
       variants={popIn}
       className={cn(
-        "row-span-1 rounded-2xl group/bento glassmorphism p-4 justify-between flex flex-col space-y-4",
+        "row-span-1 relative overflow-hidden rounded-3xl glassmorphism group/bento justify-between flex flex-col space-y-4",
         className
       )}
     >
-      {header}
-      <div className="group-hover/bento:translate-x-2">
-        {icon}
-        <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
-          {title}
+      <div className="h-full">
+        <div className="w-full h-full absolute">
+          {img && (
+            <img
+              src={img}
+              alt={img}
+              className={cn(imgClassName, "object-cover object-center ")}
+            />
+          )}
         </div>
-        <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
-          {description}
+        <div className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"} `}>
+          {spareImg && (
+            <img
+              src={spareImg}
+              alt={spareImg}
+              className="object-cover object-center w-full h-full"
+            />
+          )}
+        </div>
+
+        <div
+          className={cn(
+            titleClassName,
+            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+          )}
+        >
+          <div className="font-sans font-light md:max-w-32 md:text-xs lg:text-base text-sm text-gray-500 z-10">
+            {description}
+          </div>
+          <div className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}>
+            {title}
+          </div>
+
+          {id === 3 && (
+            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                {leftLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                    lg:opacity-100 rounded-xl text-center glassmorphism"
+                  >
+                    {item}
+                  </span>
+                ))}
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-xl text-center glassmorphism"></span>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-xl text-center glassmorphism"></span>
+                {rightLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                    lg:opacity-100 rounded-xl text-center glassmorphism"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

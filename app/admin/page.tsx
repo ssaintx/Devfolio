@@ -1,5 +1,6 @@
 "use client"
 
+import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -83,7 +84,19 @@ const Page = () => {
                     <ExternalLinkIcon /> {t("LiveButton")}
                   </Link>
                 </div>
-                <div className="flex justify-end items-end mt-4 h-full">
+                <div className="flex justify-between items-end mt-4 h-full">
+                  <div className={clsx({
+                    "btn-frontend-gradient": project.projectType === "Frontend",
+                    "btn-backend-gradient": project.projectType === "Backend",
+                    "btn-mobile-gradient": project.projectType === "Mobile",
+                    "btn-saas-gradient": project.projectType === "SaaS",
+                    "btn-webapp-gradient": project.projectType === "WebApplication",
+                    "btn-crm-gradient": project.projectType === "CRM",
+                    "btn-landing-gradient": project.projectType === "Landingpage",
+                    "btn-ecommence-gradient": project.projectType === "E-commerce",
+                  })}>
+                    {project.projectType}
+                  </div>
                   <p className="text-xs text-gray-500">
                     {new Date(project.date).toLocaleDateString('en-GB', {
                       month: 'long',

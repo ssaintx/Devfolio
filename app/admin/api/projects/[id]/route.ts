@@ -15,7 +15,7 @@ import {
     COLLECTION_ID,
 } from "@/db/appwrite.config";
 
-const getProject = async (id: string) => {
+export const getProject = async (id: string) => {
     try {
         const response = await databases.getDocument(
             DATABASE_ID,
@@ -28,7 +28,7 @@ const getProject = async (id: string) => {
     }
 };
 
-const deleteProject = async (id: string) => {
+export const deleteProject = async (id: string) => {
     try {
         const response = await databases.deleteDocument(
             DATABASE_ID,
@@ -41,7 +41,7 @@ const deleteProject = async (id: string) => {
     }
 };
 
-const updateProject = async (id: string, data: Project) => {
+export const updateProject = async (id: string, data: Project) => {
     try {
         let file;
         if (data.image) {
@@ -67,6 +67,7 @@ const updateProject = async (id: string, data: Project) => {
                 description: data.description,
                 githubURL: data.githubURL,
                 liveURL: data.liveURL,
+                projectType: data.projectType,
                 date: data.date,
                 imageId: file?.$id ? file.$id : null,
                 imageUrl: file?.$id ? `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view??project=${PROJECT_ID}` : null,

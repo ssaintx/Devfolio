@@ -1,5 +1,6 @@
 "use client"
 
+import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -57,6 +58,20 @@ const Page = () => {
                         year: 'numeric'
                     })}
                 </p>
+            </div>
+            <div className="flex items-center justify-start mt-4">
+                <div className={clsx({
+                    "btn-frontend-gradient": project.projectType === "Frontend",
+                    "btn-backend-gradient": project.projectType === "Backend",
+                    "btn-mobile-gradient": project.projectType === "Mobile",
+                    "btn-saas-gradient": project.projectType === "SaaS",
+                    "btn-webapp-gradient": project.projectType === "WebApplication",
+                    "btn-crm-gradient": project.projectType === "CRM",
+                    "btn-landing-gradient": project.projectType === "Landingpage",
+                    "btn-ecommence-gradient": project.projectType === "E-commerce",
+                })}>
+                    {project.projectType}
+                </div>
             </div>
             <div className="flex items-center justify-center mt-4">
                 <p>{project.description}</p>

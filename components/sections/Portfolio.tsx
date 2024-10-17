@@ -1,5 +1,6 @@
 "use client"
 
+import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -25,7 +26,7 @@ export const Portfolio = () => {
             whileInView="show"
             viewport={{ once: false, amount: 0.25 }}
             variants={staggerContainer}
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center dark-light-secondary"
             id="portfolio"
         >
             <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")}</motion.h1>
@@ -47,7 +48,7 @@ export const Portfolio = () => {
                     <p>{t("Status.Empty")}</p> :
                     projects.map((project: Project) => {
                         const redirectToProject = () => {
-                            router.push(`/projects`);
+                            router.push(`/portfolio`);
                         }
                         return (
                             <motion.article
@@ -89,7 +90,19 @@ export const Portfolio = () => {
                                         <ExternalLinkIcon /> {t("LiveButton")}
                                     </Link>
                                 </div>
-                                <div className="flex justify-end items-end mt-4 h-full">
+                                <div className="flex justify-between items-end mt-4 h-full">
+                                    <div className={clsx({
+                                        "btn-frontend-gradient": project.projectType === "Frontend",
+                                        "btn-backend-gradient": project.projectType === "Backend",
+                                        "btn-mobile-gradient": project.projectType === "Mobile",
+                                        "btn-saas-gradient": project.projectType === "SaaS",
+                                        "btn-webapp-gradient": project.projectType === "WebApplication",
+                                        "btn-crm-gradient": project.projectType === "CRM",
+                                        "btn-landing-gradient": project.projectType === "Landingpage",
+                                        "btn-ecommence-gradient": project.projectType === "E-commerce",
+                                    })}>
+                                        {project.projectType}
+                                    </div>
                                     <p className="text-xs text-gray-500">
                                         {new Date(project.date).toLocaleDateString('en-GB', {
                                             month: 'long',

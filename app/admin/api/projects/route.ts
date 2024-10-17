@@ -41,6 +41,7 @@ export const createProject = async (data: Project) => {
                 description: data.description,
                 githubURL: data.githubURL,
                 liveURL: data.liveURL,
+                projectType: data.projectType,
                 date: data.date,
                 imageId: file?.$id ? file.$id : null,
                 imageUrl: file?.$id ? `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view??project=${PROJECT_ID}` : null,
@@ -64,17 +65,6 @@ export const getProjects = async () => {
         return response.documents;
     } catch (error) {
         console.error(error);
-    };
-};
-
-export const POST = async (req: Request) => {
-    try {
-        const { title, subtitle, description, image, githubURL, liveURL, date } = await req.json();
-        const data = { title, subtitle, description, image, githubURL, liveURL, date };
-        const response = createProject(data);
-        return NextResponse.json({ message: "Project created" });
-    } catch (error) {
-        return NextResponse.json({ message: "Failed to create Project" }, { status: 500 });
     };
 };
 

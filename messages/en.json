@@ -34,31 +34,27 @@
         "Bento": {
             "First": {
                 "Heading": "Frontend Expertise",
-                "Subheading": "Frontend Developer with 1 year of hands-on experience Proficient in React.js, Next.js, and TypeScript."
+                "Subheading": "1 year of React.js, Next.js, and TypeScript."
             },
             "Second": {
-                "Heading": "Full-Stack Development",
-                "Subheading": "Experience with full-stack projects using the MERN stack and Next.js (SSR)."
+                "Heading": "Personal Skills",
+                "Subheading": "Soft and hard skills."
             },
             "Third": {
-                "Heading": "Mentorship & Collaboration",
-                "Subheading": "Enjoys working in collaborative environments and sharing knowledge with peers."
+                "Heading": "Full-stack developer",
+                "Subheading": "MERN and SSR."
             },
             "Fourth": {
                 "Heading": "Additional...",
-                "Subheading": "Knowledgeable in Python, Java, and C++ with a strong foundation in data structures and algorithms."
+                "Subheading": "Python, Java, and DSA."
             },
             "Fifth": {
                 "Heading": "Educational Background",
-                "Subheading": "Student at Central Asian University, Tashkent, Uzbekistan."
+                "Subheading": "Student at Central Asian University"
             },
             "Sixth": {
                 "Heading": "Career Aspirations",
-                "Subheading": "Actively seeking opportunities in web development to contribute to innovative projects."
-            },
-            "Seventh": {
-                "Heading": "Personal Qualities",
-                "Subheading": "Ability to quickly learn new technologies and solve creative problems."
+                "Subheading": "Open to work."
             }
         }
     },
@@ -142,6 +138,7 @@
                 "Description": "Description must be at least 2 characters.",
                 "Github": "Github link must be at least 2 characters.",
                 "Live": "Live link must be at least 2 characters.",
+                "ProjectType": "Select a project type.",
                 "Image": "Upload an image."
             }
         },
