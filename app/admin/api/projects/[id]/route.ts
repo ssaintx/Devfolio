@@ -15,7 +15,7 @@ import {
     COLLECTION_ID,
 } from "@/db/appwrite.config";
 
-export const getProject = async (id: string) => {
+const getProject = async (id: string) => {
     try {
         const response = await databases.getDocument(
             DATABASE_ID,
@@ -28,20 +28,8 @@ export const getProject = async (id: string) => {
     }
 };
 
-export const deleteProject = async (id: string) => {
-    try {
-        const response = await databases.deleteDocument(
-            DATABASE_ID,
-            COLLECTION_ID,
-            id
-        );
-        return response;
-    } catch (error) {
-        console.error(error);
-    }
-};
 
-export const updateProject = async (id: string, data: Project) => {
+const updateProject = async (id: string, data: Project) => {
     try {
         let file;
         if (data.image) {
@@ -99,7 +87,11 @@ export const DELETE = async (
 ) => {
     try {
         const id = params.id;
-        await deleteProject(id);
+        await databases.deleteDocument(
+            DATABASE_ID,
+            COLLECTION_ID,
+            id
+        );
         return NextResponse.json({ message: "Project deleted" });
     } catch (error) {
         return NextResponse.json({ message: "Failed to delete Project" }, { status: 500 });
