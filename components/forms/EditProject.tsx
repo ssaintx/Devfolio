@@ -6,7 +6,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { LoaderCircle } from "lucide-react";
 import { FileUploader } from "../functions/FileUploader";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
 import {
     Form,
     FormControl,
@@ -18,7 +18,6 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
-import { useFetch } from "../hooks/useFetch";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { projectSchema } from "@/types/appwrite.types";
 import { updateProject } from "@/app/admin/api/projects/[id]/route";
@@ -27,45 +26,20 @@ export const EditProject = ({ id }: { id: string }) => {
     const schema = projectSchema();
     const t = useTranslations("Admin.Create");
     const [isLoading, setIsLoading] = useState(false);
-    
-    const { project, isFetchLoading, fetchError } = useFetch(id);
 
     const form = useForm<z.infer<typeof schema>>({
         resolver: zodResolver(schema),
         defaultValues: {
-            title: project?.title ?? "",
-            subtitle: project?.subtitle ?? "",
-            description: project?.description ?? "",
+            title: "",
+            subtitle: "",
+            description: "",
             image: [],
-            githubURL: project?.githubURL ?? "",
-            liveURL: project?.liveURL ?? "",
-            date: project?.date ?? "",
+            githubURL: "",
+            liveURL: "",
+            projectType: undefined,
+            date: "",
         },
     });
-
-    if (isFetchLoading) {
-        return (
-            <div className="flex flex-row items-center gap-2 mt-4">
-                <LoaderCircle className="animate-spin size-4" />
-                <p>{t("Status.Loading")}</p>
-            </div>
-        );
-    }
-
-    if (fetchError) {
-        return (
-            <div className="mt-4 flex items-center justify-center md:justify-start shadow-xl shadow-[bg-red-500]">
-                <p className="flex flex-row items-center justify-center gap-2 bg-red-400 rounded-lg shadow-xl text-white h-12 p-4 text-center text-sm">
-                    <ExclamationTriangleIcon />
-                    {t("Status.ErrorEdit")}
-                </p>
-            </div>
-        );
-    }
-
-    if (!project) {
-        return <div className="mt-4">{t("Status.NotFound")}</div>;
-    }
 
     const onSubmit = async (values: z.infer<typeof schema>) => {
         setIsLoading(true);
@@ -89,6 +63,7 @@ export const EditProject = ({ id }: { id: string }) => {
                 image: values.image ? formData : undefined,
                 githubURL: values.githubURL,
                 liveURL: values.liveURL,
+                projectType: values.projectType,
                 date: values.date,
             };
 
@@ -174,6 +149,32 @@ export const EditProject = ({ id }: { id: string }) => {
                         )}
                     />
                 </div>
+                <FormField
+                    control={form.control}
+                    name="projectType"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <ToggleGroup
+                                    type="single"
+                                    defaultValue={field.value}
+                                    onValueChange={field.onChange}
+                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                                >
+                                    <ToggleGroupItem className="glassmorphism" value="Frontend">Frontend</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="Backend">Backend</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="Mobile">Mobile</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="SaaS">SaaS</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="WebApplication">WebApplication</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="CRM">CRM</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="Landing-Page">Landing-Page</ToggleGroupItem>
+                                    <ToggleGroupItem className="glassmorphism" value="E-Commerce">E-Commerce</ToggleGroupItem>
+                                </ToggleGroup>
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
                 <FormField
                     control={form.control}
                     name="image"

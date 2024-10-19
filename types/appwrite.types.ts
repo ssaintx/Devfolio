@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 
-type ProjectType = "Frontend" | "Backend" | "Mobile" | "SaaS" | "WebApplication" | "CRM" | "Landingpage" | "E-commerce";
+type ProjectType = "Frontend" | "Backend" | "Mobile" | "SaaS" | "WebApplication" | "CRM" | "Landing-Page" | "E-Commerce";
 
 export interface Project {
     $id?: string;
@@ -38,7 +38,7 @@ export const projectSchema = () => {
         liveURL: z.string().min(2, {
             message: t("Errors.Live"),
         }),
-        projectType: z.enum(["Frontend", "Backend", "Mobile", "SaaS", "WebApplication", "CRM", "Landingpage", "E-commerce"], {
+        projectType: z.enum(["Frontend", "Backend", "Mobile", "SaaS", "WebApplication", "CRM", "Landing-Page", "E-Commerce"], {
             required_error: t("Errors.ProjectType"),
         }),
         image: z.custom<File[]>().refine((files) => files?.length > 0, {

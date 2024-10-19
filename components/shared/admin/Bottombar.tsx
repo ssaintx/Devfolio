@@ -7,10 +7,10 @@ import { usePathname } from "next/navigation";
 import { Settings } from "@/components/functions/Settings";
 
 import {
-    BarChartIcon,
-    CardStackPlusIcon,
     HomeIcon,
     Pencil2Icon,
+    CardStackPlusIcon,
+    EnvelopeClosedIcon,
 } from "@radix-ui/react-icons";
 
 export const Bottombar = () => {
@@ -34,9 +34,9 @@ export const Bottombar = () => {
             label: t("Create"),
         },
         {
-            img: <BarChartIcon />,
-            route: "/admin/statistics",
-            label: t("Statistics"),
+            img: <EnvelopeClosedIcon />,
+            route: "/admin/emails",
+            label: t("Emails"),
         },
         {
             img: <Settings />,

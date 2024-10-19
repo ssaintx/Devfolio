@@ -9,10 +9,8 @@
         }
     },
     "Hero": {
-        "Badge": "Hire Me",
         "Heading": "Frontend Developer",
-        "Subheading": "Located in Uzbekistan",
-        "Button": "Download CV"
+        "Subheading": "Located in Uzbekistan"
     },
     "About": {
         "Heading": "About Me",
@@ -69,6 +67,13 @@
             "Error": "Failed to load projects."
         }
     },
+    "Timeline": {
+        "Heading": "My journey",
+        "Description": "How it was started and how it is going now..."
+    },
+    "Contacts":{
+        "Heading": "Contact Me"
+    },
     "Functions": {
         "Theme": {
             "Label": "Themes",
@@ -100,7 +105,7 @@
             "Home": "Home",
             "Create": "Create",
             "Edit": "Edit",
-            "Statistics": "Statistics",
+            "Emails": "Emails",
             "Settings": "Settings"
         },
         "Home": {
@@ -154,8 +159,8 @@
                 "Error": "Failed to load projects."
             }
         },
-        "Statistics": {
-            "Heading": "View statistics"
+        "Emails": {
+            "Heading": "New emails"
         },
         "Project": {
             "Heading": "Home",

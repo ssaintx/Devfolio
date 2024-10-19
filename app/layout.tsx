@@ -1,5 +1,5 @@
-import { Providers } from "./providers";
 import { RootLayoutProps } from "@/lib/props";
+import { Providers } from "./providers/ThemeProviders";
 
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -19,13 +19,15 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={GeistSans.className} suppressHydrationWarning>
+    <html lang={locale} className={GeistSans.className}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>
-            {children}
-          </Providers>
-        </NextIntlClientProvider>
+        <main>
+          <NextIntlClientProvider messages={messages}>
+            <Providers>
+              {children}
+            </Providers>
+          </NextIntlClientProvider>
+        </main>
       </body>
     </html>
   );

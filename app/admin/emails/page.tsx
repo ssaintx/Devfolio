@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 const Page = () => {
-    const t = useTranslations("Admin.Statistics")
+    const t = useTranslations("Admin.Emails")
 
     return (
         <section>

@@ -11,20 +11,18 @@ import { LoaderCircle, ExternalLinkIcon } from "lucide-react";
 import { EnterIcon, ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { useFetch } from "../hooks/useFetch";
 import { Project } from "@/types/appwrite.types";
 
 export const Portfolio = () => {
     const t = useTranslations("Portfolio");
-    const router = useRouter();
     const { projects, isFetchLoading, fetchError } = useFetch();
 
     return (
         <motion.section
             initial="hidden"
             whileInView="show"
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
             className="flex flex-col items-center justify-center dark-light-secondary"
             id="portfolio"
@@ -38,7 +36,7 @@ export const Portfolio = () => {
                         {fetchError}
                     </p>
                 </div>)}
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-4xl pb-8 px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-4xl pb-8 px-8 mt-4 ">
                 {isFetchLoading ? (
                     <div className="flex flex-row items-center justify-center w-full gap-2">
                         <LoaderCircle className="animate-spin size-4" />
@@ -47,15 +45,11 @@ export const Portfolio = () => {
                 ) : (projects.length === 0) ?
                     <p>{t("Status.Empty")}</p> :
                     projects.map((project: Project) => {
-                        const redirectToProject = () => {
-                            router.push(`/portfolio`);
-                        }
                         return (
                             <motion.article
                                 variants={popIn}
                                 key={project.$id}
                                 className="glassmorphism p-4 rounded-3xl flex flex-col cursor-pointer"
-                                onClick={redirectToProject}
                             >
                                 <Image
                                     src={project.imageUrl!}
@@ -98,8 +92,8 @@ export const Portfolio = () => {
                                         "btn-saas-gradient": project.projectType === "SaaS",
                                         "btn-webapp-gradient": project.projectType === "WebApplication",
                                         "btn-crm-gradient": project.projectType === "CRM",
-                                        "btn-landing-gradient": project.projectType === "Landingpage",
-                                        "btn-ecommence-gradient": project.projectType === "E-commerce",
+                                        "btn-landing-gradient": project.projectType === "Landing-Page",
+                                        "btn-ecommence-gradient": project.projectType === "E-Commerce",
                                     })}>
                                         {project.projectType}
                                     </div>
@@ -118,8 +112,8 @@ export const Portfolio = () => {
 
             <motion.div
                 variants={popIn}
-                className="flex justify-center items-end mt-8">
-                <Link href='/about' className="button flex flex-row items-center justify-center gap-2">
+                className="flex justify-center items-end my-8">
+                <Link href='/portfolio' className="button flex flex-row items-center justify-center gap-2">
                     <EnterIcon />
                     {t("SeeMore")}
                 </Link>

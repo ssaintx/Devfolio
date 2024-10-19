@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Project } from "@/types/appwrite.types";
 import { useFetch } from "@/components/hooks/useFetch";
+import { useAdminValidation } from "@/components/hooks/useAdminValidation";
 
 import { LoaderCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -19,9 +20,9 @@ import {
 
 const Page = () => {
   const t = useTranslations("Admin.Home");
-
   const router = useRouter();
   const { projects, isFetchLoading, fetchError } = useFetch();
+  useAdminValidation();
 
   return (
     <section>
@@ -92,8 +93,8 @@ const Page = () => {
                     "btn-saas-gradient": project.projectType === "SaaS",
                     "btn-webapp-gradient": project.projectType === "WebApplication",
                     "btn-crm-gradient": project.projectType === "CRM",
-                    "btn-landing-gradient": project.projectType === "Landingpage",
-                    "btn-ecommence-gradient": project.projectType === "E-commerce",
+                    "btn-landing-gradient": project.projectType === "Landing-Page",
+                    "btn-ecommence-gradient": project.projectType === "E-Commerce",
                   })}>
                     {project.projectType}
                   </div>

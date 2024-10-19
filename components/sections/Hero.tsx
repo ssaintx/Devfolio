@@ -1,22 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import createGlobe from 'cobe';
-import AnimatedShinyText from "../magicui/animated-shiny-text";
 
-import { Separator } from "../ui/separator";
-import { popIn, staggerContainer } from "@/utils/motion";
-import {
-    ChevronRightIcon,
-    DownloadIcon,
-    GitHubLogoIcon,
-    LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
-
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { popIn, staggerContainer } from "@/utils/motion";
 
 export const Hero = () => {
     const t = useTranslations("Hero");
@@ -48,8 +37,7 @@ export const Hero = () => {
                 markerColor: [0.1, 0.8, 1],
                 glowColor: [1, 1, 1],
                 markers: [
-                    { location: [37.7595, -122.4367], size: 0.03 },
-                    { location: [40.7128, -74.006], size: 0.1 }
+                    { location: [41.32790439319567, 69.4280728160815], size: 0.1 },
                 ],
                 onRender: (state) => {
                     if (!isDragging) {
@@ -111,7 +99,7 @@ export const Hero = () => {
         <motion.section
             initial="hidden"
             whileInView="show"
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.25 }}
             variants={staggerContainer}
             className="flex flex-col gap-4 items-center justify-between pt-20 overflow-hidden sm:px-8 md:px-12 lg:px-16 pb-8"
             id="home"

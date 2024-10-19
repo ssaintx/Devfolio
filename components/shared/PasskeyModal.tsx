@@ -40,7 +40,7 @@ export const PasskeyModal = () => {
         if (path)
             if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
                 setOpen(false);
-                router.push("/admin");
+                router.replace("/admin");
             } else {
                 setOpen(true);
             }
@@ -73,11 +73,11 @@ export const PasskeyModal = () => {
                 <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-start justify-between">
                         <div className="bg-transparent select-none text-transparent">.</div>
-                        <p>{t("Content.Label")}</p>
+                        <span>{t("Content.Label")}</span>
                         <Cross1Icon onClick={closeModal} className="cursor-pointer size-4" />
                     </AlertDialogTitle>
                     <AlertDialogDescription className="text-center">
-                        <p>{t("Content.Description")}</p>
+                        <span>{t("Content.Description")}</span>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div>

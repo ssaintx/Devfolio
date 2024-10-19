@@ -9,10 +9,8 @@
         }
     },
     "Hero": {
-        "Badge": "Ishga olish",
         "Heading": "Frontend dasturchi",
-        "Subheading": "O'zbekistonda joylashgan",
-        "Button": "Rezyume yuklab olish"
+        "Subheading": "O'zbekistonda joylashgan"
     },
     "About": {
         "Heading": "Oz'im haqida",
@@ -69,6 +67,13 @@
             "Error": "Loyihalarni yuklab bolmadi."
         }
     },
+    "Timeline": {
+        "Heading": "Mening ish tarixim",
+        "Description": "U qanday boshlandi va qanday davom etyapti..."
+    },
+    "Contacts":{
+        "Heading": "Bog'lanish"
+    },
     "Functions": {
         "Theme": {
             "Label": "Mavzular",
@@ -100,7 +105,7 @@
             "Home": "Bosh sahifa",
             "Create": "Yaratish",
             "Edit": "O'zgartirish",
-            "Statistics": "Statistika",
+            "Emails": "Xatlar",
             "Settings": "Sozlamalar"
         },
         "Home": {
@@ -154,8 +159,8 @@
                 "Error": "Loyihalarni yuklab bolmadi."
             }
         },
-        "Statistics": {
-            "Heading": "Statistika ko'rish"
+        "Emails": {
+            "Heading": "Yangi habarlar"
         },
         "Project": {
             "Heading": "Bosh sahifa",

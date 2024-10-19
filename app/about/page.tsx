@@ -10,7 +10,7 @@ import { kali } from "@/public";
 import { Age } from "@/components/functions/Age";
 import { Separator } from "@/components/ui/separator";
 import { popIn, staggerContainer } from "@/utils/motion";
-import { ReaderIcon } from "@radix-ui/react-icons";
+import { DownloadIcon, ReaderIcon } from "@radix-ui/react-icons";
 
 const Page = () => {
   const t = useTranslations("About");

@@ -5,7 +5,8 @@ import { Bottombar } from "@/components/shared/Bottombar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Portfolio } from "@/components/sections/Portfolio";
-import { Timeline } from "@/components/sections/Timeline";
+import { Chronology } from "@/components/sections/Chronology";
+import { Contacts } from "@/components/sections/Contacts";
 /* ADMIN */
 import { SearchParamProps } from "@/lib/props";
 import { PasskeyModal } from "@/components/shared/PasskeyModal";
@@ -22,7 +23,8 @@ const Page = ({ searchParams }: SearchParamProps) => {
       <Hero />
       <About />
       <Portfolio />
-      <Timeline />
+      <Chronology />
+      <Contacts />
       <Bottombar />
     </>
   );

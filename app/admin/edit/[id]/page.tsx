@@ -2,12 +2,15 @@
 
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
+import { useAdminValidation } from '@/components/hooks/useAdminValidation';
 
 import { EditProject } from '@/components/forms/EditProject';
 
 const Page = () => {
     const params = useParams();
     const t = useTranslations("Admin.Edit");
+
+    useAdminValidation();
 
     return (
         <section>

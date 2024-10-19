@@ -7,10 +7,11 @@ import { usePathname } from "next/navigation";
 import { Settings } from "@/components/functions/Settings";
 
 import {
+    HomeIcon,
+    Pencil2Icon,
     BarChartIcon,
     CardStackPlusIcon,
-    HomeIcon,
-    Pencil2Icon
+    EnvelopeClosedIcon,
 } from "@radix-ui/react-icons";
 
 export const Sidebar = () => {
@@ -34,9 +35,9 @@ export const Sidebar = () => {
             label: t("Create"),
         },
         {
-            img: <BarChartIcon />,
-            route: "/admin/statistics",
-            label: t("Statistics"),
+            img: <EnvelopeClosedIcon />,
+            route: "/admin/emails",
+            label: t("Emails"),
         },
     ];
 

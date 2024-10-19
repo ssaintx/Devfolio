@@ -22,7 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { projectSchema } from "@/types/appwrite.types";
 import { createProject } from "@/app/admin/api/projects/route";
 
-export const CreateProject = () => {
+export const ContactForm = () => {
     const schema = projectSchema();
     const t = useTranslations("Admin.Create");
     const [isLoading, setIsLoading] = useState(false);
@@ -68,12 +68,14 @@ export const CreateProject = () => {
                 date: values.date,
             };
 
-            const response = await createProject(project);
+            console.log(project);
 
-            if (response) {
-                toast.success(t("Status.Success"));
-                form.reset();
-            };
+            // const response = await createProject(project);
+
+            // if (response) {
+            //     toast.success(t("Status.Success"));
+            //     form.reset();
+            // };
         } catch (error: any) {
             toast.error(t("Status.Error"), error.message);
         };
@@ -83,7 +85,7 @@ export const CreateProject = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-4 overflow-hidden mt-8 px-4 max-w-4xl bg-red-300">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-4 overflow-hidden mt-8 px-4">
                 <div className="flex flex-col gap-4 sm:flex-row sm:gap-2">
                     <FormField
                         control={form.control}

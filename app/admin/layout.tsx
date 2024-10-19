@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
-import { Providers } from "../providers";
 import { RootLayoutProps } from "@/lib/props";
+import { Providers } from "../providers/ThemeProviders";
 
 import { Toaster } from "@/components/ui/sonner";
 import { Topbar } from "@/components/shared/admin/Topbar";
@@ -23,12 +23,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <>
       <NextIntlClientProvider messages={messages}>
         <Providers>
-          <body>
+          <section>
             <Topbar />
-            <main className='flex flex-row'>
+            <div className='flex flex-row'>
               <Sidebar />
               <section className='container_admin'>
                 <div className='w-full max-w-4xl'>
@@ -38,12 +38,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                   {children}
                 </div>
               </section>
-            </main>
+            </div>
             <Bottombar />
             <Toaster className="glassmorphism p-2 rounded-3xl" />
-          </body>
+          </section>
         </Providers>
       </NextIntlClientProvider>
-    </html>
+    </>
   );
 }

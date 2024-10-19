@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { useFetch } from "@/components/hooks/useFetch";
+import { useAdminValidation } from "@/components/hooks/useAdminValidation";
 
 import { Separator } from "@radix-ui/react-separator";
 import { ExternalLinkIcon, LoaderCircle } from "lucide-react";
@@ -20,6 +21,8 @@ const Page = () => {
     const params = useParams();
     const t = useTranslations("Admin.Project");
     const { project, fetchError, isFetchLoading } = useFetch(params.project as string);
+
+    useAdminValidation();
 
     if (isFetchLoading) {
         return (
@@ -67,8 +70,8 @@ const Page = () => {
                     "btn-saas-gradient": project.projectType === "SaaS",
                     "btn-webapp-gradient": project.projectType === "WebApplication",
                     "btn-crm-gradient": project.projectType === "CRM",
-                    "btn-landing-gradient": project.projectType === "Landingpage",
-                    "btn-ecommence-gradient": project.projectType === "E-commerce",
+                    "btn-landing-gradient": project.projectType === "Landing-Page",
+                    "btn-ecommence-gradient": project.projectType === "E-Commerce",
                 })}>
                     {project.projectType}
                 </div>

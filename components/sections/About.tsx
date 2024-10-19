@@ -79,7 +79,7 @@ export const About = () => {
     <motion.section
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.25 }}
       variants={staggerContainer}
       className="flex flex-col items-center justify-center px-4 xs:px-8 sm:px-16 md:px-20 lg:px-24"
       id="about"

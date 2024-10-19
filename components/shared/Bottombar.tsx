@@ -90,7 +90,7 @@ export const Bottombar = () => {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{link.label}</p>
+                  <span>{link.label}</span>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>

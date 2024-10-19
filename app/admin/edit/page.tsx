@@ -20,6 +20,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useFetch } from "@/components/hooks/useFetch";
 import { useDelete } from "@/components/hooks/useDelete";
+import { useAdminValidation } from "@/components/hooks/useAdminValidation";
 
 const Page = () => {
     const t = useTranslations("Admin.Edit");
@@ -27,6 +28,8 @@ const Page = () => {
 
     const { projects, isFetchLoading, fetchError } = useFetch();
     const { deleteProject, isDeleteLoading, deleteError } = useDelete();
+
+    useAdminValidation();
 
     return (
         <section>
