@@ -6,6 +6,7 @@ import { getLocale, getMessages } from "next-intl/server";
 
 import { Metadata } from "next";
 import { GeistSans } from 'geist/font/sans';
+import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <NextIntlClientProvider messages={messages}>
             <Providers>
               {children}
+              <Toaster className="glassmorphism p-2 rounded-3xl" />
             </Providers>
           </NextIntlClientProvider>
         </main>

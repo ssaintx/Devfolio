@@ -71,8 +71,36 @@
         "Heading": "Mening ish tarixim",
         "Description": "U qanday boshlandi va qanday davom etyapti..."
     },
-    "Contacts":{
-        "Heading": "Bog'lanish"
+    "Contacts": {
+        "Heading": "Bog'lanish",
+        "Form": {
+            "Placeholders": {
+                "Topic": "Mavzu kiriting.",
+                "Email": "Email kiriting.",
+                "Phone": "Telefon raqamingizni kiriting.",
+                "Message": "Xabaringizni kiriting.",
+                "Submit": "Yuborish"
+            },
+            "Status": {
+                "Success": "Email muvaffaqiyatli yuborildi!",
+                "Error": "Email yuborishda xatolik yuz berdi."
+            },
+            "Errors": {
+                "Topic": "Mavzu kamida 2 belgidan iborat bo'lishi kerak.",
+                "Email": "Noto'g'ri elektron pochta manzili.",
+                "Phone": "Noto'g'ri telefon raqami.",
+                "Message": "Xabar kamida 2 belgidan iborat bo'lishi kerak."
+            }
+        }
+    },
+    "Footer": {
+        "Home": "Bosh sahifa",
+        "About": "Haqimda",
+        "Portfolio": "Portfolio",
+        "Timeline": "Ish tajribasi",
+        "Contacts": "Kontaktlar",
+        "Admin": "Admin",
+        "License": "Barcha huquqlar himoyalangan"
     },
     "Functions": {
         "Theme": {
@@ -105,7 +133,7 @@
             "Home": "Bosh sahifa",
             "Create": "Yaratish",
             "Edit": "O'zgartirish",
-            "Emails": "Xatlar",
+            "Emails": "Pochta",
             "Settings": "Sozlamalar"
         },
         "Home": {

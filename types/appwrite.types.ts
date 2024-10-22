@@ -19,6 +19,13 @@ export interface Project {
     date: string;
 };
 
+export interface Email {
+    topic: string;
+    email: string;
+    phone: string;
+    message?: string;
+};
+
 export const projectSchema = () => {
     const t = useTranslations("Admin.Create");
 
@@ -49,3 +56,24 @@ export const projectSchema = () => {
 
     return schema;
 };
+
+export const emailSchema = () => {
+    const t = useTranslations("Contacts.Form");
+
+    const schema = z.object({
+        topic: z.string().min(2, {
+            message: t("Errors.Topic"),
+        }),
+        email: z.string().email({
+            message: t("Errors.Email"),
+        }),
+        phone: z.string().min(2, {
+            message: t("Errors.Phone"),
+        }),
+        message: z.string().min(2, {
+            message: t("Errors.Message"),
+        })
+    });
+
+    return schema;
+}

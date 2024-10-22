@@ -15,7 +15,7 @@ import {
     COLLECTION_ID,
 } from "@/db/appwrite.config";
 
-const getProject = async (id: string) => {
+export async function getProject(id: string) {
     try {
         const response = await databases.getDocument(
             DATABASE_ID,
@@ -29,7 +29,7 @@ const getProject = async (id: string) => {
 };
 
 
-const updateProject = async (id: string, data: Project) => {
+export async function updateProject(id: string, data: Project) {
     try {
         let file;
         if (data.image) {
@@ -68,10 +68,10 @@ const updateProject = async (id: string, data: Project) => {
     }
 };
 
-export const GET = async (
+export async function GET(
     req: Request,
     { params }: { params: { id: string } }
-) => {
+) {
     try {
         const id = params.id;
         const project = await getProject(id);
@@ -81,10 +81,10 @@ export const GET = async (
     }
 };
 
-export const DELETE = async (
+export async function DELETE(
     req: Request,
     { params }: { params: { id: string } }
-) => {
+) {
     try {
         const id = params.id;
         await databases.deleteDocument(
@@ -98,10 +98,10 @@ export const DELETE = async (
     }
 };
 
-export const PUT = async (
+export async function PUT(
     req: Request,
     { params }: { params: { id: string } }
-) => {
+) {
     try {
         const id = params.id;
         const project = await req.json();

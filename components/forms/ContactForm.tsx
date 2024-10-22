@@ -1,12 +1,15 @@
 "use client"
 
+import 'react-phone-number-input/style.css'
+
+import PhoneInput, { Value } from 'react-phone-number-input';
+
 import { z } from "zod";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { LoaderCircle } from "lucide-react";
-import { FileUploader } from "../functions/FileUploader";
-import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
+import { EnvelopeClosedIcon, MobileIcon, PaperPlaneIcon, TextIcon } from "@radix-ui/react-icons";
 import {
     Form,
     FormControl,
@@ -18,64 +21,42 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { emailSchema } from "@/types/appwrite.types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { projectSchema } from "@/types/appwrite.types";
-import { createProject } from "@/app/admin/api/projects/route";
+import { createEmails } from '@/app/admin/api/projects/route';
 
 export const ContactForm = () => {
-    const schema = projectSchema();
-    const t = useTranslations("Admin.Create");
+    const schema = emailSchema();
+    const t = useTranslations("Contacts.Form");
     const [isLoading, setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof schema>>({
         resolver: zodResolver(schema),
         defaultValues: {
-            title: "",
-            subtitle: "",
-            description: "",
-            image: [],
-            githubURL: "",
-            liveURL: "",
-            projectType: undefined,
-            date: new Date().toISOString(),
+            topic: "",
+            email: "",
+            phone: "",
+            message: "",
         },
     });
 
     const onSubmit = async (values: z.infer<typeof schema>) => {
         setIsLoading(true);
 
-        let formData;
-
-        if (values.image && values.image?.length > 0) {
-            const blobFile = new Blob([values.image[0]], {
-                type: values.image[0].type,
-            });
-
-            formData = new FormData();
-            formData.append("blobFile", blobFile);
-            formData.append("fileName", values.image[0].name);
-        }
-
         try {
-            const project = {
-                title: values.title,
-                subtitle: values.subtitle,
-                description: values.description,
-                image: values.image ? formData : undefined,
-                githubURL: values.githubURL,
-                liveURL: values.liveURL,
-                projectType: values.projectType,
-                date: values.date,
+            const email = {
+                topic: values.topic,
+                email: values.email,
+                phone: values.phone,
+                message: values.message,
             };
 
-            console.log(project);
+            const response = await createEmails(email);
 
-            // const response = await createProject(project);
-
-            // if (response) {
-            //     toast.success(t("Status.Success"));
-            //     form.reset();
-            // };
+            if (response) {
+                toast.success(t("Status.Success"));
+                form.reset();
+            };
         } catch (error: any) {
             toast.error(t("Status.Error"), error.message);
         };
@@ -86,66 +67,53 @@ export const ContactForm = () => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-4 overflow-hidden mt-8 px-4">
-                <div className="flex flex-col gap-4 sm:flex-row sm:gap-2">
+                <div className="flex items-center justify-center input">
+                    <TextIcon className="mx-2" />
                     <FormField
                         control={form.control}
-                        name="title"
+                        name="topic"
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Input placeholder={t("Title")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="subtitle"
-                        render={({ field }) => (
-                            <FormItem className="w-full">
-                                <FormControl>
-                                    <Input placeholder={t("Subtitle")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Input placeholder={t("Placeholders.Topic")} {...field} className="input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
                 </div>
-                <div className="flex flex-col gap-4 sm:flex-row sm:gap-2">
-                    <div className="flex flex-col gap-4 w-full">
-                        <FormField
-                            control={form.control}
-                            name="githubURL"
-                            render={({ field }) => (
-                                <FormItem className="w-full">
-                                    <FormControl>
-                                        <Input placeholder={t("Github")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="liveURL"
-                            render={({ field }) => (
-                                <FormItem className="w-full">
-                                    <FormControl>
-                                        <Input placeholder={t("Live")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
+                <div className="flex items-center justify-center input">
+                    <EnvelopeClosedIcon className="mx-2" />
                     <FormField
                         control={form.control}
-                        name="description"
+                        name="email"
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Textarea placeholder={t("Description")} {...field} className="h-full glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Input placeholder={t("Placeholders.Email")} {...field} className="input" />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                <div className="flex items-center justify-center input">
+                    <MobileIcon className="mx-2" />
+                    <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                            <FormItem className="w-full">
+                                <FormControl>
+                                    <PhoneInput
+                                        defaultCountry="UZ"
+                                        placeholder={t("Placeholders.Phone")}
+                                        international
+                                        withCountryCallingCode
+                                        value={field.value as Value | undefined}
+                                        onChange={field.onChange}
+                                        className="h-11 rounded-md px-3 text-sm input"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -154,52 +122,27 @@ export const ContactForm = () => {
                 </div>
                 <FormField
                     control={form.control}
-                    name="projectType"
+                    name="message"
                     render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="w-full">
                             <FormControl>
-                                <ToggleGroup
-                                    type="single"
-                                    defaultValue={field.value}
-                                    onValueChange={field.onChange}
-                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
-                                >
-                                    <ToggleGroupItem className="glassmorphism" value="Frontend">Frontend</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="Backend">Backend</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="Mobile">Mobile</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="SaaS">SaaS</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="WebApplication">WebApplication</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="CRM">CRM</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="Landing-Page">Landing-Page</ToggleGroupItem>
-                                    <ToggleGroupItem className="glassmorphism" value="E-Commerce">E-Commerce</ToggleGroupItem>
-                                </ToggleGroup>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="image"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <FileUploader files={field.value} onChange={field.onChange} />
+                                <Textarea placeholder={t("Placeholders.Message")} {...field} className="h-full input" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 <div className="flex items-center justify-center w-full pb-6">
-                    <button type="submit" className="button">
+                    <button type="submit" className="button flex flex-row items-center justify-center gap-2">
                         {isLoading ? (
                             <div className="flex flex-row items-center justify-center gap-2">
                                 <LoaderCircle className="animate-spin" />
-                                <p>{t("Submit")}</p>
+                                <p>{t("Placeholders.Submit")}</p>
                             </div>
                         ) : (
-                            <p>{t("Submit")}</p>
+                            <p>{t("Placeholders.Submit")}</p>
                         )}
+                        <PaperPlaneIcon />
                     </button>
                 </div>
             </form>

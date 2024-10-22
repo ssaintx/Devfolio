@@ -90,7 +90,7 @@ export const EditProject = ({ id }: { id: string }) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Input placeholder={t("Title")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Input placeholder={t("Title")} {...field} className="input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -102,7 +102,7 @@ export const EditProject = ({ id }: { id: string }) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Input placeholder={t("Subtitle")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Input placeholder={t("Subtitle")} {...field} className="input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -117,7 +117,7 @@ export const EditProject = ({ id }: { id: string }) => {
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormControl>
-                                        <Input placeholder={t("Github")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                        <Input placeholder={t("Github")} {...field} className="input" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -129,7 +129,7 @@ export const EditProject = ({ id }: { id: string }) => {
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormControl>
-                                        <Input placeholder={t("Live")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                        <Input placeholder={t("Live")} {...field} className="input" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -142,7 +142,7 @@ export const EditProject = ({ id }: { id: string }) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Textarea placeholder={t("Description")} {...field} className="h-full glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Textarea placeholder={t("Description")} {...field} className="h-full input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -159,7 +159,7 @@ export const EditProject = ({ id }: { id: string }) => {
                                     type="single"
                                     defaultValue={field.value}
                                     onValueChange={field.onChange}
-                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 input"
                                 >
                                     <ToggleGroupItem className="glassmorphism" value="Frontend">Frontend</ToggleGroupItem>
                                     <ToggleGroupItem className="glassmorphism" value="Backend">Backend</ToggleGroupItem>

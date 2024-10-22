@@ -83,7 +83,7 @@ export const CreateProject = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-4 overflow-hidden mt-8 px-4 max-w-4xl bg-red-300">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-4 overflow-hidden mt-8 px-4 max-w-4xl">
                 <div className="flex flex-col gap-4 sm:flex-row sm:gap-2">
                     <FormField
                         control={form.control}
@@ -91,7 +91,7 @@ export const CreateProject = () => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Input placeholder={t("Title")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Input placeholder={t("Title")} {...field} className="input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -103,7 +103,7 @@ export const CreateProject = () => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Input placeholder={t("Subtitle")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Input placeholder={t("Subtitle")} {...field} className="input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -118,7 +118,7 @@ export const CreateProject = () => {
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormControl>
-                                        <Input placeholder={t("Github")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                        <Input placeholder={t("Github")} {...field} className="input" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -130,7 +130,7 @@ export const CreateProject = () => {
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormControl>
-                                        <Input placeholder={t("Live")} {...field} className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                        <Input placeholder={t("Live")} {...field} className="input" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -143,7 +143,7 @@ export const CreateProject = () => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <Textarea placeholder={t("Description")} {...field} className="h-full glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg" />
+                                    <Textarea placeholder={t("Description")} {...field} className="h-full input" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -160,7 +160,7 @@ export const CreateProject = () => {
                                     type="single"
                                     defaultValue={field.value}
                                     onValueChange={field.onChange}
-                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg"
+                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 input"
                                 >
                                     <ToggleGroupItem className="glassmorphism" value="Frontend">Frontend</ToggleGroupItem>
                                     <ToggleGroupItem className="glassmorphism" value="Backend">Backend</ToggleGroupItem>

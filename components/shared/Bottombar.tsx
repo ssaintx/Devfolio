@@ -15,14 +15,15 @@ import {
   CounterClockwiseClockIcon,
 } from "@radix-ui/react-icons";
 
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
 import { buttonVariants } from "../ui/button";
 import { footerVariants } from "@/utils/motion";
 import { Dock, DockIcon } from "../magicui/dock";
 
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useState, useEffect } from "react";
 import { Settings } from "../functions/Settings";
 
 import Link from "next/link";
@@ -35,6 +36,25 @@ export const Bottombar = () => {
   const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
   const distance = screenWidth < 425 ? 0 : 140;
   const magnification = screenWidth < 425 ? 0 : 60;
+
+  const [showBottombar, setShowBottombar] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const contactsSection = document.getElementById('contacts');
+      if (contactsSection) {
+        const rect = contactsSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          setShowBottombar(false);
+        } else {
+          setShowBottombar(true);
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   const links = [
     {
@@ -73,7 +93,7 @@ export const Bottombar = () => {
       variants={footerVariants}
       initial="hidden"
       whileInView="show"
-      className="bottombar"
+      className={`bottombar ${showBottombar ? "block" : "hidden"}`}
     >
       <TooltipProvider>
         <Dock distance={distance} magnification={magnification} direction="middle" className="glassmorphism z-10 blur-none">

@@ -83,8 +83,8 @@ export const Chronology = () => {
         },
     ];
     return (
-        <div className="w-full">
+        <section className="w-full" id="timeline">
             <Timeline data={data} />
-        </div>
+        </section>
     );
 }

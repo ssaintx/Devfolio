@@ -1,5 +1,6 @@
 /* SHARED */
 import { Navbar } from "@/components/shared/Navbar";
+import { Footer } from "@/components/shared/Footer";
 import { Bottombar } from "@/components/shared/Bottombar";
 /* SECTIONS */
 import { Hero } from "@/components/sections/Hero";
@@ -25,6 +26,7 @@ const Page = ({ searchParams }: SearchParamProps) => {
       <Portfolio />
       <Chronology />
       <Contacts />
+      <Footer />
       <Bottombar />
     </>
   );

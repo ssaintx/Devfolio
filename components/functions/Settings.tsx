@@ -23,7 +23,7 @@ export const Settings = () => {
                 <DropdownMenuTrigger asChild>
                     <div className="rounded-full cursor-pointer"><GearIcon /></div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-60 rounded-lg glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg">
+                <DropdownMenuContent className="w-60 rounded-lg glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg z-[51]">
                     <DropdownMenuLabel>{t("Label")}</DropdownMenuLabel>
                     <Separator orientation="horizontal" className="my-2" />
                     <DropdownMenuItem className="flex flex-row gap-2">

@@ -143,11 +143,15 @@
   }
 
   .bottombar {
-    @apply fixed bottom-0 w-full pb-5 bg-none;
+    @apply fixed bottom-0 w-full pb-5 bg-none z-50;
   }
 
   .button {
     @apply glassmorphism py-2 px-4 rounded-full hover:-translate-y-1 active:shadow-inner active:transition-none dark:active:scale-90 border border-zinc-200 dark:border-zinc-800 transition-all ease-linear;
+  }
+
+  .input {
+    @apply glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg p-2 w-full rounded-lg;
   }
 
   .heading {
@@ -189,4 +193,18 @@
   .heading_admin {
     @apply lg:text-3xl md:text-2xl text-xl font-semibold text-zinc-900 dark:text-zinc-100;
   }
+}
+
+
+/* OVERRIDEN COMPONENTS CODE */
+.PhoneInputInput {
+  outline: none;
+  margin-left: 4px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.PhoneInputInput::placeholder {
+  color: transparent;
 }

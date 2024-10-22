@@ -71,8 +71,36 @@
         "Heading": "My journey",
         "Description": "How it was started and how it is going now..."
     },
-    "Contacts":{
-        "Heading": "Contact Me"
+    "Contacts": {
+        "Heading": "Contact Me",
+        "Form": {
+            "Placeholders": {
+                "Topic": "Type your topic.",
+                "Email": "Type your email.",
+                "Phone": "Type your phone number.",
+                "Message": "Type your message.",
+                "Submit": "Send"
+            },
+            "Status": {
+                "Success": "Email sent successfully!",
+                "Error": "An error occurred while sending the email."
+            },
+            "Errors": {
+                "Topic": "Topic should contain at least 2 characters.",
+                "Email": "Email is invalid.",
+                "Phone": "Phone number incorrect.",
+                "Message": "Message should contain at least 2 characters."
+            }
+        }
+    },
+    "Footer": {
+        "Home": "Home",
+        "About": "About",
+        "Portfolio": "Portfolio",
+        "Timeline": "Job timeline",
+        "Contacts": "Contact",
+        "Admin": "Admin",
+        "License": "All rights reserved"
     },
     "Functions": {
         "Theme": {
