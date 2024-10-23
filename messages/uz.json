@@ -185,10 +185,21 @@
                 "Loading": "Loyihalar yuklanmoqda...",
                 "Empty": "Loyihalar yo'q.",
                 "Error": "Loyihalarni yuklab bolmadi."
+            },
+            "Email": {
+                "Topic": "Mavzu",
+                "From": "Kim dan",
+                "Phone": "Raqam",
+                "Message": "Xabar"
             }
         },
         "Emails": {
-            "Heading": "Yangi habarlar"
+            "Heading": "Yangi habarlar",
+            "Status": {
+                "Loading": "Xatlar yuklanmoqda...",
+                "Empty": "Xatlar yo'q.",
+                "Error": "Xatlarni yuklab bolmadi."
+            }
         },
         "Project": {
             "Heading": "Bosh sahifa",
@@ -204,7 +215,8 @@
     "Hooks": {
         "Fetch": {
             "ProjectsError": "Loyihalarni olib kelishda xato.",
-            "ProjectError": "Loyihani olib kelishda xato."
+            "ProjectError": "Loyihani olib kelishda xato.",
+            "EmailsError": "Xatlar olib kelishda xato."
         },
         "Delete": {
             "Error": "Loyihani o'chirishda xato."

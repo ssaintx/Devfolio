@@ -20,6 +20,7 @@ export interface Project {
 };
 
 export interface Email {
+    $id?: string;
     topic: string;
     email: string;
     phone: string;

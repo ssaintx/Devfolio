@@ -188,7 +188,18 @@
             }
         },
         "Emails": {
-            "Heading": "New emails"
+            "Heading": "New emails",
+            "Status": {
+                "Loading": "Loading emails...",
+                "Empty": "No emails found.",
+                "Error": "Failed to load emails."
+            },
+            "Email": {
+                "Topic": "Topic",
+                "From": "From",
+                "Phone": "Phone",
+                "Message": "Message"
+            }
         },
         "Project": {
             "Heading": "Home",
@@ -204,7 +215,8 @@
     "Hooks": {
         "Fetch": {
             "ProjectsError": "Failed to fetch projects.",
-            "ProjectError": "Failed to fetch project."
+            "ProjectError": "Failed to fetch project.",
+            "EmailsError": "Failed to fetch emails."
         },
         "Delete": {
             "Error": "Failed to delete project."

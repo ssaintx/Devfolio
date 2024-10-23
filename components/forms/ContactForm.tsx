@@ -23,7 +23,7 @@ import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { emailSchema } from "@/types/appwrite.types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createEmails } from '@/app/admin/api/projects/route';
+import { createEmails } from '@/app/admin/api/emails/route';
 
 export const ContactForm = () => {
     const schema = emailSchema();

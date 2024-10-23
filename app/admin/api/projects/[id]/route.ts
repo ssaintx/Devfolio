@@ -15,7 +15,7 @@ import {
     COLLECTION_ID,
 } from "@/db/appwrite.config";
 
-export async function getProject(id: string) {
+async function getProject(id: string) {
     try {
         const response = await databases.getDocument(
             DATABASE_ID,
@@ -95,19 +95,5 @@ export async function DELETE(
         return NextResponse.json({ message: "Project deleted" });
     } catch (error) {
         return NextResponse.json({ message: "Failed to delete Project" }, { status: 500 });
-    }
-};
-
-export async function PUT(
-    req: Request,
-    { params }: { params: { id: string } }
-) {
-    try {
-        const id = params.id;
-        const project = await req.json();
-        await updateProject(id, project);
-        return NextResponse.json({ message: "Project updated" });
-    } catch (error) {
-        return NextResponse.json({ message: "Failed to update Project" }, { status: 500 });
     }
 };

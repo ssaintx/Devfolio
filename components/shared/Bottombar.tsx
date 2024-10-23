@@ -92,8 +92,8 @@ export const Bottombar = () => {
     <motion.nav
       variants={footerVariants}
       initial="hidden"
-      whileInView="show"
-      className={`bottombar ${showBottombar ? "block" : "hidden"}`}
+      whileInView={showBottombar ? "show" : "hidden"}
+      className="bottombar"
     >
       <TooltipProvider>
         <Dock distance={distance} magnification={magnification} direction="middle" className="glassmorphism z-10 blur-none">
