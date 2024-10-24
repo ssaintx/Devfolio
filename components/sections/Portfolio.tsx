@@ -21,7 +21,7 @@ export const Portfolio = () => {
     return (
         <motion.section
             initial="hidden"
-            whileInView="show"
+            whileInView={isFetchLoading ? "hidden" : "show"}
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
             className="flex flex-col items-center justify-center dark-light-secondary"

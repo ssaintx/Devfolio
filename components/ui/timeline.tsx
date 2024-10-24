@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
+import { popIn, staggerContainer } from "@/utils/motion";
 
 interface TimelineEntry {
   title: string;
@@ -35,23 +36,28 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div
+    <motion.div
       className="w-full bg-white dark:bg-neutral-950 md:px-10"
       ref={containerRef}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+      variants={staggerContainer}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl font-semibold">
+        <motion.h2 variants={popIn} className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl font-semibold">
           {t("Heading")}
-        </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
+        </motion.h2>
+        <motion.p variants={popIn} className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
           {t("Description")}
-        </p>
+        </motion.p>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={popIn}
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
@@ -69,9 +75,10 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               </h3>
               {item.content}{" "}
             </div>
-          </div>
+          </motion.div>
         ))}
-        <div
+        <motion.div
+          variants={popIn}
           style={{
             height: height + "px",
           }}
@@ -84,8 +91,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             }}
             className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
           />
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };

@@ -1,12 +1,14 @@
 import { RootLayoutProps } from "@/lib/props";
 import { Providers } from "./providers/ThemeProviders";
 
+import { Suspense } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
 import { Metadata } from "next";
 import { GeistSans } from 'geist/font/sans';
 import { Toaster } from "@/components/ui/sonner";
+import { Loading } from "@/components/shared/Loading";
 
 import "./globals.css";
 
@@ -25,7 +27,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <main>
           <NextIntlClientProvider messages={messages}>
             <Providers>
-              {children}
+              <Suspense fallback={<Loading />}>
+                {children}
+              </Suspense>
               <Toaster className="glassmorphism p-2 rounded-3xl" />
             </Providers>
           </NextIntlClientProvider>

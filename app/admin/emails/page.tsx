@@ -31,7 +31,7 @@ const Page = () => {
                 ) : (emails.length === 0) ?
                     <p>{t("Status.Empty")}</p> :
                     emails.map((email: Email) => (
-                        <div className="glassmorphism p-2 rounded-2xl">
+                        <div className="glassmorphism p-2 rounded-2xl" key={email.$id}>
                             <ul className="flex flex-col ml-2">
                                 <li><strong>{t("Email.Topic")}</strong> - {email.topic}</li>
                                 <Separator orientation="horizontal" className="my-2" />

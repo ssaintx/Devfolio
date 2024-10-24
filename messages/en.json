@@ -115,7 +115,8 @@
         "Settings": {
             "Label": "Settings",
             "ThemeSwitch": "Change theme",
-            "LanguageSwitch": "Change language"
+            "LanguageSwitch": "Change language",
+            "Admin": "Enter as an administrator"
         },
         "AdminModal": {
             "Content": {

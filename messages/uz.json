@@ -115,7 +115,8 @@
         "Settings": {
             "Label": "Sozlamalar",
             "ThemeSwitch": "Mavzu o'zgartirish",
-            "LanguageSwitch": "Til o'zgartirish"
+            "LanguageSwitch": "Til o'zgartirish",
+            "Admin": "Administrator sifatida kiring"
         },
         "AdminModal": {
             "Content": {
