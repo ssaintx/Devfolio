@@ -27,8 +27,13 @@
             "OccupationField": "Kasb",
             "EmailField": "Elektron pochta"
         },
-        "Bio": "Mening ismim Lazizbek. Men veb-ishlab chiqish bo'yicha 1 yillik tajribaga ega kuchli Junior Frontend Developerman. Men Toshkent (O'zbekiston) shahrida joylashgan Markaziy Osiyo universiteti talabasiman...",
-        "ReadMore": "Batafsil ma'lumotni o'qish",
+        "ReadMore": "K'oproq...",
+        "Bio": "Mening texnologik stekim React.js, Next.js va Typescript bo‘lib, men MERN va Next.js(SSR) kabi to‘liq stack loyihalari bilan ham ishlaganman. Men UI-UX dizayni haqida ham ma'lumotga egaman va veb uchun dizayn yaratishim mumkin. Men hozirda Frontend ustozi sifatida ishlayapman va veb-ishlab chiqish sohasida ish qidiryapman. Bundan tashqari, men Python, Java va C++ dasturlash tillari bilan ishlaganman va maʼlumotlar tuzilmalari va algoritmlarini yaxshi bilaman.",
+        "Characteristics": {
+            "Title": "Xususiyatlarim",
+            "Programming": "Dasturlash tillari",
+            "Technologies": "Texnologiyalar"
+        },
         "Bento": {
             "First": {
                 "Heading": "Frontend Tajribasi",
@@ -69,7 +74,29 @@
     },
     "Timeline": {
         "Heading": "Mening ish tarixim",
-        "Description": "U qanday boshlandi va qanday davom etyapti..."
+        "Description": "U qanday boshlandi va qanday davom etyapti...",
+        "Cards": {
+            "First": {
+                "Title": "Mid 2023",
+                "Description": "Frontend kurslarini tugatdim va loyihalar yaratishni boshladim"
+            },
+            "Second": {
+                "Title": "Late 2023",
+                "Description": "Markaziy Osiyo universitetida o'qishni boshladim, C++, DSA va Matematikadan bilimlar oldim. Faol ish qidirishni boshladim."
+            },
+            "Third": {
+                "Title": "Early 2024",
+                "Description": "Lesta Games kompaniyasida UI-UX dizayner sifatida stajirovkaga qatnashdim. Leetcode masalalarini yechdim."
+            },
+            "Fourth": {
+                "Title": "Mid 2024",
+                "Description": "Kuchli Junior Frontend dasturchiga aylandim va haqiqiy loyihalar ustida ishlashni boshladim. Butun yoz Kworkda freelncer sifatida va Navruz Design kompaniyasida oddiy Middle Frontend dasturchi sifatida ishladim."
+            },
+            "Fifth": {
+                "Title": "Now",
+                "Description": "Mustaqil C++ mentor sifatida ishlayapman. Yangi loyihalar yaratib va yangi texnologiyalarni o'rganyapman."
+            }
+        }
     },
     "Contacts": {
         "Heading": "Bog'lanish",
@@ -99,7 +126,6 @@
         "Portfolio": "Portfolio",
         "Timeline": "Ish tajribasi",
         "Contacts": "Kontaktlar",
-        "Admin": "Admin",
         "License": "Barcha huquqlar himoyalangan"
     },
     "Functions": {

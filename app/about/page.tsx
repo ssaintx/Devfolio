@@ -1,16 +1,16 @@
 "use client"
 
-import Link from "next/link";
 import Image from "next/image";
+import AnimatedCircularProgressBar from "@/components/ui/animated-circular-progress-bar";
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { popIn, staggerContainer } from "@/utils/motion";
 
 import { kali } from "@/public";
 import { Age } from "@/components/functions/Age";
 import { Separator } from "@/components/ui/separator";
-import { popIn, staggerContainer } from "@/utils/motion";
-import { DownloadIcon } from "@radix-ui/react-icons";
+import { BreadCrumb } from "@/components/shared/BreadCrumb";
 
 const Page = () => {
   const t = useTranslations("About");
@@ -21,9 +21,12 @@ const Page = () => {
       whileInView="show"
       viewport={{ once: false, amount: 0.25 }}
       variants={staggerContainer}
-      className="flex flex-col dark-light-secondary overflow-hidden p-8 w-screen"
+      className="flex flex-col overflow-hidden px-4 w-screen"
       id="about"
     >
+      <div className="flex items-center justify-center mt-4">
+        <BreadCrumb />
+      </div>
       {/* HEADING */}
       <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")} </motion.h1>
 
@@ -45,15 +48,15 @@ const Page = () => {
         >
           {/* LIST OF DATA */}
           <ul className="flex flex-col gap-[4px] text-zinc-900 dark:text-zinc-200">
-            <li>{t("Fields.NameField")}: {t("PersonalInformation.Name")}</li>
+            <li><strong>{t("Fields.NameField")}</strong>: {t("PersonalInformation.Name")}</li>
             <Separator orientation="horizontal" className="bg-zinc-400 dark:bg-zinc-800" />
-            <li>{t("Fields.LastNameField")}: {t("PersonalInformation.LastName")}</li>
+            <li><strong>{t("Fields.LastNameField")}</strong>: {t("PersonalInformation.LastName")}</li>
             <Separator orientation="horizontal" className="bg-zinc-400 dark:bg-zinc-800" />
-            <li>{t("Fields.AgeField")}: <Age /></li>
+            <li><strong>{t("Fields.AgeField")}</strong>: <Age /></li>
             <Separator orientation="horizontal" className="bg-zinc-400 dark:bg-zinc-800" />
-            <li>{t("Fields.OccupationField")}: {t("PersonalInformation.Occupation")}</li>
+            <li><strong>{t("Fields.OccupationField")}</strong>: {t("PersonalInformation.Occupation")}</li>
             <Separator orientation="horizontal" className="bg-zinc-400 dark:bg-zinc-800" />
-            <li>{t("Fields.EmailField")}: {t("PersonalInformation.Email")}</li>
+            <li><strong>{t("Fields.EmailField")}</strong>: {t("PersonalInformation.Email")}</li>
             <Separator orientation="horizontal" className="bg-zinc-400 dark:bg-zinc-800" />
           </ul>
         </motion.div>
@@ -68,21 +71,85 @@ const Page = () => {
           <p className="first-letter:text-4xl">{t("Bio")}</p>
         </div>
       </motion.div>
-      <motion.div variants={popIn}>
-        <Link
-          href={`/assets/LazizbekCV.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          download="LazizbekCV.pdf"
-          className="button flex items-center justify-center gap-2 mt-10"
-        >
-          <DownloadIcon className="size-4" /> {t("Button")}
-        </Link>
+
+      {/* CHARACTERISTICS */}
+      <motion.h1 variants={popIn} className="heading flex justify-center mt-8 md:mt-16">{t("Characteristics.Title")}</motion.h1>
+
+      {/* SKILLS */}
+      <motion.div variants={popIn} className="flex items-center justify-center w-full mt-4">
+        <div className="flex justify-start items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
+          <p className="text-sm text-zinc-400 dark:text-zinc-600">{t("Characteristics.Programming")}</p>
+        </div>
       </motion.div>
+
+      {/* PROGRAMMING LANGUAGES */}
+      <motion.div variants={popIn} className="flex items-center justify-center w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 max-w-screen-lg w-full">
+          <div className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
+            <div className="absolute flex w-full h-full items-start justify-start text-lg xs:text-xl sm:text-3xl font-bold p-2 z-40">
+              <p className="glassmorphism p-2 rounded-xl">C++</p>
+            </div>
+            <AnimatedCircularProgressBar
+              max={100}
+              min={0}
+              value={60}
+              gaugePrimaryColor="rgb(250 87 193)"
+              gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+              className="size-28 xs:size-40 p-2"
+            />
+          </div>
+          <div className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
+            <div className="absolute flex w-full h-full items-start justify-start text-lg xs:text-xl sm:text-3xl font-bold p-2 z-40">
+              <p className="glassmorphism p-2 rounded-xl">Java</p>
+            </div>
+            <AnimatedCircularProgressBar
+              max={100}
+              min={0}
+              value={40}
+              gaugePrimaryColor="rgb(177 102 204)"
+              gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+              className="size-28 xs:size-40 p-2"
+            />
+          </div>
+          <div className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
+            <div className="absolute flex w-full h-full items-start justify-start text-lg xs:text-xl sm:text-3xl font-bold p-2 z-40">
+              <p className="glassmorphism p-2 rounded-xl">Javascript</p>
+            </div>
+            <AnimatedCircularProgressBar
+              max={100}
+              min={0}
+              value={80}
+              gaugePrimaryColor="rgb(117 114 255)"
+              gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+              className="size-28 xs:size-40 p-2"
+            />
+          </div>
+          <div className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
+            <div className="absolute flex w-full h-full items-start justify-start text-lg xs:text-xl sm:text-3xl font-bold p-2 z-40">
+              <p className="glassmorphism p-2 rounded-xl">Python</p>
+            </div>
+            <AnimatedCircularProgressBar
+              max={100}
+              min={0}
+              value={70}
+              gaugePrimaryColor="rgb(105 166 249)"
+              gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+              className="size-28 xs:size-40 p-2"
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* SKILLS */}
+      <motion.div variants={popIn} className="flex items-center justify-center w-full mt-4">
+        <div className="flex justify-start items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
+          <p className="text-sm text-zinc-400 dark:text-zinc-600">{t("Characteristics.Technologies")}</p>
+        </div>
+      </motion.div>
+
+      
     </motion.section>
   );
 };
 
 export default Page;
-
-//  My tech stack is React.js, Next.js and Typescript, I also worked with fullstack projects like MERN and Next.js(SSR). I also have a knowledge of UI-UX design and can create design for web. I am currently working as a Frontend mentor, and I am looking for a job in the field of web development. Additionally, I have worked with Python, Java and C++ programming languages and have good knowledge of data structures and algorithms.

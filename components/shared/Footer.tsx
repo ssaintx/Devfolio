@@ -8,6 +8,34 @@ import { useTranslations } from "next-intl";
 export const Footer = () => {
     const t = useTranslations("Footer");
 
+    const data = [
+        {
+            id: 1,
+            href: "#home",
+            title: t("Home"),
+        },
+        {
+            id: 2,
+            href: "#about",
+            title: t("About"),
+        },
+        {
+            id: 3,
+            href: "#portfolio",
+            title: t("Portfolio"),
+        },
+        {
+            id: 4,
+            href: "#timeline",
+            title: t("Timeline"),
+        },
+        {
+            id: 5,
+            href: "#contacts",
+            title: t("Contacts"),
+        },
+    ];
+
     return (
         <footer className="glassmorphism">
             <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -17,24 +45,11 @@ export const Footer = () => {
                         <h1>saintx.</h1>
                     </div>
                     <ul className="flex flex-wrap items-center mb-6 text-sm font-light text-gray-500 sm:mb-0">
-                        <li>
-                            <a href="#home" className="me-4 md:me-6">{t("Home")}</a>
-                        </li>
-                        <li>
-                            <a href="#about" className="me-4 md:me-6">{t("About")}</a>
-                        </li>
-                        <li>
-                            <a href="#portfolio" className="me-4 md:me-6">{t("Portfolio")}</a>
-                        </li>
-                        <li>
-                            <a href="#timeline" className="me-4 md:me-6">{t("Timeline")}</a>
-                        </li>
-                        <li>
-                            <a href="#contacts" className="me-4 md:me-6">{t("Contacts")}</a>
-                        </li>
-                        <li>
-                            <a href="/?admin=true" className="text-sky-500">{t("Admin")}</a>
-                        </li>
+                        {data.map(({ id, href, title }) => (
+                            <li key={id} className="mr-4">
+                                <a href={href} className="hover:text-sky-500 duration-200 transition ease-linear">{title}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
                 <Separator orientation="horizontal" className="my-6 sm:mx-auto lg:my-8" />

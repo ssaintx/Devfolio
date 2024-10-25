@@ -27,8 +27,13 @@
             "OccupationField": "Occupation",
             "EmailField": "Email"
         },
-        "Bio": "My name is Lazizbek. I am strong Junior Frontend Developer with 1 year of experience in web development. I am a student of Central Asian University located in Tashkent(Uzbekistan)...",
-        "ReadMore": "Read more",
+        "Bio": "My tech stack is React.js, Next.js and Typescript, I also worked with fullstack projects like MERN and Next.js(SSR). I also have a knowledge of UI-UX design and can create design for web. I am currently working as a Frontend mentor, and I am looking for a job in the field of web development. Additionally, I have worked with Python, Java and C++ programming languages and have good knowledge of data structures and algorithms.",
+        "ReadMore": "More...",
+        "Characteristics": {
+            "Title": "Characteristics",
+            "Programming": "Programming Languages",
+            "Technologies": "Technologies"
+        },
         "Bento": {
             "First": {
                 "Heading": "Frontend Expertise",
@@ -69,7 +74,29 @@
     },
     "Timeline": {
         "Heading": "My journey",
-        "Description": "How it was started and how it is going now..."
+        "Description": "How it was started and how it is going now...",
+        "Cards": {
+            "First": {
+                "Title": "Mid 2023",
+                "Description": "Ended frontend courses and started to create projects"
+            },
+            "Second": {
+                "Title": "Late 2023",
+                "Description": "Start studying at Central Asian University, learned C++, DSA and Math. And started actively searching for a job."
+            },
+            "Third": {
+                "Title": "Early 2024",
+                "Description": "Worked as an intern UI-UX designer at Lesta Games. Aced leetcode problems."
+            },
+            "Fourth": {
+                "Title": "Mid 2024",
+                "Description": "Become Strong Junior Frontend Developer and start working on real projects. Whole summer worked as a freelancer at Kwork and worked as a regular Middle Frontend Developer in Navruz Design company."
+            },
+            "Fifth": {
+                "Title": "Now",
+                "Description": "Working as an independent C++ mentor. Creating new projects and learning new technologies."
+            }
+        }
     },
     "Contacts": {
         "Heading": "Contact Me",
@@ -99,7 +126,6 @@
         "Portfolio": "Portfolio",
         "Timeline": "Job timeline",
         "Contacts": "Contact",
-        "Admin": "Admin",
         "License": "All rights reserved"
     },
     "Functions": {
