@@ -55,6 +55,52 @@
 }
 
 @layer utilities {
+  :root {
+    --meter-color: hsl(0, 0%, 0%);
+  }
+
+  meter {
+    @apply w-full rounded-full glassmorphism;
+  }
+
+  meter::-webkit-meter-bar {
+    background: transparent;
+    margin-left: 8px;
+    border-radius: 9999px;
+  }
+
+  meter::-webkit-meter-optimum-value {
+    background: var(--meter-color);
+  }
+
+  meter::-webkit-meter-suboptimum-value {
+    background: #7e5bef;
+  }
+
+  meter::-webkit-meter-even-less-good-value {
+    background: #06b6d4;
+  }
+
+  meter::-moz-meter-bar {
+    background: transparent;
+    margin-left: 8px;
+    border-radius: 9999px;
+  }
+
+  meter::-moz-meter-optimum-value {
+    background: var(--meter-color);
+  }
+
+  meter::-moz-meter-suboptimum-value {
+    background: #7e5bef;
+  }
+
+  meter::-moz-meter-even-less-good-value {
+    background: #06b6d4;
+  }
+}
+
+@layer utilities {
   .animate-draw {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;

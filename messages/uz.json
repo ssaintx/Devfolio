@@ -32,7 +32,13 @@
         "Characteristics": {
             "Title": "Xususiyatlarim",
             "Programming": "Dasturlash tillari",
-            "Technologies": "Texnologiyalar"
+            "Technologies": "Texnologiyalar",
+            "Architectures": "Arxitektura/Printsiplar",
+            "Other": {
+                "Header": "Boshqa xususiyatlar",
+                "MachineLearning": "Mashina oʻrganishi",
+                "DesktopProgramming": "Desktop dasturlash"
+            }
         },
         "Bento": {
             "First": {

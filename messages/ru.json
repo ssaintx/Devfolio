@@ -32,7 +32,13 @@
         "Characteristics": {
             "Title": "Характеристики",
             "Programming": "Языки программирования",
-            "Technologies": "Технологии"
+            "Technologies": "Технологии",
+            "Architectures": "Архитектуры/Принципы",
+            "Other": {
+                "Header": "Другие навыки",
+                "MachineLearning": "Машинное обучение",
+                "DesktopProgramming": "Разработка ПО"
+            }
         },
         "Bento": {
             "First": {

@@ -97,13 +97,13 @@ export const Portfolio = () => {
                                     })}>
                                         {project.projectType}
                                     </div>
-                                    <p className="text-xs text-gray-500">
+                                    <time className="text-xs text-gray-500">
                                         {new Date(project.date).toLocaleDateString('en-GB', {
                                             month: 'long',
                                             day: 'numeric',
                                             year: 'numeric'
                                         })}
-                                    </p>
+                                    </time>
                                 </div>
                             </motion.article>
                         )

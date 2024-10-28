@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { useFetchProject } from "@/components/hooks/projects/useFetchProjectProject";
+import { useFetchProject } from "@/components/hooks/projects/useFetchProject";
 import { useAdminValidation } from "@/components/hooks/admin/useAdminValidation";
 
 import { Separator } from "@radix-ui/react-separator";
@@ -54,13 +54,13 @@ const Page = () => {
             <p className="text-gray-500">{project.subtitle}</p>
             <div className="flex flex-row gap-1">
                 <ClockIcon className="text-gray-500" />
-                <p className="text-xs text-gray-500">
+                <time className="text-xs text-gray-500">
                     {new Date(project.date).toLocaleDateString('en-GB', {
                         month: 'long',
                         day: 'numeric',
                         year: 'numeric'
                     })}
-                </p>
+                </time>
             </div>
             <div className="flex items-center justify-start mt-4">
                 <div className={clsx({

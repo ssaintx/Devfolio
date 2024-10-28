@@ -32,7 +32,13 @@
         "Characteristics": {
             "Title": "Characteristics",
             "Programming": "Programming Languages",
-            "Technologies": "Technologies"
+            "Technologies": "Technologies",
+            "Architectures": "Architectures/Principles",
+            "Other": {
+                "Header": "Other skills",
+                "MachineLearning": "Machine Learning",
+                "DesktopProgramming": "Desktop Programming"
+            }
         },
         "Bento": {
             "First": {
