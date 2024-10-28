@@ -18,16 +18,16 @@ import {
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useFetch } from "@/components/hooks/useFetch";
-import { useDelete } from "@/components/hooks/useDelete";
-import { useAdminValidation } from "@/components/hooks/useAdminValidation";
+import { useFetchProject } from "@/components/hooks/projects/useFetchProject";
+import { useDeleteProject } from "@/components/hooks/projects/useDeleteProject";
+import { useAdminValidation } from "@/components/hooks/admin/useAdminValidation";
 
 const Page = () => {
     const t = useTranslations("Admin.Edit");
     const router = useRouter();
 
-    const { projects, isFetchLoading, fetchError } = useFetch();
-    const { deleteProject, isDeleteLoading, deleteError } = useDelete();
+    const { projects, isFetchLoading, fetchError } = useFetchProject();
+    const { deleteProject, isDeleteLoading, deleteError } = useDeleteProject();
 
     useAdminValidation();
 

@@ -7,8 +7,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Project } from "@/types/appwrite.types";
-import { useFetch } from "@/components/hooks/useFetch";
-import { useAdminValidation } from "@/components/hooks/useAdminValidation";
+import { useFetchProject } from "@/components/hooks/projects/useFetchProject";
+import { useAdminValidation } from "@/components/hooks/admin/useAdminValidation";
 
 import { LoaderCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -21,7 +21,7 @@ import {
 const Page = () => {
   const t = useTranslations("Admin.Home");
   const router = useRouter();
-  const { projects, isFetchLoading, fetchError } = useFetch();
+  const { projects, isFetchLoading, fetchError } = useFetchProject();
   useAdminValidation();
 
   return (

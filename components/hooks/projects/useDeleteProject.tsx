@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
-export const useDelete = () => {
+export const useDeleteProject = () => {
     const t = useTranslations("Hooks.Delete");
 
     const [deleteError, setDeleteError] = useState<string | null>(null);

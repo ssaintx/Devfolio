@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { projectSchema } from "@/types/appwrite.types";
-import { updateProject } from "@/app/admin/api/projects/[id]/route";
+import { updateProject } from "@/db/projects/appwrite.actions";
 
 export const EditProject = ({ id }: { id: string }) => {
     const schema = projectSchema();

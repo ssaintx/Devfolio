@@ -11,12 +11,12 @@ import { LoaderCircle, ExternalLinkIcon } from "lucide-react";
 import { EnterIcon, ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import { useTranslations } from "next-intl";
-import { useFetch } from "../hooks/useFetch";
+import { useFetchProject } from "../hooks/projects/useFetchProject";
 import { Project } from "@/types/appwrite.types";
 
 export const Portfolio = () => {
     const t = useTranslations("Portfolio");
-    const { projects, isFetchLoading, fetchError } = useFetch();
+    const { projects, isFetchLoading, fetchError } = useFetchProject();
 
     return (
         <motion.section

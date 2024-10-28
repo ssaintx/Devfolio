@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { CreateProject } from '@/components/forms/CreateProject';
-import { useAdminValidation } from '@/components/hooks/useAdminValidation';
+import { useAdminValidation } from '@/components/hooks/admin/useAdminValidation';
 
 const Page = () => {
     const t = useTranslations("Admin.Create");

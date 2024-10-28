@@ -6,8 +6,8 @@ import Image from "next/image";
 
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { useFetch } from "@/components/hooks/useFetch";
-import { useAdminValidation } from "@/components/hooks/useAdminValidation";
+import { useFetchProject } from "@/components/hooks/projects/useFetchProjectProject";
+import { useAdminValidation } from "@/components/hooks/admin/useAdminValidation";
 
 import { Separator } from "@radix-ui/react-separator";
 import { ExternalLinkIcon, LoaderCircle } from "lucide-react";
@@ -20,7 +20,7 @@ import {
 const Page = () => {
     const params = useParams();
     const t = useTranslations("Admin.Project");
-    const { project, fetchError, isFetchLoading } = useFetch(params.project as string);
+    const { project, fetchError, isFetchLoading } = useFetchProject(params.project as string);
 
     useAdminValidation();
 

@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { projectSchema } from "@/types/appwrite.types";
-import { createProject } from "@/app/admin/api/projects/route";
+import { createProject } from "@/db/projects/appwrite.actions";
 
 export const CreateProject = () => {
     const schema = projectSchema();
@@ -70,6 +70,7 @@ export const CreateProject = () => {
 
             const response = await createProject(project);
 
+            console.log(response)
             if (response) {
                 toast.success(t("Status.Success"));
                 form.reset();

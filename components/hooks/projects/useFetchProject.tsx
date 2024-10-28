@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Project } from "@/types/appwrite.types";
 
-export const useFetch = (id?: string) => {
+export const useFetchProject = (id?: string) => {
     const t = useTranslations("Hooks.Fetch");
 
     const [project, setProject] = useState<Project>();
@@ -44,4 +44,4 @@ export const useFetch = (id?: string) => {
     }, [id])
 
     return { projects, project, isFetchLoading, fetchError };
-}
+};

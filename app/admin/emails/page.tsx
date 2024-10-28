@@ -6,7 +6,7 @@ import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 import { useTranslations } from "next-intl";
 import { Email } from "@/types/appwrite.types";
-import { useFetchEmail } from "@/components/hooks/useFetchEmail";
+import { useFetchEmail } from "@/components/hooks/emails/useFetchEmail";
 
 const Page = () => {
     const t = useTranslations("Admin.Emails")

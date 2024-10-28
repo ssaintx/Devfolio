@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
-import { useAdminValidation } from '@/components/hooks/useAdminValidation';
+import { useAdminValidation } from '@/components/hooks/admin/useAdminValidation';
 
 import { EditProject } from '@/components/forms/EditProject';
 
