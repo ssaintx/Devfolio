@@ -6,15 +6,14 @@ import AnimatedCircularProgressBar from "@/components/ui/animated-circular-progr
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { FigmaLogoIcon } from "@radix-ui/react-icons";
 import { popIn, staggerContainer } from "@/utils/motion";
 
 import { kali } from "@/public";
 import { Label } from "@/components/ui/label";
 import { Age } from "@/components/functions/Age";
+import { Footer } from "@/components/shared/Footer";
 import { Separator } from "@/components/ui/separator";
 import { BreadCrumb } from "@/components/shared/BreadCrumb";
-import { BrainCircuitIcon, ProportionsIcon } from "lucide-react";
 
 const Page = () => {
   const t = useTranslations("About");
@@ -83,24 +82,6 @@ const Page = () => {
       title: "KISS",
       tag: "Principle",
       src: '/assets/about/kiss.svg'
-    },
-  ];
-
-  const otherData = [
-    {
-      id: 1,
-      title: "UI-UX",
-      src: <FigmaLogoIcon className="size-24" />,
-    },
-    {
-      id: 2,
-      title: t("Characteristics.Other.MachineLearning"),
-      src: <BrainCircuitIcon className="size-24" />,
-    },
-    {
-      id: 3,
-      title: t("Characteristics.Other.DesktopProgramming"),
-      src: <ProportionsIcon className="size-24" />,
     },
   ];
 
@@ -224,8 +205,8 @@ const Page = () => {
 
       {/* ARCHITECTURES */}
       <motion.div variants={popIn} className="flex items-center justify-center w-full">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 max-w-screen-lg w-full">
-          {architecturesData.map((item, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mb-8 max-w-screen-lg w-full">
+          {architecturesData.map((item) => (
             <div key={item.id} className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
               <Image src={item.src} alt={item.title} width={100} height={100} className="invert-0 dark:invert select-none" />
               <p>{item.title}</p>
@@ -237,26 +218,6 @@ const Page = () => {
           ))}
         </div>
       </motion.div>
-
-      {/* OTHER SUBHEADER */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full mt-8">
-        <div className="flex justify-start items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
-          <p className="text-sm text-zinc-400 dark:text-zinc-600">{t("Characteristics.Other.Header")}</p>
-        </div>
-      </motion.div>
-
-      {/* OTHER */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8 max-w-screen-lg w-full">
-          {otherData.map((item) => (
-            <div key={item.id} className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
-              {item.src}
-              <p className="mt-4 text-lg font-semibold">{item.title}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
     </motion.section>
   );
 };

@@ -10,7 +10,8 @@
     },
     "Hero": {
         "Heading": "Frontend dasturchi",
-        "Subheading": "O'zbekistonda joylashgan"
+        "Subheading": "O'zbekistonda asoslangan",
+        "CV": "Rezyume yuklab olish"
     },
     "About": {
         "Heading": "Oz'im haqida",
@@ -218,12 +219,6 @@
                 "Loading": "Loyihalar yuklanmoqda...",
                 "Empty": "Loyihalar yo'q.",
                 "Error": "Loyihalarni yuklab bolmadi."
-            },
-            "Email": {
-                "Topic": "Mavzu",
-                "From": "Kim dan",
-                "Phone": "Raqam",
-                "Message": "Xabar"
             }
         },
         "Emails": {
@@ -232,6 +227,12 @@
                 "Loading": "Xatlar yuklanmoqda...",
                 "Empty": "Xatlar yo'q.",
                 "Error": "Xatlarni yuklab bolmadi."
+            },
+            "Email": {
+                "Topic": "Mavzu",
+                "From": "Kim dan",
+                "Phone": "Raqam",
+                "Message": "Xabar"
             }
         },
         "Project": {

@@ -8,6 +8,9 @@ import layered from './assets/about/layered.svg';
 import mvc from './assets/about/model-view-controller.svg';
 import clientServer from './assets/about/client-server.svg';
 
+import github from './icons/github.svg';
+import linkedin from './icons/linkedin.svg';
+import leetcode from './icons/leetcode.svg';
 
 export {
     uz,
@@ -18,4 +21,7 @@ export {
     mvc,
     layered,
     clientServer,
+    github,
+    linkedin,
+    leetcode,
 };

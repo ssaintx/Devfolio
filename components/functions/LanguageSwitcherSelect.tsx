@@ -26,7 +26,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
             <SelectTrigger className="h-8 w-auto glassmorphism shadow-md">
                 <SelectValue placeholder={t("Label")} />
             </SelectTrigger>
-            <SelectContent className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg w-auto z-[52]">
+            <SelectContent className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg w-auto z-[55]">
                 <SelectGroup>
                     {items.map((item) => (
                         <SelectItem key={item.value} value={item.value}>

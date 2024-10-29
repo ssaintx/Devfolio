@@ -27,13 +27,15 @@ const Page = () => {
   return (
     <section>
       <h1 className="heading_admin">{t("Heading")}</h1>
-      {fetchError &&
-        (<div className="mt-4 flex items-center justify-center md:justify-start">
+      {fetchError && (
+        <div className="mt-4 flex items-center justify-center md:justify-start">
           <p className="flex flex-row items-center justify-center gap-2 bg-red-400 rounded-lg shadow-xl text-white h-12 p-4 text-center">
             <ExclamationTriangleIcon />
             {fetchError}
           </p>
-        </div>)}
+        </div>
+      )}
+
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
         {isFetchLoading ? (
           <div className="flex flex-row items-center gap-2">

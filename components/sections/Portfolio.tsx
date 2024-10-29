@@ -11,8 +11,8 @@ import { LoaderCircle, ExternalLinkIcon } from "lucide-react";
 import { EnterIcon, ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import { useTranslations } from "next-intl";
-import { useFetchProject } from "../hooks/projects/useFetchProject";
 import { Project } from "@/types/appwrite.types";
+import { useFetchProject } from "../hooks/projects/useFetchProject";
 
 export const Portfolio = () => {
     const t = useTranslations("Portfolio");
@@ -29,13 +29,15 @@ export const Portfolio = () => {
         >
             <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")}</motion.h1>
 
-            {fetchError &&
-                (<div className="mt-4 flex items-center justify-center">
+            {fetchError && (
+                <div className="mt-4 flex items-center justify-center">
                     <p className="flex flex-row items-center justify-center gap-2 bg-red-400 rounded-lg shadow-xl text-white h-12 p-4 text-center">
                         <ExclamationTriangleIcon />
                         {fetchError}
                     </p>
-                </div>)}
+                </div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-4xl pb-8 px-8 mt-4 ">
                 {isFetchLoading ? (
                     <div className="flex flex-row items-center justify-center w-full gap-2">
@@ -44,7 +46,7 @@ export const Portfolio = () => {
                     </div>
                 ) : (projects.length === 0) ?
                     <p>{t("Status.Empty")}</p> :
-                    projects.map((project: Project) => {
+                    projects.slice(0, 4).map((project: Project) => {
                         return (
                             <motion.article
                                 variants={popIn}

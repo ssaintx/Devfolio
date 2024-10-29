@@ -3,7 +3,9 @@
 import { NextResponse } from "next/server";
 import { parseStringify } from "@/lib/utils";
 import {
+    storage,
     databases,
+    BUCKET_ID,
     DATABASE_ID,
     COLLECTION_ID,
 } from "@/db/appwrite.config";
@@ -45,6 +47,7 @@ export async function DELETE(
             COLLECTION_ID,
             id
         );
+
         return NextResponse.json({ message: "Project deleted" });
     } catch (error) {
         return NextResponse.json({ message: "Failed to delete Project" }, { status: 500 });

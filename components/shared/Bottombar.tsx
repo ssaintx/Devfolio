@@ -117,7 +117,7 @@ export const Bottombar = () => {
           ))}
 
           {/* SEPARATOR */}
-          <Separator orientation="vertical" className="bg-gray-500 h-[90%]" />
+          <Separator orientation="vertical" className="bg-zinc-300 dark:bg-zinc-800 h-full" />
 
           {/* SETTINGS */}
           <DockIcon>
