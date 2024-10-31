@@ -4,14 +4,11 @@ import clsx from "clsx";
 import Image from "next/image";
 import AnimatedCircularProgressBar from "@/components/ui/animated-circular-progress-bar";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { popIn, staggerContainer } from "@/utils/motion";
 
 import { kali } from "@/public";
 import { Label } from "@/components/ui/label";
 import { Age } from "@/components/functions/Age";
-import { Footer } from "@/components/shared/Footer";
 import { Separator } from "@/components/ui/separator";
 import { BreadCrumb } from "@/components/shared/BreadCrumb";
 
@@ -86,36 +83,25 @@ const Page = () => {
   ];
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, amount: 0.25 }}
-      variants={staggerContainer}
-      className="flex flex-col overflow-hidden px-4 w-screen"
-      id="about"
-    >
+    <section className="flex flex-col overflow-hidden px-4 w-screen" id="about">
+      
+
       <div className="flex items-center justify-center mt-4">
         <BreadCrumb />
       </div>
       {/* HEADING */}
-      <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")} </motion.h1>
+      <h1 className="heading flex justify-center my-8 md:my-16">{t("Heading")}</h1>
 
       {/* ABOUT ME CONTAINER */}
       <div className="flex flex-col sm:flex-row justify-center gap-10">
         {/* IMAGE CONTAINER */}
-        <motion.div
-          variants={popIn}
-          className="flex justify-center sm:justify-start"
-        >
+        <div className="flex justify-center sm:justify-start">
           <div className="glassmorphism p-2 rounded-2xl">
             <Image src={kali} alt="Logo" width={200} height={200} className="rounded-2xl" priority unoptimized />
           </div>
-        </motion.div>
+        </div>
         {/* PERSONAL INFORMATION CONTAINER */}
-        <motion.div
-          variants={popIn}
-          className="flex justify-center items-center"
-        >
+        <div className="flex justify-center items-center">
           {/* LIST OF DATA */}
           <ul className="flex flex-col gap-[4px] text-zinc-900 dark:text-zinc-200 px-2">
             <li><strong>{t("Fields.NameField")}</strong>: {t("PersonalInformation.Name")}</li>
@@ -129,35 +115,32 @@ const Page = () => {
             <li><strong>{t("Fields.EmailField")}</strong>: {t("PersonalInformation.Email")}</li>
             <Separator orientation="horizontal" className="bg-zinc-400 dark:bg-zinc-800" />
           </ul>
-        </motion.div>
+        </div>
       </div>
 
       {/* BIO */}
-      <motion.div
-        variants={popIn}
-        className="flex items-center justify-center mt-8 w-full"
-      >
+      <div className="flex items-center justify-center mt-8 w-full">
         <div className="flex justify-center items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
           <p className="first-letter:text-4xl">{t("Bio")}</p>
         </div>
-      </motion.div>
+      </div>
 
       {/* CHARACTERISTICS */}
-      <motion.h1 variants={popIn} className="heading flex justify-center mt-8 md:mt-16">{t("Characteristics.Title")}</motion.h1>
+      <h1 className="heading flex justify-center mt-8 md:mt-16">{t("Characteristics.Title")}</h1>
 
       {/* PROGRAMMING lANGUAGES SUBHEADER */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full mt-4">
+      <div className="flex items-center justify-center w-full mt-4">
         <div className="flex justify-start items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
           <p className="text-sm text-zinc-400 dark:text-zinc-600">{t("Characteristics.Programming")}</p>
         </div>
-      </motion.div>
+      </div>
 
       {/* PROGRAMMING lANGUAGES */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full">
+      <div className="flex items-center justify-center w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 max-w-screen-lg w-full">
           {programmingSkillsData.map((skill, i) => (
-            <div key={skill.language} className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
-              <div className="absolute flex w-full h-full items-start justify-start text-lg xs:text-xl sm:text-3xl font-bold p-2 z-40">
+            <div key={skill.language} className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl relative">
+              <div className="absolute top-1 left-2 flex items-start justify-start text-lg xs:text-xl sm:text-3xl font-bold p-2 z-40">
                 <p className="glassmorphism p-2 rounded-xl">{skill.language}</p>
               </div>
               <AnimatedCircularProgressBar
@@ -171,17 +154,17 @@ const Page = () => {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* TECHNOLOGIES SUBHEADER */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full mt-8">
+      <div className="flex items-center justify-center w-full mt-8">
         <div className="flex justify-start items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
           <p className="text-sm text-zinc-400 dark:text-zinc-600">{t("Characteristics.Technologies")}</p>
         </div>
-      </motion.div>
+      </div>
 
       {/* TECHNOLOGIES */}
-      <motion.div variants={popIn} className="flex justify-center items-center w-full mt-8">
+      <div className="flex justify-center items-center w-full mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-screen-lg">
           {Object.entries(technologiesData).map(([key, value]) => (
             <div key={key} className="flex flex-col justify-start items-center w-full gap-4 p-2 glassmorphism rounded-2xl">
@@ -194,17 +177,17 @@ const Page = () => {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* ARCHITECTURES SUBHEADER */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full mt-8">
+      <div className="flex items-center justify-center w-full mt-8">
         <div className="flex justify-start items-center max-w-[600px] min-w-[200px] w-[600px] px-2 xs:px-8">
           <p className="text-sm text-zinc-400 dark:text-zinc-600">{t("Characteristics.Architectures")}</p>
         </div>
-      </motion.div>
+      </div>
 
       {/* ARCHITECTURES */}
-      <motion.div variants={popIn} className="flex items-center justify-center w-full">
+      <div className="flex items-center justify-center w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mb-8 max-w-screen-lg w-full">
           {architecturesData.map((item) => (
             <div key={item.id} className="flex flex-col items-center justify-center w-full h-full glassmorphism p-2 rounded-2xl">
@@ -217,8 +200,8 @@ const Page = () => {
             </div>
           ))}
         </div>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 

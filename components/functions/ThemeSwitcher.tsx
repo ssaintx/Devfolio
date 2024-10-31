@@ -1,6 +1,5 @@
 "use client"
 
-import { Label } from "../ui/label";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";

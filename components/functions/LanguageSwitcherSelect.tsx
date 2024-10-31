@@ -31,7 +31,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
                     {items.map((item) => (
                         <SelectItem key={item.value} value={item.value}>
                             <div className="flex flex-row gap-2">
-                                <Image src={item.icon} alt={item.label} width={20} height={10} />
+                                <Image src={item.icon} alt={item.label} width={20} height={10} style={{"height": 20, "width": 40}} />
                             </div>
                         </SelectItem>
                     ))}

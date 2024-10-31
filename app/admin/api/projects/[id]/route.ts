@@ -23,10 +23,8 @@ async function getProject(id: string) {
     }
 };
 
-export async function GET(
-    req: Request,
-    { params }: { params: { id: string } }
-) {
+export async function GET(req: Request, props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     try {
         const id = params.id;
         const project = await getProject(id);
@@ -36,10 +34,8 @@ export async function GET(
     }
 };
 
-export async function DELETE(
-    req: Request,
-    { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     try {
         const id = params.id;
         await databases.deleteDocument(

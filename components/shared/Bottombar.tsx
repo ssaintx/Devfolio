@@ -31,11 +31,22 @@ import Link from "next/link";
 export const Bottombar = () => {
   const t = useTranslations("Header.Bottombar");
 
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
 
-  // CALCULATE WIDTH OF DEVICE TO REACH RESPOSIVENESS
-  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
-  const distance = screenWidth < 425 ? 0 : 140;
-  const magnification = screenWidth < 425 ? 0 : 60;
+  const handleWindowResize = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }
+
+  useEffect(() => {
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
+
+  const distance = width < 425 ? 0 : 140;
+  const magnification = width < 425 ? 0 : 60;
 
   const [showBottombar, setShowBottombar] = useState(true);
 

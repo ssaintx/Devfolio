@@ -12,7 +12,8 @@ import { Contacts } from "@/components/sections/Contacts";
 import { SearchParamProps } from "@/lib/props";
 import { PasskeyModal } from "@/components/shared/PasskeyModal";
 
-const Page = ({ searchParams }: SearchParamProps) => {
+const Page = (props: SearchParamProps) => {
+  const searchParams = props.searchParams;
   const isAdmin = searchParams?.admin === "true";
 
   return (

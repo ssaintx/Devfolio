@@ -22,6 +22,7 @@
       "wix.vscode-import-cost"
       "formulahendry.auto-rename-tag"
       "oderwat.indent-rainbow"
+      "DotJoshJohnson.xml"
   ];
   idx.previews = {
     previews = {
