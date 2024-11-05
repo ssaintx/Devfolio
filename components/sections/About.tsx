@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ReaderIcon } from "@radix-ui/react-icons";
-import { popIn, staggerContainer } from "@/utils/motion";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 
 export const About = () => {
@@ -76,15 +74,11 @@ export const About = () => {
   ];
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-      variants={staggerContainer}
+    <section
       className="flex flex-col items-center justify-center px-4 xs:px-8 sm:px-16 md:px-20 lg:px-24"
       id="about"
     >
-      <motion.h1 variants={popIn} className="heading">{t("Heading")}</motion.h1>
+      <h1 className="heading">{t("Heading")}</h1>
       <BentoGrid className="w-full py-20">
         {gridItems.map((item, i) => (
           <BentoGridItem
@@ -101,14 +95,11 @@ export const About = () => {
         ))}
       </BentoGrid>
       {/* BUTTON TO REDIRECT TO ABOUT PAGE */}
-      <motion.div
-        variants={popIn}
-        className="flex justify-center mt-4 pb-8"
-      >
+      <div className="flex justify-center mt-4 pb-8">
         <Link href='/about' className="button flex flex-row justify-center items-center gap-2">
           <ReaderIcon /> {t("ReadMore")}
         </Link>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 }

@@ -13,17 +13,17 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
     const t = useTranslations("Functions.Language");
     const [isPending, startTransition] = useTransition();
 
-    const onChange = (value: string) => {
+    const onChange = async (value: string) => {
         const locale = value as Locale;
-        startTransition(() => {
+        startTransition(async () => {
             localStorage.setItem("locale", locale);
-            setUserLocale(locale);
+            await setUserLocale(locale);
         });
     };
 
     return (
         <Select defaultValue={defaultValue} onValueChange={onChange}>
-            <SelectTrigger className="h-8 w-auto glassmorphism shadow-md">
+            <SelectTrigger className="h-8 w-auto glassmorphism shadow-md" disabled={isPending}>
                 <SelectValue placeholder={t("Label")} />
             </SelectTrigger>
             <SelectContent className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg w-auto z-[55]">
@@ -31,7 +31,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
                     {items.map((item) => (
                         <SelectItem key={item.value} value={item.value}>
                             <div className="flex flex-row gap-2">
-                                <Image src={item.icon} alt={item.label} width={20} height={10} style={{"height": 20, "width": 40}} />
+                                <Image src={item.icon} alt={item.label} width={20} height={10} style={{"height": 15, "width": 30}} />
                             </div>
                         </SelectItem>
                     ))}

@@ -1,9 +1,6 @@
-import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { popIn } from "@/utils/motion";
-import { motion } from "framer-motion";
-import { DownloadIcon } from "@radix-ui/react-icons";
 
 export const BentoGrid = ({ className, children }: { className?: string; children?: React.ReactNode; }) => {
   return (
@@ -41,9 +38,7 @@ export const BentoGridItem = ({
   const rightLists = ["NodeJS", "ExpressJS", "NestJs"];
 
   return (
-    <motion.div
-      variants={popIn}
-      className={cn(
+    <div className={cn(
         "row-span-1 relative overflow-hidden rounded-3xl glassmorphism group/bento justify-between flex flex-col space-y-4",
         className
       )}
@@ -51,18 +46,22 @@ export const BentoGridItem = ({
       <div className="h-full">
         <div className="w-full h-full absolute">
           {img && (
-            <img
+            <Image
               src={img}
               alt={img}
+              width={200}
+              height={200}
               className={cn(imgClassName, "object-cover object-center ")}
             />
           )}
         </div>
         <div className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"} `}>
           {spareImg && (
-            <img
+            <Image
               src={spareImg}
               alt={spareImg}
+              width={200}
+              height={200}
               className="object-cover object-center w-full h-full"
             />
           )}
@@ -111,6 +110,6 @@ export const BentoGridItem = ({
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

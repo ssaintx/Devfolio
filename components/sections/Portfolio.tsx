@@ -4,9 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 
-import { motion } from "framer-motion";
 import { Separator } from "@radix-ui/react-separator";
-import { popIn, staggerContainer } from "@/utils/motion";
 import { LoaderCircle, ExternalLinkIcon } from "lucide-react";
 import { EnterIcon, ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
@@ -19,15 +17,11 @@ export const Portfolio = () => {
     const { projects, isFetchLoading, fetchError } = useFetchProject();
 
     return (
-        <motion.section
-            initial="hidden"
-            whileInView={isFetchLoading ? "hidden" : "show"}
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
+        <section
             className="flex flex-col items-center justify-center dark-light-secondary"
             id="portfolio"
         >
-            <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")}</motion.h1>
+            <h1 className="heading flex justify-center my-8 md:my-16">{t("Heading")}</h1>
 
             {fetchError && (
                 <div className="mt-4 flex items-center justify-center">
@@ -48,8 +42,7 @@ export const Portfolio = () => {
                     <p>{t("Status.Empty")}</p> :
                     projects.slice(0, 4).map((project: Project) => {
                         return (
-                            <motion.article
-                                variants={popIn}
+                            <article
                                 key={project.$id}
                                 className="glassmorphism p-4 rounded-3xl flex flex-col cursor-pointer"
                             >
@@ -107,19 +100,17 @@ export const Portfolio = () => {
                                         })}
                                     </time>
                                 </div>
-                            </motion.article>
+                            </article>
                         )
                     })}
             </div>
 
-            <motion.div
-                variants={popIn}
-                className="flex justify-center items-end my-8">
+            <div className="flex justify-center items-end my-8">
                 <Link href='/portfolio' className="button flex flex-row items-center justify-center gap-2">
                     <EnterIcon />
                     {t("SeeMore")}
                 </Link>
-            </motion.div>
-        </motion.section>
+            </div>
+        </section>
     );
 };

@@ -33,14 +33,19 @@ export const Settings = () => {
                     <DropdownMenuLabel>{t("Label")}</DropdownMenuLabel>
                     <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-700" />
                     <DropdownMenuItem className="flex flex-row gap-2">
-                        <LanguagesIcon className="size-4" />
-                        {t("LanguageSwitch")}:
-                        <LanguageSwitcher />
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="flex flex-row gap-2">
                         <Half2Icon className="size-4" />
                         {t("ThemeSwitch")}:
                         <ThemeSwitcher />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="flex flex-row gap-2">
+                        <LanguagesIcon className="size-4" />
+                        {t("LanguageSwitch")}:
+                        <div><LanguageSwitcher /></div>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-700" />
+                    <DropdownMenuItem className="flex flex-row gap-2 text-sky-500">
+                        <EnterIcon className="size-4" />
+                        <Link href="/?admin=true">{t("Admin")}</Link>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

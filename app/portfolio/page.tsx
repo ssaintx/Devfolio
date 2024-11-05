@@ -4,12 +4,11 @@ import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 
-import { motion } from "framer-motion";
 import { Separator } from "@radix-ui/react-separator";
-import { popIn, staggerContainer } from "@/utils/motion";
+import { staggerContainer } from "@/utils/motion";
 import { BreadCrumb } from "@/components/shared/BreadCrumb";
 import { LoaderCircle, ExternalLinkIcon } from "lucide-react";
-import { EnterIcon, ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import { useTranslations } from "next-intl";
 import { Project } from "@/types/appwrite.types";
@@ -20,11 +19,7 @@ const Page = () => {
     const { projects, isFetchLoading, fetchError } = useFetchProject();
 
     return (
-        <motion.section
-            initial="hidden"
-            whileInView={isFetchLoading ? "hidden" : "show"}
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
+        <section
             className="flex flex-col items-center justify-center"
             id="portfolio"
         >
@@ -32,7 +27,7 @@ const Page = () => {
                 <BreadCrumb />
             </div>
 
-            <motion.h1 variants={popIn} className="heading flex justify-center my-8 md:my-16">{t("Heading")}</motion.h1>
+            <h1 className="heading flex justify-center my-8 md:my-16">{t("Heading")}</h1>
 
             {fetchError && (
                 <div className="mt-4 flex items-center justify-center">
@@ -109,7 +104,7 @@ const Page = () => {
                         )
                     })}
             </ol>
-        </motion.section>
+        </section>
     );
 };
 
