@@ -117,7 +117,7 @@ export const ContactForm = () => {
                                         withCountryCallingCode
                                         value={field.value as Value | undefined}
                                         onChange={field.onChange}
-                                        className="h-11 rounded-md px-3 text-sm input"
+                                        className="h-11 rounded-md text-sm input"
                                     />
                                 </FormControl>
                                 <FormMessage />

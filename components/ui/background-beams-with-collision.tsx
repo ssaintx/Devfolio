@@ -70,7 +70,7 @@ export const BackgroundBeamsWithCollision = ({
     <div
       ref={parentRef}
       className={cn(
-        "h-96 md:h-[40rem] bg-gradient-to-b relative flex items-center w-full justify-center overflow-hidden h-screen",
+        "h-screen relative flex items-center w-full justify-center overflow-hidden",
         className
       )}
     >
@@ -99,8 +99,8 @@ export const BackgroundBeamsWithCollision = ({
 const CollisionMechanism = React.forwardRef<
   HTMLDivElement,
   {
-    containerRef: React.RefObject<HTMLDivElement>;
-    parentRef: React.RefObject<HTMLDivElement>;
+    containerRef: React.RefObject<HTMLDivElement | null>;
+    parentRef: React.RefObject<HTMLDivElement | null>;
     beamOptions?: {
       initialX?: number;
       translateX?: number;
@@ -136,6 +136,11 @@ const CollisionMechanism = React.forwardRef<
         const beamRect = beamRef.current.getBoundingClientRect();
         const containerRect = containerRef.current.getBoundingClientRect();
         const parentRect = parentRef.current.getBoundingClientRect();
+
+        // Skip collision check if any of the elements are not yet rendered
+        if (!beamRect || !containerRect || !parentRect) {
+          return;
+        }
 
         if (beamRect.bottom >= containerRect.top) {
           const relativeX =

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { ContactForm } from "../forms/ContactForm";
+import { LanguageSwitcher } from "../functions/LanguageSwitcher";
 
 export const Contacts = () => {
     const t = useTranslations("Contacts");

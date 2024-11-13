@@ -44,7 +44,7 @@ export const Portfolio = () => {
                         return (
                             <article
                                 key={project.$id}
-                                className="glassmorphism p-4 rounded-3xl flex flex-col cursor-pointer"
+                                className="glassmorphism p-4 rounded-3xl flex flex-col cursor-pointer "
                             >
                                 <Image
                                     src={project.imageUrl!}
@@ -55,11 +55,6 @@ export const Portfolio = () => {
                                 />
                                 <h1 className="text-center mt-2 text-md font-semibold sm:text-lg">{project.title}</h1>
                                 <p className="text-center text-zinc-400 dark:text-zinc-600 text-sm">{project.subtitle}</p>
-                                <Separator orientation="horizontal" className="my-2" />
-                                <div className="text-start">
-                                    <p>{project.description}</p>
-                                </div>
-                                <Separator orientation="horizontal" className="my-2" />
                                 <div className="flex items-center justify-center gap-2 mt-4">
                                     <Link
                                         href={project.githubURL}
@@ -67,7 +62,7 @@ export const Portfolio = () => {
                                         rel="noopener noreferrer"
                                         className="button flex flex-row items-center justify-center gap-2"
                                     >
-                                        <GitHubLogoIcon /> {t("GithubButton")}
+                                        <GitHubLogoIcon className="size-4" /> {t("GithubButton")}
                                     </Link>
                                     <Separator orientation="vertical" className="my-2" />
                                     <Link
@@ -76,7 +71,7 @@ export const Portfolio = () => {
                                         rel="noopener noreferrer"
                                         className="button flex flex-row items-center justify-center gap-2"
                                     >
-                                        <ExternalLinkIcon /> {t("LiveButton")}
+                                        <ExternalLinkIcon className="size-4" /> {t("LiveButton")}
                                     </Link>
                                 </div>
                                 <div className="flex justify-between items-end mt-4 h-full">

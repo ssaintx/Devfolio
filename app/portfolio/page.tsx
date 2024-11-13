@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Separator } from "@radix-ui/react-separator";
-import { staggerContainer } from "@/utils/motion";
 import { BreadCrumb } from "@/components/shared/BreadCrumb";
 import { LoaderCircle, ExternalLinkIcon } from "lucide-react";
 import { ExclamationTriangleIcon, GitHubLogoIcon } from "@radix-ui/react-icons";

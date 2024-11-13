@@ -17,27 +17,27 @@ import {
 
 import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
+import { Dock, DockIcon } from "../ui/dock";
 import { buttonVariants } from "../ui/button";
 import { footerVariants } from "@/utils/motion";
-import { Dock, DockIcon } from "../magicui/dock";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { Settings } from "../functions/Settings";
+import { motion } from "framer-motion";
 
 import Link from "next/link";
 
 export const Bottombar = () => {
   const t = useTranslations("Header.Bottombar");
 
-  const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(0)
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
 
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
-  }
+  };
 
   useEffect(() => {
     handleWindowResize();
@@ -59,8 +59,8 @@ export const Bottombar = () => {
           setShowBottombar(false);
         } else {
           setShowBottombar(true);
-        }
-      }
+        };
+      };
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);

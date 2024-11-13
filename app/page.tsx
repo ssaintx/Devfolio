@@ -10,8 +10,8 @@ import { Footer } from "@/components/shared/Footer";
 {/* ADMIN */}
 import { PasskeyModal } from "@/components/shared/PasskeyModal";
 
-const Page = async (props: { searchParams: { admin?: string } }) => {
-  const searchParams = props.searchParams;
+const Page = async (props: { searchParams: Promise<{ admin?: string }> }) => {
+  const searchParams = (await props.searchParams);
   const isAdmin = searchParams?.admin === "true";
 
   return (

@@ -23,7 +23,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
 
     return (
         <Select defaultValue={defaultValue} onValueChange={onChange}>
-            <SelectTrigger className="h-8 w-auto glassmorphism shadow-md" disabled={isPending}>
+            <SelectTrigger className="h-8 w-auto glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg" disabled={isPending}>
                 <SelectValue placeholder={t("Label")} />
             </SelectTrigger>
             <SelectContent className="glassmorphism bg-zinc-200 backdrop-blur-[33px] bg-opacity-50 bg-clip-padding shadow-lg w-auto z-[55]">
@@ -31,7 +31,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
                     {items.map((item) => (
                         <SelectItem key={item.value} value={item.value}>
                             <div className="flex flex-row gap-2">
-                                <Image src={item.icon} alt={item.label} width={20} height={10} style={{"height": 15, "width": 30}} />
+                                <Image src={item.icon} alt={item.label} width={20} height={10} style={{ "height": 15, "width": 30 }} />
                             </div>
                         </SelectItem>
                     ))}
